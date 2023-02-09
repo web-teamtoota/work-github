@@ -17,6 +17,8 @@ class ListsController < ApplicationController
   end
 
   def show
+   @list = List.find(params[:id])
+   @lists = @list.Users.page(params[:page])
   end
 
   def edit
