@@ -1,8 +1,8 @@
-class UsersController < ApplicationController
-  
+class UserController < ApplicationController
+    
   def show
     @user = User.find(params[:id])
-   @post_images = @user.lists.page(params[:page])
+   @lists = @user.lists.page(params[:page])
   end
   
   def edit
@@ -21,7 +21,8 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :image)
+    params.require(:user).permit(:name)
   end
+  
   
 end
