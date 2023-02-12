@@ -12,47 +12,49 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
-  </body>
 </html>
 
 
 
 <body>
   <header>
-    
-    
+
+<ul>
 <% if user_signed_in? %>
+
   <li>
-    <%= link_to '投稿フォーム', new_user_password_path %>
+    <%= link_to '商品一覧', "" %>
   </li>
       <li>
-      <%= link_to 'マイページ', user_path(current_user.id) %>  
+      <%= link_to '会員一覧', "" %>
       </li>
   <li>
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+    <%= link_to "注文履歴一覧", "" %>
   </li>
+
+  <li>
+    <%= link_to "ジャンル一覧", "" %>
+  </li>
+  <li>
+    <%= link_to "ログアウト", "" %>
+  </li>
+
 <% else %>
   <li>
-    <%= link_to "新規登録", new_user_registration_path %>
+    <%= link_to 'About', "" %>
+  </li>
+      <li>
+      <%= link_to '商品一覧', "" %>
+      </li>
+  <li>
+    <%= link_to "新規登録", "" %>
   </li>
   <li>
-    <%= link_to "ログイン", new_user_session_path %>
+    <%= link_to "ログイン", "" %>
   </li>
 <% end %>
+</ul>
 
-    <% if user_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "新規登録", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_user_session_path %>
-      </li>
-    <% end %>
-  </header>  <%= yield %>
+  </header>
+  <%= yield %>
 </body>
