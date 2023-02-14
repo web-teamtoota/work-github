@@ -7,8 +7,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -41,7 +42,7 @@
 
 <% else %>
   <li>
-    <%= link_to 'About', "" %>
+    <%= link_to 'About', "" , class: "btn btn-primary"%>
   </li>
       <li>
       <%= link_to '商品一覧', "" %>
@@ -58,3 +59,4 @@
   </header>
   <%= yield %>
 </body>
+
