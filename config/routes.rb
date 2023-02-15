@@ -14,10 +14,10 @@ Rails.application.routes.draw do
 
     get 'admin/index', to: 'admins/items#index'
     get 'admin/items/new', to: 'admins/items#new'
-    get 'admin/items' , to: 'admins/items#create'
+    post 'admin/items' , to: 'admins/items#create'
     get 'admin/items/id', to: 'admins/items/id#show'
     get 'admin/items/id/edit', to: 'admins/items/id/edit#edit'
-    get 'admin/items/id', to: 'admins/items/id#update'
+    patch 'admin/items/id', to: 'admins/items/id#update'
   end
 
 

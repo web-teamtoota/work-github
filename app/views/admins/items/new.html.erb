@@ -1,11 +1,11 @@
 <div class="mx-auto" style="width: 400px">
   <h3>商品新規登録</h3>
-  <%= form_with model: @item, url: admin_items_path do |f| %>
+  <%= form_with model: Item.new do |f| %>
   <div class="inputImage">商品画像
     <%= f.file_field :profile_image, placeholder: "商品画像", accept: "pimage/*" %>
     <div class="field">
       <%= f.label :商品名 %>
-      <%= f.email_field :商品名, autofocus: true, id:"inputName", placeholder:"商品名"%>
+      <%= f.text_field :id, autofocus: true, id:"inputName", placeholder:"商品名"%>
     </div>
     <div class="field">
       <%= f.label :商品説明 %>
@@ -18,7 +18,7 @@
     </div>
     <div class="field">
       <%= f.label :税抜価格 %>
-      <%= f.email_field :税抜価格, autofocus: true, id:"inputName", placeholder: "1000" %>円
+      <%= f.text_field :price, autofocus: true, id:"inputName", placeholder: "1000" %>円
     </div>
     <label>
       <%= f.label :販売ステータス %>
