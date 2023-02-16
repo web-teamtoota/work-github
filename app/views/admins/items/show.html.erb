@@ -1,2 +1,13 @@
-<h1>Admins::Items#show</h1>
-<p>Find me in app/views/admins/items/show.html.erb</p>
+<div class="mx-auto" style="width: 400px">
+  <h3>商品詳細</h3>
+  <%= form_with model: @item, url: admin_items_path do |f| %>
+  <h5>商品名      いちごのショートケーキ（ホール）</h5>
+  <h5>商品説明      栃木県産のとちおとめを贅沢に使用しています。</h5>
+  <h5>ジャンル      ケーキ</h5>
+  <h5>税込価格(税抜価格)      2,750(2,500)円</h5>
+  <h5>販売ステータス      販売中</h5>
+  <div class="actions">
+    <%= f.submit "編集する" %>
+  </div>
+  <% end %>
+</div>
