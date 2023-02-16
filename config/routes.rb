@@ -15,9 +15,9 @@ Rails.application.routes.draw do
     get 'admin/index', to: 'admins/items#index'
     get 'admin/items/new', to: 'admins/items#new'
     post 'admin/items' , to: 'admins/items#create'
-    get 'admin/items/id', to: 'admins/items/id#show'
-    get 'admin/items/id/edit', to: 'admins/items/id/edit#edit'
-    patch 'admin/items/id', to: 'admins/items/id#update'
+    get 'admin/items/:id', to: 'admins/items#show'
+    get 'admin/items/:id/edit', to: 'admins/items#edit'
+    patch 'admin/items/:id', to: 'admins/items#update'
   end
 
 
