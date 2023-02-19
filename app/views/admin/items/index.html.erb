@@ -1,0 +1,54 @@
+<div class="container">
+     <h3>商品一覧</h3>
+           <table class='table table-hover table-inverse'>
+        <div class='container px-5 px-sm-0'>
+  <div class="row">
+
+    <thead>
+         <tr>
+            <th>商品ID</th>
+            <th>商品名</th>
+            <th>税抜価格</th>
+            <th>ジャンル</th>
+            <th>ステータス</th>
+   <th colspan="3"></th>
+     </tr>
+    </thead>
+      <tbody>
+           <% @items.each do |item| %>
+           <tr>
+    </table>
+    </div>
+    </div>
+    
+    <div class="container">
+     <h3>商品一覧</h3>
+  <div class="row">
+<table class="table table-striped">
+    <thead>
+         <tr>
+   
+    <% @items.each do |item| %>
+    <th>商品ID</th>
+    <span><%= item.id%></span>
+     <th>商品名</th>
+    <span><%= item.name%></span>
+     <th>税抜価格</th>
+    <span><%= item.price%></span>
+     <th>ジャンル</th>
+    <span><%= item.genre_id%></span>
+     <th>ステータス</th>
+    <span><%= item.is_active%></span>
+   
+   
+    
+    <% end %>
+     <tbody>
+    </tr>
+      </thead>
+          </tr>
+    </table>
+  
+    </div>
+    </div>
+     </div>
