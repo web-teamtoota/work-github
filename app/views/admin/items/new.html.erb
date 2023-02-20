@@ -1,5 +1,6 @@
 <div class="mx-auto" style="width: 400px">
   <h3>商品新規登録</h3>
+   <%= form_with model: @item, url:admin_items_path(@item.id) do |f| %>
   <div class="inputImage">商品画像
     <%= f.file_field :profile_image, placeholder: "商品画像", accept: "pimage/*" %>
     <div class="field">
@@ -25,7 +26,8 @@
     </label>
     <label><%= f.radio_button :is_active, false %> 販売停止中</label>
     <div class="actions">
-      <%= f.submit "新規登録" %>
+      <%= f.submit "新規登録",class: "btn btn-success" %>
     </div>
+     <% end %>
   </div>
 </div>
