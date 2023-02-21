@@ -12,6 +12,7 @@ class ListsController < ApplicationController
 
 
   def index
+    
     @lists = List.page(params[:page])
     @lists = List.all
   end
