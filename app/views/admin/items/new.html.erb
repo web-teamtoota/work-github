@@ -1,24 +1,19 @@
 <div class="mx-auto" style="width: 400px">
   <h3>商品新規登録</h3>
-  <%= link_to 'TOPページ', root_path %>
    <%= form_with model: @item, url:admin_items_path(@item.id) do |f| %>
   <div class="inputImage">商品画像
     <%= f.file_field :profile_image, placeholder: "商品画像", accept: "pimage/*" %>
     <div class="field">
       <%= f.label :商品名 %>
-      <%= f.text_field :id, autofocus: true, id:"inputName", placeholder:"商品名"%>
+      <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"商品名"%>
     </div>
     <div class="field">
       <%= f.label :商品説明 %>
-      <textarea placeholder="ここに説明文を記述します" cols="30" rows="5" ></textarea>
-    </div>
-    <div class="field">
-      <%= f.label :ジャンル %>
-      <%= f.select :genre_id, [["ケーキ", "ケーキ"], ["焼き菓子", "焼き菓子"], ["プリン", "プリン"], ["キャンディ", "キャンディ"]], include_blank: "選択して下さい" %>
+       <%= f.text_area :introduction, autofocus: true, id:"inputName", placeholder:"商品説明"%>
     </div>
     <div class="field">
       <%= f.label :税抜価格 %>
-      <%= f.text_field :price, autofocus: true, id:"inputName", placeholder: "1000" %>円
+      <%= f.text_field :price, autofocus: true, id:"inputPrice", placeholder: "1,000" %>円
     </div>
     <label>
       <%= f.label :販売ステータス %>
