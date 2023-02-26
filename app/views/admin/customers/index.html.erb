@@ -1,23 +1,21 @@
 <div class="container">
-    <h3>商品一覧</h3>
+    <h3>会員一覧</h3>
        <div class="row">
     <table class='table table-hover table-inverse'>
-
-
-            <thead>
+      <thead>
 
                     <tr>
-                        <th>商品ID</th>
-                        <th>商品名</th>
-                        <th>税抜価格</th>
+                        <th>会員ID</th>
+                        <th>氏名</th>
+                        <th>メールアドレス</th>
                         <th>ステータス</th>
                         <th colspan="3"></th>
                     </tr>
-             </thead>
-              <% @items.each do |item| %>
+      </thead>
+                          <% @customers.each do |item| %>
               <tr>
                   <td><%= item.id %></td>
-                  <td><%= item.name %></td>
+                  <td><%= link_to item.name, admin_item_path(item.id)%></td>
                   <td><%= item.price.to_s(:delimited)  %></td>
                   <% if item.is_active ==true %>
                   <td>販売中</td>
@@ -25,8 +23,10 @@
               <td>販売停止中</td>
               <% end %>
               </tr>
-
               <% end %>
+              <%= paginate @customers %>
+
+          
     </table>
         </div>
 
