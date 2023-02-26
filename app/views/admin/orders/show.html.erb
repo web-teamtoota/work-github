@@ -1,0 +1,61 @@
+<div class="mx-auto" style="width: 400px">
+<%= form_with model: @order, url: 'customer_items', method: :get do |f| %>
+<% end %>
+
+  <h3>注文履歴一覧</h3>
+  <div>購入日時　　<%= @order. %></div>
+  <div>購入者　　<%= @order.name %></div>
+  <div>注文個数　<%= @order. %></div>
+  <div>販売ステータス　
+  <% if @order.is_active==true %>
+  　　入金待ち
+  <% else %>
+  　　入金確認
+  <% end %>
+  </div>
+  <div class="action">
+    <%= link_to "編集する",  edit_admin_order_path(@order.id) ,class: "btn btn-success" %>
+  </div>
+</div>
+
+
+
+___________________________________________________________
+
+
+<div class="container">
+
+    <h3>注文履歴一覧</h3>
+       <div class="row">
+    <table class='table table-hover table-inverse'>
+
+
+            <thead>
+
+                    <tr>
+                        <th>購入日時</th>
+                        <th>購入者</th>
+                        <th>注文個数</th>
+                        <th>注文ステータス</th>
+                        <th colspan="3"></th>
+                    </tr>
+             </thead>
+
+              <% @orders.each do |item| %>
+              <tr>
+                  <td><%= item.id %></td>
+                  <td><%= link_to item.name, admin_item_path(item.id)%></td>
+                  <td><%= item.price.to_s(:delimited)  %></td>
+                  <% if item.is_active ==true %>
+                  <td>入金待ち</td>
+              <% else %>
+              <td>入金確認</td>
+              <% end %>
+              </tr>
+              <% end %>
+              <%= paginate @orders %>
+
+    </table>
+        </div>
+    </div>
+</div>

@@ -1,13 +1,32 @@
 <div class="mx-auto" style="width: 400px">
-  <h3>商品詳細</h3>
-   <div>
-  <%= image_tag "image.png", alt: "Image", id: "assets", class: "image", width: "300px" %>
-</div>
-  <h5>商品名      いちごのショートケーキ（ホール）</h5>
-  <h5>商品説明      栃木県産のとちおとめを贅沢に使用しています。</h5>
-  <h5>税込価格(税抜価格)      2,750(2,500)円</h5>
-  <h5>販売ステータス      販売中</h5>
+
+<%= form_with model: @customer, url: 'admin_items', method: :get do |f| %>
+<% end %>
+
+  <h3>会員詳細</h3>
+  <div>会員ID　　<%= @customer.id %></div>
+  <div>姓　　<%= @customer.last_name %></div>
+  <div>名　　<%= @customer.first_name %></div>
+  <div>姓カナ　<%= @customer.last_name_kana %></div>
+  <div>名カナ　<%= @customer.first__name_kana %></div>
+  <div>郵便番号　　<%= @customer.postal_code %></div>
+  <div>住所　　<%= @customer.address %></div>
+  <div>電話番号　<%= @customer.telephone_number %></div>
+  <div>メールアドレス　<%= @customer.email %>円</div>
+  <div>会員ステータス　
+  <% if @customer.is_active==true %>
+  　　有効
+  <% else %>
+  　　退会
+  <% end %>
+  </div>
   <div class="action">
-    <%= link_to "編集する",  edit_admin_item_path(@item.id) ,class: "btn btn-success" %>
+    <%= link_to "編集する",  edit_admin_customer_path(@customer.id) ,class: "btn btn-success" %>
+  </div>
+  <div class="action">
+    <%= link_to "注文履歴一覧を見る",  edit_admin_customer_path(@customer.id) ,class: "btn btn-primary" %>
   </div>
 </div>
+
+
+
