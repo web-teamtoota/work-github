@@ -1,20 +1,26 @@
 <div class="mx-auto" style="width: 400px">
-  
+
 
 <%= form_with model: @item, url: 'admin_items', method: :get do |f| %>
 <% end %>
-  
+
   <h3>商品詳細</h3>
    <div><% if @item.image.attached? %>
-  <%= image_tag @item.image, size: "300x300" %>
+  <%= image_tag @item.image, size: "200x200" %>
 <% else %>
-  <%= image_tag 'no_image', size: "300x300" %>
+  <%= image_tag 'no_image', size: "200x200" %>
 <% end %>
 </div>
   <div>商品名　　<%= @item.name %></div>
   <div>商品説明　　<%= @item.introduction %></div>
-  <div>税込価格（税抜価格）　<%= @item.price %></div>
-  <div>販売ステータス　</div>
+  <div>税込価格（税抜価格）　<%= @item.price %>円</div>
+  <div>販売ステータス　
+  <% if @item.is_active==true %>
+  　　販売中
+  <% else %>
+  　　販売停止中
+  <% end %>
+  </div>
   <div class="action">
     <%= link_to "編集する",  edit_admin_item_path(@item.id) ,class: "btn btn-success" %>
   </div>
