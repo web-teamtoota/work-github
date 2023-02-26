@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   namespace :admin do
   resources :customers
   end
+  
+  namespace :admin do
+    resources :orders
+  end
 
     devise_for :users
     devise_for :admins
