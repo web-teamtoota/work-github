@@ -1,4 +1,5 @@
 <div class="container">
+
     <h3>商品一覧</h3>
        <div class="row">
     <table class='table table-hover table-inverse'>
@@ -14,10 +15,11 @@
                         <th colspan="3"></th>
                     </tr>
              </thead>
+
               <% @items.each do |item| %>
               <tr>
                   <td><%= item.id %></td>
-                  <td><%= item.name %></td>
+                  <td><%= link_to item.name, admin_item_path(item.id)%></td>
                   <td><%= item.price.to_s(:delimited)  %></td>
                   <% if item.is_active ==true %>
                   <td>販売中</td>
@@ -27,7 +29,8 @@
               </tr>
               <% end %>
               <%= paginate @items %>
+
     </table>
         </div>
-
+    </div>
 </div>
