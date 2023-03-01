@@ -1,23 +1,20 @@
 Rails.application.routes.draw do
 
-    
-  namespace :admin do
-  resources :items
-  end
-  
-  namespace :admin do
-  resources :customers
-  end
-  
-  namespace :admin do
-  resources :orders
-  end
-  
+
   namespace :public do
   resources :items
   end
-  
-  
+  namespace :admin do
+  resources :items
+  end
+
+  namespace :admin do
+  resources :customers
+  end
+
+  namespace :admin do
+  resources :orders
+  end
 
 
     devise_for :users
@@ -25,9 +22,9 @@ Rails.application.routes.draw do
     devise_for :customers
     devise_for :orders
     devise_for :items
-  
 
-  
+
+
     root to: 'homes#top'
     get "/about" => "homes#about", as: "about"
     post 'homes' => 'homes#create'
@@ -36,6 +33,7 @@ Rails.application.routes.draw do
     get "admin/customers" => "admins#index"
     get "admin/orders" => "admin#index"
     get "public/items" => "public#index"
+  
 
     #get 'admin/index', to: 'admins/items#index'
     #get 'admin/items/new', to: 'admins/items#new'
@@ -50,7 +48,7 @@ Rails.application.routes.draw do
     resources :customers
     resources :items
     resources :public
-    
+
 
 
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
