@@ -14,4 +14,18 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
   
+  
+def resource
+   :customer
+end
+
+def resource
+   @resource ||= User.new
+end
+
+def devise_mapping
+   @devise_mapping ||= Devise.mappings[:user]
+end
+
+
 end

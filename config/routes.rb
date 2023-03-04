@@ -24,7 +24,6 @@ Rails.application.routes.draw do
     devise_for :items
 
 
-
     root to: 'homes#top'
     get "/about" => "homes#about", as: "about"
     post 'homes' => 'homes#create'
@@ -33,6 +32,7 @@ Rails.application.routes.draw do
     get "admin/customers" => "admins#index"
     get "admin/orders" => "admin#index"
     get "public/items" => "public#index"
+    
   
 
     #get 'admin/index', to: 'admins/items#index'
