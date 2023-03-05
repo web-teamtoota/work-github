@@ -1,4 +1,4 @@
-class Admin::CustomersController < ApplicationController
+class Admin::CustomersController < ActionController::Base
 
   def index
     @customer = Customer.new
@@ -15,7 +15,5 @@ class Admin::CustomersController < ApplicationController
 
   def update
   end
-
-
 
 end

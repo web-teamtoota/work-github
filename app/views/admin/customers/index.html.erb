@@ -3,8 +3,7 @@
        <div class="row">
     <table class='table table-hover table-inverse'>
       <thead>
-
-                    <tr>
+        <tr>
                         <th>会員ID</th>
                         <th>氏名</th>
                         <th>メールアドレス</th>
@@ -12,22 +11,21 @@
                         <th colspan="3"></th>
                     </tr>
       </thead>
-                          <% @customers.each do |item| %>
+                          <% @customers.each do |customer| %>
               <tr>
-                  <td><%= item.id %></td>
-                  <td><%= link_to item.name, admin_item_path(item.id)%></td>
-                  <td><%= item.price.to_s(:delimited)  %></td>
-                  <% if item.is_active ==true %>
-                  <td>販売中</td>
-              <% else %>
-              <td>販売停止中</td>
-              <% end %>
-              </tr>
+                  <td><%= customer.id %></td>
+                  <td><%= link_to customer.first_name, admin_customers_path(customer.id)%></td>
+                  <td><%= customer.email %></td>
+                  <td><%= customer.is_deleted %></td>
+       
+       
+       </tr>
               <% end %>
               <%= paginate @customers %>
 
-          
+
     </table>
         </div>
 
 </div>
+
