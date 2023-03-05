@@ -1,5 +1,5 @@
-class UsersController < ApplicationController
-  
+class Customer::UsersController < ApplicationController
+
 
   def index
     @user = User.new
