@@ -1,5 +1,5 @@
-class ItemsController < ApplicationController
-  
+class Public::ItemsController < ApplicationController
+
   def index
     @item = Item.new
     @items = Item.all.page(params[:page]).per(8)
@@ -11,3 +11,5 @@ class ItemsController < ApplicationController
   end
 
 end
+
+
