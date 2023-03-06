@@ -14,13 +14,12 @@
                           <% @customers.each do |customer| %>
               <tr>
                   <td><%= customer.id %></td>
-                  <td><%= link_to customer.first_name, admin_customers_path(customer.id)%></td>
+                  <td><%= link_to customer.full_name, admin_customers_path(customer.id)%></td>
 
                   <td><%= customer.email %></td>
                   <td><%= customer.is_deleted %></td>
 
-       <p>名前（漢字）：</p>
-       <p><%= link_to customer.full_name, admin_customers_path(customer.id)%></p>
+       
        </tr>
               <% end %>
               <%= paginate @customers %>
