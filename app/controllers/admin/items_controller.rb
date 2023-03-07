@@ -9,12 +9,22 @@ class Admin::ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  def new
+    @item = Item.new(params[:id])
+  end
+
+
   def edit
     @item = Item.find(params[:id])
   end
 
   def update
   end
+  
+    private
+   def item_params
+    params.require(:item).permit(:name, :introduction, :price)
+   end
 
 
 
