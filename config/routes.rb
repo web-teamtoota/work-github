@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   namespace :public do
   resources :items
   end
+  
   namespace :admin do
   resources :items
   end
@@ -13,6 +14,10 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+  resources :orders
+  end
+
+  namespace :public do
   resources :orders
   end
 
