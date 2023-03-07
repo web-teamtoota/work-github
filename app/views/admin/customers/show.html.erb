@@ -1,0 +1,25 @@
+<div class="mx-auto" style="width: 400px">
+<%= form_with model: @customer, url: 'admin_customers_path', method: :get do |f| %>
+<% end %>
+
+  <h3><%= @customer.full_name %>さんの会員詳細</h3>
+</div>
+  <div>会員ID　　<%= @customers.ids %></div>
+  <div>氏名　　<%= @customers.name %></div>
+  <div>フリガナ </div>
+  <div>郵便番号　<%= @customers.postal_code %></div>
+  <div>住所　<%= @customers.address %></div>
+  <div>電話番号　<%= @customers.telephone_number %></div>
+  <div>メールアドレス　<%= @customers.email %></div>
+  <div>販売ステータス　
+  <% if @customer.is_deleted==true %>
+  　　販売中
+  <% else %>
+  　　販売停止中
+  <% end %>
+  </div>
+  <div class="action">
+    <%= link_to "編集する",  edit_admin_customer_path(@customer.id) ,class: "btn btn-success" %>
+    <%= link_to "商品履歴一覧を見る",  edit_admin_customer_path(@customer.id) ,class: "btn btn-primary" %>
+  </div>
+</div>
