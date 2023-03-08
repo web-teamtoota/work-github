@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   resources :items
   end
   
+  namespace :public do
+  resources :orders
+  end
+  
   namespace :admin do
   resources :items
   end
@@ -16,10 +20,12 @@ Rails.application.routes.draw do
   namespace :admin do
   resources :orders
   end
-
-  namespace :public do
+  
+  scope module: :public do
   resources :orders
   end
+
+
 
 # 顧客用
 # URL /customers/sign_in ...
@@ -48,8 +54,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     get "admin/customers" => "admins#index"
     get "admin/orders" => "admin#index"
     get "public/items" => "public#index"
-    
-  
+ 
 
     #get 'admin/index', to: 'admins/items#index'
     #get 'admin/items/new', to: 'admins/items#new'
@@ -58,12 +63,13 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     #get 'admin/items/:id/edit', to: 'admins/items#edit'
     #patch 'admin/items/:id', to: 'admins/items#update'
 
-    resources :lists
-    resources :users
-    resources :admins
-    resources :customers
-    resources :items
-    resources :public
+    #resources :lists
+    #resources :users
+    #resources :admins
+    #resources :customers
+    #resources :items
+    #resources :publics
+    #resources :orders
 
 
 
