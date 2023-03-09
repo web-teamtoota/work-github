@@ -11,13 +11,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
   resources :items
-  end
-
-  namespace :admin do
   resources :customers
-  end
-
-  namespace :admin do
   resources :orders
   end
 
@@ -26,10 +20,20 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-  resources :customers
+  get "customer" => "customers#show"
+  get "customer/edit" => "customers#edit"
+  patch "customer" => "customers#update"
+  get "customer/unsubscribe" => "customers#unsubscribe"
+  patch "customer/withdraw" => "customers#withdraw"
+  #resources :customers
   end
-
-
+  
+  #get 'admin/index', to: 'admins/items#index'
+    #get 'admin/items/new', to: 'admins/items#new'
+    #post 'admin/items' , to: 'admins/items#create'
+    #get 'admin/items/:id', to: 'admins/items#show'
+    #get 'admin/items/:id/edit', to: 'admins/items#edit'
+    #patch 'admin/items/:id', to: 'admins/items#update'
 
 # 顧客用
 # URL /customers/sign_in ...
@@ -44,12 +48,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
 
-
     devise_for :users
-    devise_for :orders
-    devise_for :items
-
-
+  
     root to: 'homes#top'
     get "/about" => "homes#about", as: "about"
     post 'homes' => 'homes#create'
@@ -58,7 +58,6 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     get "admin/customers" => "admins#index"
     get "admin/orders" => "admin#index"
     get "public/items" => "public#index"
-    get "customers/unsubscribe" => "customer#unsubscribe"
 
     #get 'admin/index', to: 'admins/items#index'
     #get 'admin/items/new', to: 'admins/items#new'
