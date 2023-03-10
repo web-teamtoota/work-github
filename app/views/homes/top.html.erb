@@ -6,6 +6,13 @@
 
 <h1>新着商品</h1>
 
+画像
+<div><% if @item.image.attached? %>
+<%= image_tag @item.image, size: "100x100" %>
+<% else %>
+<%= image_tag 'no_image', size: "100x100" %>
+<% end %>
+</div>
 <h6>いちごのサンドイッチ</h6>
 <h6>¥650</h6>
 
@@ -18,4 +25,5 @@
 <h6>メロンケーキ</h6>
 <h6>¥500</h6>
 
-全ての商品を見る>
+
+<%= link_to "全ての商品を見る>", items_path %>
