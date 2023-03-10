@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
+  resources :items
   resources :orders
   end
 
@@ -27,7 +28,7 @@ Rails.application.routes.draw do
   patch "customer/withdraw" => "customers#withdraw"
   #resources :customers
   end
-  
+
   #get 'admin/index', to: 'admins/items#index'
     #get 'admin/items/new', to: 'admins/items#new'
     #post 'admin/items' , to: 'admins/items#create'
@@ -49,7 +50,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 }
 
     devise_for :users
-  
+
     root to: 'homes#top'
     get "/about" => "homes#about", as: "about"
     post 'homes' => 'homes#create'
