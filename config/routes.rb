@@ -17,10 +17,13 @@ Rails.application.routes.draw do
 
   scope module: :public do
   root to: 'homes#top'
-  
+  get "about" => "homes#about"
   resources :items
   resources :orders
-   get "customer" => "customers#show"
+  resources :sessions
+  get "customer/sign_up" => "customers#new"
+  post "customer" => "customers#create"
+  get "customer" => "customers#show"
   get "customer/edit" => "customers#edit"
   patch "customer" => "customers#update"
   get "customer/unsubscribe" => "customers#unsubscribe"
@@ -51,7 +54,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
  
     #root to: 'homes#top'
-    get "/about" => "homes#about", as: "about"
+    #get "/about" => "homes#about", as: "about"
     post 'homes' => 'homes#create'
     get "admin/sign_in", to: "admins/sessions#new"
     get "admin/items" => "admins#index"
