@@ -16,18 +16,18 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
+  root to: 'homes#top'
+  
   resources :items
   resources :orders
-  end
-
-  scope module: :public do
-  get "customer" => "customers#show"
+   get "customer" => "customers#show"
   get "customer/edit" => "customers#edit"
   patch "customer" => "customers#update"
   get "customer/unsubscribe" => "customers#unsubscribe"
   patch "customer/withdraw" => "customers#withdraw"
-  #resources :customers
   end
+
+ 
 
   #get 'admin/index', to: 'admins/items#index'
     #get 'admin/items/new', to: 'admins/items#new'
@@ -49,9 +49,8 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
 
-    devise_for :users
-
-    root to: 'homes#top'
+ 
+    #root to: 'homes#top'
     get "/about" => "homes#about", as: "about"
     post 'homes' => 'homes#create'
     get "admin/sign_in", to: "admins/sessions#new"
