@@ -1,24 +1,38 @@
 class Public::ItemsController < ApplicationController
 
  def top
-   @item = Item.new
+   @item = Item.limit(4).order('id DESC')
+    @items = Item.all
+   
  end
 
   def index
     @item = Item.new
-    @items = Item.all.page(params[:page]).per(4)
+    @items = Item.page(params[:page]).per(4)
   end
   
+  
 
+  def new
+    @item = Item.new(params[:id])
+  end
+  
+  
   def show
     @item = Item.find(params[:id])
   end
+  
+  def edit
+    @item = Item.find(params[:id]) 
+  end
+  
+  def update
+  end
+  
 
     private
    def item_params
-    params.require(:item).permit(:image, :name, :introduction, :price)
+    params.require(:item).permit(:name, :introduction, :price)
    end
 
 end
-
-
