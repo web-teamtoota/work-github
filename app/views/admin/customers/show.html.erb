@@ -4,14 +4,14 @@
 
   <h3><%= @customer.full_name %>さんの会員詳細</h3>
 </div>
-  <div>会員ID　　<%= @customers.ids %></div>
-  <div>氏名　　<%= @customers.name %></div>
-  <div>フリガナ　<%= @customers.last_name_kana %></div>
-  <div>郵便番号　<%= @customers.postal_code %></div>
-  <div>住所　<%= @customers.address %></div>
-  <div>電話番号　<%= @customers.telephone_number %></div>
-  <div>メールアドレス　<%= @customers.email %></div>
-  <div>販売ステータス　
+  <div>会員ID　　<%= @customer.id %></div>
+  <div>氏名　　<%= @customer.full_name %></div>
+  <div>フリガナ　<%= @customer.last_name_kana %></div>
+  <div>郵便番号　<%= @customer.postal_code %></div>
+  <div>住所　<%= @customer.address %></div>
+  <div>電話番号　<%= @customer.telephone_number %></div>
+  <div>メールアドレス　<%= @customer.email %></div>
+  <div>販売ステータス
   <% if @customer.is_deleted==true %>
   　　販売中
   <% else %>
