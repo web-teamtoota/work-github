@@ -3,6 +3,7 @@ class Admin::CustomersController < ActionController::Base
   def index
     @customer = Customer.new
     @customers = Customer.all.page(params[:page]).per(10)
+    @users = User.all
   end
 
   def show
