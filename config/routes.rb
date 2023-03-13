@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   scope module: :public do
   root to: 'homes#top'
   get "about" => "homes#about"
+  get "customer/sign_up" => "customers#new"
+  post "customer" => "customers#create"
   resources :items
   resources :orders
   resources :sessions
