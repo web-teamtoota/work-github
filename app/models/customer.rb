@@ -12,7 +12,7 @@ class Customer < ApplicationRecord
   attr_accessor :first_name, :last_name
 
   def full_name
-    first_name.to_s + "" + last_name.to_s
+    first_name.to_s + "," + last_name.to_s
   end
 
   def set(fname:, lname:)
@@ -21,3 +21,7 @@ class Customer < ApplicationRecord
   end
 end
 
+ customer =  Customer.new
+ customer.set fname: "Isaac", lname: "Newton"
+p  customer.full_name
+  # => "Isaac,Newton"
