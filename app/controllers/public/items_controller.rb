@@ -8,7 +8,7 @@ class Public::ItemsController < ApplicationController
 
   def index
     @item = Item.new
-    @items = Item.page(params[:page]).per(4)
+    @items = Item.page(params[:page]).per(10)
   end
   
   

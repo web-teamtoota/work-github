@@ -1,50 +1,46 @@
 <!DOCTYPE html>
 <body>
   <header>
-
-<ul>
-<% if customer_signed_in? %>
-
-  <li>
-    <%= link_to '商品一覧', "" %>
-  </li>
+   <ul>
+      <% if customer_signed_in? %>
       <li>
-      <%= link_to '会員一覧', "" %>
+        <%= link_to '商品一覧', admin_items_path, class: 'nav-link text-dark' %>  
       </li>
-  <li>
-    <%= link_to "注文履歴一覧", "" %>
-  </li>
-
- 
-  <li>
-      <li class="nav-item">
-        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' %>
+      <li>
+        <%= link_to '会員一覧',  admin_customers_path, class: 'nav-link text-dark'  %>
+      </li>
+      <li>
+        <%= link_to "注文履歴一覧",  admin_root_path, class: 'nav-link text-dark'  %>
+      </li>
+        <li class="nav-item">
+          <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' %>
         </li>
-<% else %><li>
-  <%= link_to '商品一覧', "" %>
-  </li>
-    <%= link_to "新規登録", new_customer_registration_path, class: 'nav-link text-dark' %>
-    <li>
-      <li class="nav-item">
-        <%= link_to "ログイン",  new_customer_session_path, class: 'nav-link text-dark' %>
+        <% else %>
+        <li>
+          <%= link_to '商品一覧', items_path, class: 'nav-link text-dark' %>
         </li>
-        <% end %>
-        </ul>
-        </header>
-  <%= yield %>
-</body>
+        <li>
+          <%= link_to "新規登録", new_customer_registration_path, class: 'nav-link text-dark' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "ログイン",  new_customer_session_path, class: 'nav-link text-dark' %>
+        </li>
+          <% end %>
+   </ul>
+    </header>
+          <%= yield %>
+          </body>
+          <html>
+            <head>
+              <title>WorkGithub</title>
+              <meta name="viewport" content="width=device-width,initial-scale=1">
+              <%= csrf_meta_tags %>
+              <%= csp_meta_tag %>
+              <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+              <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+              <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+            </head>
+          </html>
 
 
-<html>
-  <head>
-    <title>WorkGithub</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-
-</html>
