@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+#devise_for :registrations
 
   #namespace :public do
   #resources :items
@@ -23,6 +23,11 @@ Rails.application.routes.draw do
   post "customer" => "customers#create"
   resources :items
   resources :orders
+
+  get "customer/sign_up" => "customers#new"
+  post "customer" => "customers#create"
+  resources :registrations
+
   resources :sessions
   get "customer/sign_up" => "customers#new"
   post "customer" => "customers#create"
@@ -33,7 +38,7 @@ Rails.application.routes.draw do
   patch "customer/withdraw" => "customers#withdraw"
   end
 
- 
+
 
   #get 'admin/index', to: 'admins/items#index'
     #get 'admin/items/new', to: 'admins/items#new'
@@ -55,7 +60,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
 
- 
+
     #root to: 'homes#top'
     #get "/about" => "homes#about", as: "about"
     post 'homes' => 'homes#create'
