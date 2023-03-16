@@ -4,7 +4,7 @@ def top
       @item = Item.new
     @items = Item.page(params[:page]).per(10)
     
- end
+end
 
     private
    def item_params

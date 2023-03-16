@@ -39,9 +39,4 @@ def customer_state
 end
   
   
-  
-  
-  
-  
-  
 end
