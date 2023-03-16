@@ -9,15 +9,15 @@
                         <th>メールアドレス</th>
                         <th>ステータス</th>
                         <th colspan="3"></th>
-                    </tr>
+        </tr>
       </thead>
                           <% @customers.each do |customer| %>
               <tr>
                   <td><%= customer.id %></td>
                   <td><%= link_to customer.full_name, admin_customer_path(customer.id)%></td>
                   <td><%= customer.email %></td>
-                  <!--td><%= customer.is_deleted %></td-->
-            　</tr>
+                  <td><%= customer.is_deleted %></td>
+              </tr>
               <% end %>
               <%= paginate @customers %>
     </table>

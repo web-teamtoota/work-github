@@ -26,7 +26,6 @@ Rails.application.routes.draw do
 
   get "customer/sign_up" => "customers#new"
   post "customer" => "customers#create"
-  resources :registrations
 
   resources :sessions
   get "customer/sign_up" => "customers#new"
