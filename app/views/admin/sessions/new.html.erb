@@ -1,6 +1,6 @@
 <div class="mx-auto" style="width: 400px">
 <h4>管理者ログイン</h4>
-<% resource = Admin.new unless resource %>
+<%# resource = Admin.new unless resource %>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :メールアドレス %>
@@ -11,7 +11,8 @@
     <%= f.password_field :password, autocomplete: "current-password" %>
     </div>
   <div class="actions">
-    <%= f.submit "ログイン" , class: "btn btn-primary" %>
+      <input type="submit" value="送信">
   </div>
   <% end %>
 <%= render "admin/shared/links" %>
+

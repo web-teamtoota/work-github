@@ -1,5 +1,16 @@
 Rails.application.routes.draw do
-#devise_for :registrations
+# 顧客用
+# URL /customers/sign_in ...
+devise_for :customers,skip: [:passwords], controllers: {
+   registrations: "public/registrations",
+   sessions: 'public/sessions'
+ }
+
+# # 管理者用
+# # URL /admin/sign_in ...
+ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+   sessions: "admin/sessions"
+ }
 
   #namespace :public do
   #resources :items
@@ -14,7 +25,17 @@ Rails.application.routes.draw do
   resources :items
   resources :customers
   resources :orders
+
+  #resources :sessions
+  #get "admin/sign_in" => "admins#new"
+  #post "admin/sign_in" => "admins#create"
+  #delete "admin/sign_out" => "admins#destroy"
   end
+
+  #get "admin/order" => "admin/orders#show"
+  #patch "admin/order" => "admin/orders#update"
+  #patch "admin/order_details" => "admin/order_details/:id#update"
+
 
   scope module: :public do
   root to: 'homes#top'
@@ -23,18 +44,15 @@ Rails.application.routes.draw do
   post "customer" => "customers#create"
   resources :items
   resources :orders
-
-  get "customer/sign_up" => "customers#new"
-  post "customer" => "customers#create"
-
-  resources :sessions
-  get "customer/sign_up" => "customers#new"
-  post "customer" => "customers#create"
+  #get "customer/sign_up" => "customers#new"
+  #post "customer" => "customers#create"
   get "customer" => "customers#show"
   get "customer/edit" => "customers#edit"
   patch "customer" => "customers#update"
   get "customer/unsubscribe" => "customers#unsubscribe"
   patch "customer/withdraw" => "customers#withdraw"
+  resources :cart_items
+  resources :addresses
   end
 
 
@@ -46,24 +64,11 @@ Rails.application.routes.draw do
     #get 'admin/items/:id/edit', to: 'admins/items#edit'
     #patch 'admin/items/:id', to: 'admins/items#update'
 
-# 顧客用
-# URL /customers/sign_in ...
-devise_for :customers,skip: [:passwords], controllers: {
-  registrations: "public/registrations",
-  sessions: 'public/sessions'
-}
-
-# 管理者用
-# URL /admin/sign_in ...
-devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-  sessions: "admin/sessions"
-}
 
 
     #root to: 'homes#top'
     #get "/about" => "homes#about", as: "about"
     post 'homes' => 'homes#create'
-    get "admin/sign_in", to: "admins/sessions#new"
     get "admin/items" => "admins#index"
     get "admin/customers" => "admins#index"
     get "admin/orders" => "admin#index"
