@@ -1,16 +1,17 @@
 <div class="mx-auto" style="width: 400px">
-  <h3>会員情報編集</h3>
+    <h3><%= @customer.full_name %>さんの会員情報編集</h3>
   <%= form_with model: @customer, url:admin_customer_path(@customer.id) do |f| %>
   <%= f.label :会員ID %>
-  <div><%= @customer.id %>
-  </div>
+  <%= @customer.id %>
     <div class="field">
       <%= f.label :氏名 %>
       <%= f.text_field :last_name, autofocus: true, id:"inputName", placeholder:"山田"%>
+    <%= f.text_field :first_name, autofocus: true, id:"inputName", placeholder:"花子"%>
     </div>
       <div class="field">
       <%= f.label :フリガナ %>
       <%= f.text_field :last_name_kana, autofocus: true, id:"inputName", placeholder:"ヤマダ"%>
+      <%= f.text_field :first_name_kana, autofocus: true, id:"inputName", placeholder:"ハナコ"%>
     </div>
        <div class="field">
       <%= f.label :郵便番号 %>

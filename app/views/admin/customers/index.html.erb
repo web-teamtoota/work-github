@@ -16,7 +16,12 @@
                   <td><%= customer.id %></td>
                   <td><%= link_to customer.full_name, admin_customer_path(customer.id)%></td>
                   <td><%= customer.email %></td>
-                  <td><%= customer.is_deleted %></td>
+                  <td><% if @customer.is_deleted==false %>
+                  有効
+                  <% else %>
+                  退会
+                  <% end %>
+                  </td>
               </tr>
               <% end %>
               <%= paginate @customers %>
