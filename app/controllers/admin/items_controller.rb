@@ -10,7 +10,16 @@ class Admin::ItemsController < ApplicationController
   end
 
   def new
-    @item = Item.new(params[:id])
+    @item = Item.new
+  
+  end
+  
+  def create
+  @item = Item.new(item_params)
+  @items = Item.all
+  @item.save
+   flash[:notice] = "You have created book successfully."
+   redirect_to admin_items_path(@item.id)
   end
 
 
@@ -23,7 +32,7 @@ class Admin::ItemsController < ApplicationController
   
     private
    def item_params
-    params.require(:item).permit(:name, :introduction, :price)
+    params.require(:item).permit(:image, :name, :introduction, :price)
    end
 
 
