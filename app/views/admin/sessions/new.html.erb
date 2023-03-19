@@ -3,15 +3,16 @@
 <%# resource = Admin.new unless resource %>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
-    <%= f.label :メールアドレス %>
+    <%= f.label :email,"メールアドレス" %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "sampla@example.com" %>
   </div>
   <div class="field">
-    <%= f.label :パスワード%>
+    <%= f.label :password,"パスワード" %>
+
     <%= f.password_field :password, autocomplete: "current-password" %>
-    </div>
+  </div>
   <div class="actions">
-      <input type="submit" value="送信">
+      <%= f.submit "送信" %>
   </div>
   <% end %>
 <%= render "admin/shared/links" %>

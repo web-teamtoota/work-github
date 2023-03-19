@@ -69,7 +69,8 @@ devise_for :customers,skip: [:passwords], controllers: {
     #root to: 'homes#top'
     #get "/about" => "homes#about", as: "about"
     post 'homes' => 'homes#create'
-    get "admin/items" => "admins#index"
+    #get "admin/items" => "admins#index"
+    #post 'admin/items' , to: 'admins/items#create'
     get "admin/customers" => "admins#index"
     get "admin/orders" => "admin#index"
     get "public/items" => "public#index"
