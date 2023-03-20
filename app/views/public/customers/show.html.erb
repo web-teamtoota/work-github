@@ -1,44 +1,31 @@
 <p>マイページ</p>
-<div>登録情報</div>
-<div>編集する</div>
-
+<p>登録情報</p><div class="action">
+    <%= link_to "編集する",  customer_edit_path(@customer.id) ,class: "btn btn-success" %>
+  </div>
+  
 <div class="container">
 
-    <h3>商品一覧</h3>
        <!--div class="row">
     <table class='table table-hover table-inverse'-->
-
-
+    <table class="table table-bordered">
             <thead>
 
-                    <tr>
-                        <th>氏名</th>
-                        <th>カナ</th>
-                        <th>郵便番号</th>
-                        <th>住所</th>
-                        <th>電話番号</th>
-                        <th>メールアドレス</th>
-                      
-                    </tr>
+                    <tr><th>氏名</th><th><%= current_customer.full_name %></th></tr>
+                        <tr><th>カナ</th><th><%= current_customer.last_name_kana %> <%= current_customer.first_name_kana %></th></tr>
+                        <tr><th>郵便番号</th><th><%= current_customer.postal_code %></th></tr>
+                        <tr><th>住所</th><th><%= current_customer.address %></th></tr>
+                        <tr><th>電話番号</th><th><%= current_customer.telephone_number %></th></tr>
+                        <tr><th>メールアドレス</th><th><%= current_customer.email %></th></tr>
              </thead>
-
-              <tr>
-                  <td> </td>
-                 
-                  <td> </td>
-
-              </tr>
-              
-             
-
     </table>
-        </div>
-    </div>
+
 </div>
 
 <!--h3>配送先</h3>
 <div>一覧を見る</div-->
-
-
 <div>注文履歴</div>
-<div>一覧を見る</div>
+ <div class="action">
+    <%= link_to "一覧を見る", orders_path(@customer.id) ,class: "btn btn-primary" %>
+  </div>
+
+

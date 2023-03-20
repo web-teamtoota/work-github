@@ -7,6 +7,7 @@ class Admin::CustomersController < ActionController::Base
   end
 
   def show
+       @customer = Customer.new
     @customers = Customer.all
     @customer = Customer.find(params[:id])
   end
