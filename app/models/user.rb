@@ -3,8 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         validates :last_name_kana, :first_name_kana 
-         validates :address
+         #validates :last_name_kana, :first_name_kana 
+         #validates :address
   has_many :lists, dependent: :destroy
 
   def get_image
