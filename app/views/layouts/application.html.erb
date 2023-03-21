@@ -2,30 +2,48 @@
 <body>
   <header>
    <ul>
-      <% if customer_signed_in? %>
-      <li>
+   
+        
+  <nav class="navbar navbar-expand-sm navbar-light bg-light mt-3 mb-3">
+    
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav4" aria-controls="navbarNav4" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav">
+              
+                 <% if customer_signed_in? %>
+      <li class="nav-item active">
         <%= link_to '商品一覧', admin_items_path, class: 'nav-link text-dark' %>
       </li>
-      <li>
+      <li class="nav-item active">
         <%= link_to '会員一覧',  admin_customers_path, class: 'nav-link text-dark'  %>
       </li>
-      <li>
+     <li class="nav-item active">
         <%= link_to "注文履歴一覧",  admin_root_path, class: 'nav-link text-dark'  %>
       </li>
         <li class="nav-item">
           <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-dark' %>
         </li>
         <% else %>
-        <li>
-          <%= link_to '商品一覧', items_path, class: 'nav-link text-dark' %>
-        </li>
-        <li>
-          <%= link_to "新規登録", new_customer_registration_path, class: 'nav-link text-dark' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "ログイン",  new_customer_session_path, class: 'nav-link text-dark' %>
-        </li>
-          <% end %>
+         <li class="nav-item active">
+                   <%= link_to 'About', about_path, class: 'nav-link text-dark' %>
+                </li>
+                <li class="nav-item active">
+                   <%= link_to '商品一覧', items_path, class: 'nav-link text-dark' %>
+                </li>
+                <li class="nav-item">
+                   <%= link_to "新規登録", new_customer_registration_path, class: 'nav-link text-dark' %>
+                </li>
+                <li class="nav-item">
+                     <%= link_to "ログイン",  new_customer_session_path, class: 'nav-link text-dark' %>
+                </li>
+            </ul>
+        </div>
+
+         <% end %>
+     
    </ul>
     </header>
           <%= yield %>

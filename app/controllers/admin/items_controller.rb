@@ -18,9 +18,9 @@ class Admin::ItemsController < ApplicationController
   @item = Item.new(item_params)
   @items = Item.all
   @item.save
-   flash[:notice] = "You have created book successfully."
-   redirect_to admin_items_path(@item.id)
+   redirect_to admin_item_path(@item.id)
   end
+
 
 
   def edit
