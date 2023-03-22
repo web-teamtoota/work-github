@@ -21,3 +21,10 @@ Customer.create!(
   email: "bb@ab",
   password: "aaaaaa"
   )
+  
+  # Item.create!(
+  # name: "test0",
+  # introduction: "test0"
+  # price: 500
+  # is_active: true
+  # )

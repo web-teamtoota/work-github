@@ -75,6 +75,7 @@ devise_for :customers,skip: [:passwords], controllers: {
     get "admin/orders" => "admin#index"
     get "public/items" => "public#index"
 
+    get "admin/order/:id" => "admin/orders#show"
     #get 'admin/index', to: 'admins/items#index'
     #get 'admin/items/new', to: 'admins/items#new'
     #post 'admin/items' , to: 'admins/items#create'

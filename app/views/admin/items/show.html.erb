@@ -21,7 +21,7 @@
 <div class="mx-auto" style="width: 400px">
   <div>商品名　　<%= @item.name %></div>
   <div>商品説明　　<%= @item.introduction %></div>
-  <div>税込価格（税抜価格）　<%= @item.price %>円</div>
+  <div>税込価格（税抜価格）　<%= @item.price %><%= @item.price %>円</div>
   <div>販売ステータス　
   <% if @item.is_active==true %>
   　　販売中
