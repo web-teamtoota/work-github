@@ -12,7 +12,7 @@
   <div>電話番号　<%= @customer.telephone_number %></div>
   <div>メールアドレス　<%= @customer.email %></div>
   <div>会員ステータス
-  <% if @customer.is_deleted==true %>
+  <% if @customer.is_deleted==false %>
   　　有効
   <% else %>
   　　退会
