@@ -6,18 +6,16 @@ class Customer < ApplicationRecord
 
 
 
-
+  # is_deletedがfalseならtrueを返すようにしている
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
 
 
 
   def full_name
     last_name.to_s + " " + first_name.to_s
   end
-
-
-
-
-
 
   # def set(fname:, lname:)
   #   self.first_name = fname # self.first_name =にする必要がある

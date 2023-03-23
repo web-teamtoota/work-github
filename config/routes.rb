@@ -42,15 +42,20 @@ devise_for :customers,skip: [:passwords], controllers: {
   get "about" => "homes#about"
   get "customer/sign_up" => "customers#new"
   post "customer" => "customers#create"
-  resources :items
-  resources :orders
-  #get "customer/sign_up" => "customers#new"
-  #post "customer" => "customers#create"
+  
   get "customer" => "customers#show"
   get "customer/edit" => "customers#edit"
   patch "customer" => "customers#update"
   get "customer/unsubscribe" => "customers#unsubscribe"
   patch "customer/withdraw" => "customers#withdraw"
+  # 論理削除用のルーティング
+  patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
+  
+  
+  resources :items
+  resources :orders
+  #get "customer/sign_up" => "customers#new"
+  #post "customer" => "customers#create"
   resources :cart_items
   resources :addresses
   end

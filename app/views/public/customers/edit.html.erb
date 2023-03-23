@@ -1,20 +1,16 @@
 <div class="mx-auto" style="width: 1000px">
   <h3>会員情報編集</h3>
-  <%= form_with model: @customer, url:admin_customer_path(current_customer) do |f| %>
+  <%= form_with model: @customer, url:customer_path(current_customer) do |f| %>
 
     <div class="field">
       <%= f.label :氏名 %>
       <%= f.text_field :last_name, autofocus: true, id:"inputName", placeholder:"山田"%>
-    </div>
-    <div class="field">
      <%= f.text_field :first_name, autofocus: true, id:"inputName", placeholder:"花子"%>
       </div>
-      <div class="field">
+       <div class="field">
       <%= f.label :フリガナ %>
       <%= f.text_field :last_name_kana, autofocus: true, id:"inputName", placeholder:"ヤマダ"%>
-    </div>
-    <div class="field">
-    <%= f.text_field :first_name_kana, autofocus: true, id:"inputName", placeholder:"ハナコ"%>
+      <%= f.text_field :first_name_kana, autofocus: true, id:"inputName", placeholder:"ハナコ"%>
     </div>
        <div class="field">
       <%= f.label :郵便番号 %>
@@ -32,7 +28,7 @@
       <%= f.label :メールアドレス %>
       <%= f.text_field :email, autofocus: true, id:"inputName", placeholder:"hoge@example.com"%>
     </div>
-      <div><%= f.submit '編集内容をを保存',class: "btn btn-success"%>
+      <div><%= f.submit '編集内容を保存',class: "btn btn-success"%>
     <% end %>
  <%= link_to "退会する",  customer_withdraw_path, method: :get, data: { confilm: "本当に退会しますか？" },class: "btn btn-danger" %>
   </div>
