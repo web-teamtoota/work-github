@@ -46,12 +46,11 @@ devise_for :customers,skip: [:passwords], controllers: {
   get "customer" => "customers#show"
   get "customer/edit" => "customers#edit"
   patch "customer" => "customers#update"
-  get "customer/unsubscribe" => "customers#unsubscribe"
+  get "customer/unsubscribe" => "customers#unsubscribe",as: "unsubscribe"
   patch "customer/withdraw" => "customers#withdraw"
   # 論理削除用のルーティング
-  patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
-  
-  
+  #get "customer/withdraw" => "customers#withdraw"
+
   resources :items
   resources :orders
   #get "customer/sign_up" => "customers#new"

@@ -1,7 +1,7 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "publics/shared/error_messages", resource: resource %>
+  <!--%= render "publics/shared/error_messages", resource: @customer %-->
 
   <div class="field">
     <%= f.label :email %><br />
@@ -39,5 +39,13 @@
 <h3>Cancel my account</h3>
 
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+
+
+
+
+ <div class="text-center font-bold text-red-500">
+  <%= link_to "Withdraw from Ecommerce", withdraw_customers_path %>
+</div>
+
 
 <%= link_to "Back", :back %>
