@@ -1,6 +1,16 @@
 class Customer::CustomersController < ApplicationController
+  before_action :authenticate_customer!
+
+  def withdraw; end
+
+  def withdraw
+    current_customer.update(status: 'withdrawn')
+    reset_session
+    redirect_to root_path, notice: 'Successfully withdraw from Ecommerce'
+  end
+
+  
   def index
-   
       @customer = Customer.find(params[:id])
   end
   
