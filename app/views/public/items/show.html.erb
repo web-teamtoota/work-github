@@ -29,6 +29,8 @@
   <div class="action">
       <%= form_with model: @item do |f| %>
   <div class="form-group">
+    <%= f.select :amount, [['いち',1], ['に',2], ['さん',3]] %>
+
     <%= f.select :select, {'1': 1, '2': 2}, { include_blank: '個数選択'}, { class: 'form-control' , required: true } %>
   </div>
 <% end %>

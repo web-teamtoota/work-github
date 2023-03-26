@@ -1,12 +1,38 @@
-ショッピングカート
 
-商品名
 
-単価（税込）
+<div class="container">
+    <h3>ショッピングカート</h3>
+       <div class="row">
+    <table class='table table-hover table-inverse'>
+      <thead>
+        <tr>
+                        <th>商品名</th>
+                        <th>単価（税込）</th>
+                        <th>数量</th>
+                        <th>小計</th>
 
-数量
+                        <th colspan="3"></th>
+                    </tr>
+      </thead>
+        <% @cart_items.each do |cart_item| %>
+                           <div class="col-md-6">
+              <tr>
+                     <td>><%= order.name %></</td>
+                     <td><%= cart_item.item.with_tax_price%></td>
+                        <td><%= cart_item.subtotal%></td>
+                         <% @合計金額 +=  cart_item.subtotal %>
+                   <td></td>
 
-小計
+             </tr>
+                           </div>
+              <% end %>
+
+    </table>
+        </div>
+</div>
+
+</div>
+
 
 
 合計金額
@@ -18,3 +44,23 @@
 カートを空にする
 
 
+  <div class="mx-auto" style="width: 400px">
+ <%= paginate @cart_items %>
+ </div>
+
+
+
+
+
+
+
+
+
+          <!--<td>><%#= order.name %></</td>-->
+          <td><%#= (cart_item.item.price * 1.1).floor %></td>
+          <!--<td><%#= cart_item.item.with_tax_price%></td>-->
+          <td><%#= (cart_item.item.price * 1.1).floor * cart_item.amount %></td>
+          <!--<td></td>-->
+          <!--<td><%#= cart_item.subtotal%></td>-->
+          <!--% @合計金額 +=  (cart_item.item.price * 1.1).floor * cart_item.amount %-->
+          <!--<%# @合計金額 +=  cart_item.subtotal %>-->
