@@ -1,39 +1,149 @@
 <div class="mx-auto" style="width: 400px">
     <h3><%= @customer.full_name %>さんの会員情報編集</h3>
+   
+      
   <%= form_with model: @customer, url:admin_customer_path(@customer.id) do |f| %>
-  <%= f.label :会員ID %>
-  <%= @customer.id %>
-    <div class="field">
-      <%= f.label :氏名 %>
-      <%= f.text_field :last_name, autofocus: true, id:"inputName", placeholder:"山田"%>
-    <%= f.text_field :first_name, autofocus: true, id:"inputName", placeholder:"花子"%>
-    </div>
+  <table>
+<tr>
+  <th>
       <div class="field">
-      <%= f.label :フリガナ %>
-      <%= f.text_field :last_name_kana, autofocus: true, id:"inputName", placeholder:"ヤマダ"%>
-      <%= f.text_field :first_name_kana, autofocus: true, id:"inputName", placeholder:"ハナコ"%>
-    </div>
-       <div class="field">
-      <%= f.label :郵便番号 %>
-      <%= f.text_field :postal_code, autofocus: true, id:"inputName", placeholder:"1500041"%>
-    </div>
+       <td>  <%= f.label :会員ID %>
+  
+     </td>
+     </div>
+   </th>
+   <th><%= @customer.id %>
+ <td>
+     </div>
+     
+    </td>
+   </th>
+</tr>
+ 
+ <tr>
+  <th>
       <div class="field">
-      <%= f.label :住所 %>
-      <%= f.text_field :address, autofocus: true, id:"inputName", placeholder:"東京都渋谷区神南１丁目１９-１１ パークウェースクエア２４階"%>
+       <td>  <%= f.label :氏名 %>
+     </td>
+   </th>
+   <th>
+     <td><%= f.text_field :last_name, autofocus: true, id:"inputName", placeholder:"山田"%>
+    </th>
+      </td>
+    
+       <td>
+          <th>
+         <%= f.text_field :first_name, autofocus: true, id:"inputName", placeholder:"花子"%>
+     </th>
+     </td>
+  </tr>
     </div>
+    
+    
+     <tr>
+  <th>
       <div class="field">
-      <%= f.label :電話番号 %>
-      <%= f.text_field :telephone_number, autofocus: true, id:"inputName", placeholder:"0368694700"%>
+       <td>  <%= f.label :フリガナ %>
+  
+     </td>
+   </th>
+   <th><td><%= f.text_field :last_name_kana, autofocus: true, id:"inputName", placeholder:"ヤマダ"%>
+      </th></td>
+     <th><td><%= f.text_field :first_name_kana, autofocus: true, id:"inputName", placeholder:"ハナコ"%>
+     </th></td></tr>
     </div>
-     <div class="field">
-      <%= f.label :メールアドレス %>
-      <%= f.text_field :email, autofocus: true, id:"inputName", placeholder:"hoge@example.com"%>
-    </div>
-      <%= f.label :会員ステータス %>
-      <%= f.radio_button :is_deleted, true %> 有効
-    </label>
-    <label><%= f.radio_button :is_deleted, false %> 退会</label>
-      <div><%= f.submit '変更を保存',class: "btn btn-success"%></div>
-    <% end %>
-</div>
+    
+    
+    <tr>
+  <th>
+      <div class="field">
+       <td>  <%= f.label :郵便番号 %>
+  
+     </td>
+   </th>
+   <th> <%= f.text_field :postal_code, autofocus: true, id:"inputName", placeholder:"1500041"%>
+ <td>
+     </div>
+     
+    </td>
+   </th>
+</tr>
+ 
+ 
+    <tr>
+  <th>
+      <div class="field">
+       <td>  <%= f.label :住所 %>
+  
+     </td>
+   </th>
+   <th> <%= f.text_field :address, autofocus: true, id:"inputName", placeholder:"東京都渋谷区神南１丁目１９-１１ パークウェースクエア２４階"%>
+ <td>
+     </div>
+     
+    </td>
+   </th>
+</tr>
 
+<tr>
+  <th>
+      <div class="field">
+       <td>  <%= f.label :電話番号 %>
+  
+     </td>
+   </th>
+   <th><%= f.text_field :telephone_number, autofocus: true, id:"inputName", placeholder:"0368694700"%> 
+ <td>
+     </div>
+     
+    </td>
+   </th>
+</tr>
+
+
+
+<tr>
+  <th>
+      <div class="field">
+       <td>  <%= f.label :メールアドレス %>
+  
+     </td>
+   </th>
+   <th><%= f.text_field :email, autofocus: true, id:"inputName", placeholder:"hoge@example.com"%> 
+ <td>
+     </div>
+     
+    </td>
+   </th>
+</tr>
+
+
+
+
+
+  <tr>
+  <th>
+      <div class="field">
+       <td>  <%= f.label :会員ステータス %>
+     </td>
+   </th>
+   <th><td>  <%= f.radio_button :is_deleted, true %> 有効
+  <%= f.radio_button :is_deleted, false %> 退会</label>
+  <%= f.submit '変更を保存',class: "btn btn-success"%>
+        <% end %>
+      </th></td>
+     <th><td>
+        </div>
+     </tr>
+   
+
+</div>
+</table>
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
