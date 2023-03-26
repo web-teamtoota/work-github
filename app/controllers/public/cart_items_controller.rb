@@ -1,13 +1,36 @@
 class Public::CartItemsController < ApplicationController
-    
+
+
+  def index
+    @cart_item = CartItem.new
+    @cart_items = CartItem.all
+    @cart_items = CartItem.all.page(params[:page]).per(10)
+
+  end
+
     def create
-         @item = Item.find(cart_item_params[:item_id])
+        binding.pry
+
+         @cart_item = CartItem.find(cart_item_params[:item_id])
     end
-   
+
+# def create
+#   1. 追加した商品がカート内に存在するかの判別
+#     存在した場合
+#       2. カート内の個数をフォームから送られた個数分追加する
+#     存在しなかった場合
+#       カートモデルにレコードを新規作成する
+# end
+
+
+
+
+
+
 
       private
   def cart_item_params
       params.require(:cart_item).permit(:item_id, :amount)
   end
-    
+
 end
