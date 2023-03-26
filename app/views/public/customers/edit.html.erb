@@ -1,13 +1,12 @@
-<div class="mx-auto" style="width: 100px">
+<div class="mx-auto" style="width: 400px">
   <h3>会員情報編集</h3>
   <%= form_with model: @customer, url:customer_path(current_customer) do |f| %>
 <table>
-<tr><th>
     <div class="field">
       <%= f.label :氏名 %>
       <%= f.text_field :last_name, autofocus: true, id:"inputName", placeholder:"山田"%>
      <%= f.text_field :first_name, autofocus: true, id:"inputName", placeholder:"花子"%>
-      </div></th></tr>
+      </div>
        <div class="field">
       <%= f.label :フリガナ %>
       <%= f.text_field :last_name_kana, autofocus: true, id:"inputName", placeholder:"ヤマダ"%>
@@ -33,4 +32,5 @@
     <% end %>
  <%= link_to "退会する",   unsubscribe_path,class: "btn btn-danger" %>
   </div>
+  </table>
 </div>
