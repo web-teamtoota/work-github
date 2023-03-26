@@ -2,14 +2,21 @@
 
 <h1>商品一覧</h1>
 <% @items.each do |item| %>
-   <div><% if item.image.attached? %>
-  <%= image_tag item.image, size: "90x90" %>
+<%= link_to item_path(item) do %>
+<div><% if item.image.attached? %>
+<%= image_tag item.image, size: "90x90" %>
 <% else %>
-  <%= image_tag 'no_image', size: "90x90" %>
+<%= image_tag 'no_image', size: "90x90" %>
 <% end %>
 </div>
-<div><%= item.name %></div>
-<div><%= item.price %>円</div>
+  <div><%= item.name %>
+  </div>
+  <div><%= item.price %>円
+  </div>
+<% end %>
 <% end %>
 <%= link_to "全ての商品を見る>", items_path %>
+</div>
+<div class="mx-auto" style="width: 400px">
+   <%= paginate @items %>
 </div>

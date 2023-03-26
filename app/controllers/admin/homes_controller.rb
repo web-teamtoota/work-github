@@ -6,9 +6,8 @@ class Admin::HomesController < ApplicationController
 
 
 def top
-      item = Item.new
-     @items = Item.page(params[:page]).per(10)
-    
+  @order = Order.new
+  @orders = Order.page(params[:page]).per(10)
 end
 
 private

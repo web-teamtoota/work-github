@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2023_03_18_063951) do
   create_table "cart_items", force: :cascade do |t|
     t.integer "item_id"
     t.integer "customer_id"
+    t.integer "amount"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -103,6 +104,10 @@ ActiveRecord::Schema.define(version: 2023_03_18_063951) do
 
   create_table "orders", force: :cascade do |t|
     t.integer "customer_id"
+    t.integer "total_payment"
+    t.integer "postage"
+    t.integer "payment_method"
+    t.integer "status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
