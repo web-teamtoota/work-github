@@ -15,9 +15,17 @@
                     </tr>
       </thead>
         <% @cart_items.each do |cart_item| %>
-                           <div class="col-md-6">
+                        <div class="col-md-6">
               <tr>
-                     <td>><%= order.name %></</td>
+                  
+                  <td><%= cart_item %></td>
+                   <td><%= item_id.item.with_tax_price %></td>
+                   <!--<td><%#= cart_item.item.with_tax_price %></td>-->
+                   <td><%= cart_item.subtotal %></td>
+                   <% @合計金額 +=  cart_item.subtotal %>
+          
+          
+                     <td>><%= item_id %></</td>
                      <td><%= cart_item.item.with_tax_price%></td>
                         <td><%= cart_item.subtotal%></td>
                          <% @合計金額 +=  cart_item.subtotal %>
