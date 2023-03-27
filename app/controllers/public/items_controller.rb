@@ -15,11 +15,13 @@ class Public::ItemsController < ApplicationController
   
 
   def new
+      
     @item = Item.new(params[:id])
   end
   
   
   def show
+    @cart_item = CartItem.new
     @item = Item.find(params[:id])
   end
   

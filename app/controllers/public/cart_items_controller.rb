@@ -9,9 +9,12 @@ class Public::CartItemsController < ApplicationController
   end
 
     def create
-        binding.pry
-
-         @cart_item = CartItem.find(cart_item_params[:item_id])
+        #binding.pry
+        @cart_item = CartItem.new(cart_item_params)
+        @cart_items = CartItem.all
+        @cart_item.save
+        redirect_to cart_item_path(@cart_item.id)
+         #@cart_item = CartItem.find(cart_item_params[:item_id])
     end
 
 # def create
@@ -22,9 +25,10 @@ class Public::CartItemsController < ApplicationController
 #       カートモデルにレコードを新規作成する
 # end
 
+  def update
+    @cart_item = CartItem.find(params[:id])
 
-
-
+  end
 
 
 
