@@ -5,7 +5,7 @@ class Public::CartItemsController < ApplicationController
     @cart_item = CartItem.new
     @cart_items = CartItem.all
     @cart_items = CartItem.all.page(params[:page]).per(10)
-
+    @cart_item = CartItem.new(params[:id])
   end
 
     def create
@@ -13,7 +13,8 @@ class Public::CartItemsController < ApplicationController
         @cart_item = CartItem.new(cart_item_params)
         @cart_items = CartItem.all
         @cart_item.save
-        redirect_to cart_item_path(@cart_item.id)
+        redirect_to cart_items_path(@cart_item.id)
+           @cart_item = CartItem.new(params[:id])
          #@cart_item = CartItem.find(cart_item_params[:item_id])
     end
 
@@ -26,7 +27,7 @@ class Public::CartItemsController < ApplicationController
 # end
 
   def update
-    @cart_item = CartItem.find(params[:id])
+    # @cart_item = CartItem.find(params[:id])
 
   end
 
