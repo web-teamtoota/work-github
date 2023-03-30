@@ -5,7 +5,7 @@
 ○銀行振込
 
 <div>お届け先</div>
-○ご自身のご住所
+○ご自身の住所
 #会員の住所
 #会委員の名前
 ○登録済住所から選択
@@ -16,3 +16,24 @@
 宛先
 
 確認画面へ進む（水色）
+
+
+
+<%= form_with model: @order, url: check アクションにつながるパス, local: true do |f| %>
+  <%= f.radio_button :address_number, 1 %> 
+  <%= f.label :address_number_1, "ご自身の住所" %>
+  <%= current_customer.customer_address %>
+
+  <%= f.radio_button :address_number, 2 %>
+  <%= f.label :address_number_2, "登録先の住所" %>
+  <%= f.collection_select(:registered, current_customer.addresses.all, :id, :address %>
+
+  <%= f.radio_button :address_number, 3 %>
+  <%= f.label :address_number_3, "新しいお届け先" %>
+  <%= f.label :address, "住所" %>
+  <%= f.text_field :address %>
+  <%= f.label :address_name, "宛名" %>
+  <%= f.text_field :address_name %>
+
+  <%= f.submit "確認画面へ進む" %>
+<% end %>

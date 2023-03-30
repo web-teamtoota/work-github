@@ -17,13 +17,13 @@
       </div>
     </div>
   </div>
-</div>
+</div
 <div class="mx-auto" style="width: 400px">
   <div><%= @item.name %></div>
   <div><%= @item.introduction %></div>
-  <div><h3><%= @item.add_tax_price.to_s(:dalimited) %>円</h3><h4>(税込)</h4></div>
+  <div><h3><%= @item.price.to_s(:dalimited) %>円</h3><h4>(税込)</h4></div>
+   <div><%= @item.with_tax_price %></div>
 
-  </div>
   </br>
   <div class="mx-auto" style="width: 200px">
     <div class="action">
@@ -43,6 +43,6 @@
   <!--  <div style="text-align:center">-->
     <!--<%#= link_to "カートに入れる",  cart_items_path(@item.id) ,class: "btn btn-success" %>-->
   <!--</div>-->
-</div>
-</div>
+
+
 
