@@ -6,14 +6,14 @@ class CartItem < ApplicationRecord
     validates :item_id, :amount, presence: true
     validates :amount, numericality:{ only_integer: true }
 
-  def sum_of_price
-    item.taxin_price * quantity
-  end  
+  # def sum_of_price
+  #   item.taxin_price * quantity
+  # end  
   
 
-def sum_price # 実際に作成したサイトは税金も算出していたのでメソッドを記載していました
-  item.taxin_price*quantity
-end
+# def sum_price # 実際に作成したサイトは税金も算出していたのでメソッドを記載していました
+#   item.taxin_price*quantity
+# end
   
   
   
@@ -29,7 +29,7 @@ end
 
 ## 小計を求めるメソッド
 def subtotal
-    item.with_tax_price * amount
+    with_tax_price * amount
 end
 
 
