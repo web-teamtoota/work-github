@@ -6,15 +6,28 @@ class Public::OrdersController < ApplicationController
   end
 
 
-  def show
-    @order = Order.find(params[:id])
-  end
+   def show
+      @order = Order.find_by(id: params[:id])
+      @order = Order.find(params[:id])
+      @order = Order.find(params[:order_id])
+
+   end
+
+
+
 
 def new
   @order = Order.new
 end
 
 def create 
+      @item = Item.find(params[:item_id])
+    @order = @item.order.new(order_params)
+    @order.save
+    redirect_to items_path
+  
+  
+  
   cart_items = current_customer.cart_items.all
   @order = current_customer.orders.new(order_params)
   if @order.save
@@ -71,16 +84,25 @@ end
 
 
 
+  def confirm
+      @item = Item.find(params[:item_id])
+    @order = @item.order.new(order_params)
+    
+    
+    # @order = Order.new(event_params)
+    # if @order.invalid? #入力項目に空のものがあれば入力画面に遷移
+    #   render :new
+    # end
+  end
 
-def confirm
-   @order = Order.find(params[:confirm])
-end
-
+# def confirm
+#   @order = Order.find(params[:confirm])
+# end
 
 
   private
    def item_params
-    params.require(:order).permit(:id, :customer_id, :postal_code, :address, :name, :total_payment,:postage, :payment_method, :status)
+    params.require(:order).permit(:id, :customer_id, :postal_code, :address, :name, :total_payment,:postage, :payment_method, :status, :confirm)
    end
 
 end
