@@ -55,7 +55,7 @@ devise_for :customers,skip: [:passwords], controllers: {
   #resources :orders
   get "orders/new" => "orders#new"
   post "orders/confirm" => "orders#confirm"
-  get "orders/thanks" => "orders#thanks"
+  post "orders/thanks" => "orders#thanks"
   post "orders" => "orders#create"
   get "orders" => "orders#index"
   get "orders/:id" => "orders#show"
@@ -64,12 +64,12 @@ devise_for :customers,skip: [:passwords], controllers: {
   #get "customer/sign_up" => "customers#new"
   #post "customer" => "customers#create"
 
-  #resources :cart_items
-  get "cart_items" => "cart_items#index"
-  patch "cart_items/:id" => "cart_items#update"
-  delete "cart_items/:id" => "cart_items#destroy"
-  delete "cart_items" => "cart_items#destroy_all"
-  post "cart_items" => "cart_items#create"
+  resources :cart_items, only: [:index, :update, :destroy, :create]
+  # get "cart_items" => "cart_items#index"
+  # patch "cart_items/:id" => "cart_items#update"
+  # delete "cart_items/:id" => "cart_items#destroy"
+  delete  "cart_items" => "cart_items#destroy_all"
+  # post "cart_items" => "cart_items#create"
 
   resources :addresses
   end
