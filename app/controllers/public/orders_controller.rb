@@ -104,11 +104,9 @@ end
 
 
   def confirm
-      @item = Item.find(params[:item_id])
+    @item = Item.find(params[:item_id])
     @order = @item.order.new(order_params)
-    
-    
-       @order = Order.new
+    @order = Order.new
     @cart_items = current_customer.cart_items
     @order.shipping_cost = 800
     @total_price = 0
@@ -116,7 +114,7 @@ end
      @total_price += cart_item.item.with_tax_price*cart_item.amount
     end
     @order.total_payment = @total_price + @order.shipping_cost
-        @order.payment_method = params[:order][:payment_method]
+    @order.payment_method = params[:order][:payment_method]
 
     
     
