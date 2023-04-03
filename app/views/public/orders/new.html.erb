@@ -3,7 +3,7 @@
 
 
 <p>支払方法<br>
-		<input type="radio" name="num_of_inq" value="クレジットカード">クレジットカード
+		<input type="radio" name="num_of_inq" value="クレジットカード">クレジットカード</br>
 		<input type="radio" name="num_of_inq" value="銀行振込">銀行振込
 	</p>
 <!--<div>お届け先</div>-->
@@ -38,7 +38,7 @@
   <div class="row justify-content-center">
     <div class="col-10 ">
       <div class="text-center">
-       <%= link_to "確認へ進む",  orders_confirm_path(@order.id), class:"btn btn-primary" %>
+       <%= link_to "確認へ進む",  orders_confirm_path, class:"btn btn-primary" %>
       </div>
     </div>
   </div>

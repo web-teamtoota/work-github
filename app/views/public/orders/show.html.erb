@@ -1,127 +1,128 @@
-確認
+確認ページのはずなのにshowページで表示されてしまう
 
-<!--<#% @cart_items.each do |cart_item| %>-->
-<!--  <%#= cart.item.name %> <!-- 商品名 -->
-<!--  <%#= (cart.item.price).to_s(:delimited) %>　<!-- 金額 -->
-<!--  <%#= cart.quantity %> <!-- 個数 -->
-<!--  <%#= (cart.item.price*cart.quantity).to_s(:delimited) %> <!-- 小計 -->
-<!--<#% end %>-->
+注文情報確認
 
-<!--<p>お届け先</p>-->
-<%#= @order.address %>
+<% @cart_items.each do |cart_item| %>
+  <%= cart.item.name %> < 商品名 
+  <%= (cart.item.price).to_s(:delimited) %>　< 金額 
+  <%= cart.quantity %> < 個数 
+  <%= (cart.item.price*cart.quantity).to_s(:delimited) %> < 小計 
+<% end %>
 
-<!-- ユーザーには注文確定ボタンだけ表示します -->
-<!--<%#= form_with model: @order, url: 'cart_items', local: true do |f| %>-->
-<!--  <%#= f.hidden_field :name %>-->
-<!--  <%#= f.hidden_field :address %>-->
-<!--  <%#= f.hidden_field :total_price, value: @total %>-->
-<!--  <%#= f.submit "注文を確定する" %>-->
-<!--#x<#% end %>-->
+<p>お届け先</p>
+<%= @order.address %>
 
-
-
-<!--<#% @cart_items.each do |cart| %>-->
-<!--  <%#= cart.item.name %> <!-- 商品名 -->
-<!--  <%#= (cart.item.price).to_s(:delimited) %>　<!-- 金額 -->
-<!--  <%#= cart.quantity %> <!-- 個数 -->
-<!--  <%#= (cart.item.price*cart.quantity).to_s(:delimited) %> <!-- 小計 -->
-<!--<#% end %>-->
-<!--<p>ご請求金額</p>-->
-<%#= @total.to_s(:delimited) %> <!-- お買い物の合計金額 -->
-<!--<p>お届け先</p>-->
-<%#= @order.address %>
-
-<!-- ユーザーには注文確定ボタンだけ表示します -->
-<!--<%#= form_with model: @order, url: 'cart_items', local: true do |f| %>-->
-<!--  <%#= f.hidden_field :name %>-->
-<!--  <%#= f.hidden_field :address %>-->
-<!--  <%#= f.hidden_field :total_price, value: @total %>-->
-<!--  <%#= f.submit "注文を確定する" %>-->
-<!--<#% end %>-->
-
-<!--<h1>予約フォーム</h1>-->
-
-<!--<ol class="nav">-->
-<!-- <li class="current">1.入力</li>-->
-<!-- <li>2.確認</li>-->
-<!-- <li>3.完了</li>-->
-<!--</ol>-->
-
-<!--<#%= form_for @reserve, method: :post, url: reserve_confirm_path do |form| %>-->
-<!-- <dl>-->
-<!--  <dt>希望日</dt>-->
-<!--  <dd><#%= form.text_field :reserve_date %></dd>-->
-<!--  <dt>名前</dt>-->
-<!--  <dd><#%= form.text_field :name %></dd>-->
-<!--  <dt>備考</dt>-->
-<!--  <dd><#%= form.text_field :note %></dd>-->
-<!-- </dl>-->
-
-<!-- <%#= form.submit '確認画面へ' %>-->
-<!--<#% end %>-->
-
-
-<!--<h2>注文確認画面</h2>-->
-<!--  <#%= @order.amount %>-->
-<!--  <#%= @order.quantity %>-->
-<!--  <#%= @item.name %>-->
-<!--  <#%= @item.price %>-->
-<!--<#%= form_with model:[@item, @order], url:(item_order_path) do |f| %>-->
-<!--  <#%= f.hidden_field :amount %>-->
-<!--  <#%= f.hidden_field :quantity %>-->
-<!--  <#%= f.submit %>-->
-<!--<#% end %>-->
+ ユーザーには注文確定ボタンだけ表示します 
+<%= form_with model: @order, url: 'cart_items', local: true do |f| %>
+  <%= f.hidden_field :name %>
+  <%= f.hidden_field :address %>
+  <%= f.hidden_field :total_price, value: @total %>
+  <%= f.submit "注文を確定する" %>
+x<% end %>
 
 
 
+<% @cart_items.each do |cart| %>
+  <%= cart.item.name %> < 商品名 
+  <%= (cart.item.price).to_s(:delimited) %>　< 金額 
+  <%= cart.quantity %> < 個数 
+  <%= (cart.item.price*cart.quantity).to_s(:delimited) %> < 小計 
+<% end %>
+<p>ご請求金額</p>
+<%= @total.to_s(:delimited) %> < お買い物の合計金額 
+<p>お届け先</p>
+<%= @order.address %>
+
+ ユーザーには注文確定ボタンだけ表示します 
+<%= form_with model: @order, url: 'cart_items', local: true do |f| %>
+  <%= f.hidden_field :name %>
+  <%= f.hidden_field :address %>
+  <%= f.hidden_field :total_price, value: @total %>
+  <%= f.submit "注文を確定する" %>
+<% end %>
 
 
-        <!--</thead>-->
-        <!--<tbody>-->
-        <!--  <#% @cart_items.each do |cart_item| %>-->
-        <!--  <tr><%#= image_tag cart_item.item.image, size: "70x50" %><%#= cart_item.item.name %></tr>-->
-        <!--  <tr><%#= cart_item.item.with_tax_price.to_s(:delimited, delimiter: ',') %></tr>-->
-        <!--  <tr><%#= cart_item.amount %></tr>-->
-        <!--  <tr><%#= ((cart_item.item.with_tax_price)*(cart_item.amount)).to_s(:delimited, delimiter: ',') %></tr>-->
-        <!--  <#% end %>-->
-        <!--</tbody>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div class="col-4">-->
-<!--      <table class="table">-->
-<!--        <tbody>-->
-<!--          <tr>-->
-<!--            <th>送料</th>-->
-            <!--td><%#= @order.shipping_cost.to_i %></td>
-<!--          </tr>-->
-<!--          <tr>-->
-<!--            <th>商品合計</th>-->
-            <!--<td><%#= @total_price.to_s(:delimited, delimiter: ',')  %></td>-->
-<!--          </tr>-->
-<!--          <tr>-->
-<!--            <th>請求金額</th>-->
-            <!--<td><%#=  @order.total_payment.to_s(:delimited, delimiter: ',') %></td>-->
-<!--          </tr>-->
-<!--        </tbody>-->
-<!--      </table>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
+<h1>予約フォーム</h1>
+
+<ol class="nav">
+ <li class="current">1.入力</li>
+ <li>2.確認</li>
+ <li>3.完了</li>
+</ol>
+
+<%= form_for @reserve, method: :post, url: reserve_confirm_path do |form| %>
+ <dl>
+  <dt>希望日</dt>
+  <dd><%= form.text_field :reserve_date %></dd>
+  <dt>名前</dt>
+  <dd><%= form.text_field :name %></dd>
+  <dt>備考</dt>
+  <dd><%= form.text_field :note %></dd>
+ </dl>
+
+ <%= form.submit '確認画面へ' %>
+<% end %>
+
+
+<h2>注文確認画面</h2>
+  <%= @order.amount %>
+  <%= @order.quantity %>
+  <%= @item.name %>
+  <%= @item.price %>
+  <%= form_with model:[@item, @order], url:(item_order_path) do |f| %>
+  <%= f.hidden_field :amount %>
+  <%= f.hidden_field :quantity %>
+  <%= f.submit %>
+  <% end %>
+
+
+
+        </thead>
+        <tbody>
+          <% @cart_items.each do |cart_item| %>
+          <tr><%= image_tag cart_item.item.image, size: "70x50" %><%#= cart_item.item.name %></tr>
+          <tr><%= cart_item.item.with_tax_price.to_s(:delimited, delimiter: ',') %></tr>
+          <tr><%= cart_item.amount %></tr>
+          <tr><%= ((cart_item.item.with_tax_price)*(cart_item.amount)).to_s(:delimited, delimiter: ',') %></tr>
+          <% end %>
+        </tbody>
+      </div>
+    </div>
+    <div class="col-4">
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>送料</th>
+            <td><%= @order.shipping_cost.to_i %></td>
+          </tr>
+          <tr>
+            <th>商品合計</th>
+            <td><%= @total_price.to_s(:delimited, delimiter: ',')  %></td>
+          </tr>
+          <tr>
+            <th>請求金額</th>
+            <td><%=  @order.total_payment.to_s(:delimited, delimiter: ',') %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
 <h5>支払方法</h5>
-<%#= @order.payment_method_i18n %>
-<!--<h5>お届け先</h5>-->
-<%#= @order.postal_code %>
-<%#= @order.address %>
-<%#=  @order.name %>
+<%= @order.payment_method_i18n %>
+<h5>お届け先</h5>
+<%= @order.postal_code %>
+<%= @order.address %>
+<%=  @order.name %>
 
 <%= form_with model: @order, url:  orders_thanks_path do |f| %>
-<%#= f.hidden_field :payment_method, :value => @order.payment_method %>
-<%#= f.hidden_field :postal_code, :value => @order.postal_code %>
-<%#= f.hidden_field :address, :value => @order.address %>
-<%#= f.hidden_field :name, :value => @order.name %>
-<%#= f.hidden_field :customer_id, :value => @order.customer_id %>
-<%#= f.hidden_field :total_payment, :value => @order.total_payment %>
-<%#= f.hidden_field :shipping_cost, :value => @order.shipping_cost %>
+<%= f.hidden_field :payment_method, :value => @order.payment_method %>
+<%= f.hidden_field :postal_code, :value => @order.postal_code %>
+<%= f.hidden_field :address, :value => @order.address %>
+<%= f.hidden_field :name, :value => @order.name %>
+<%= f.hidden_field :customer_id, :value => @order.customer_id %>
+<%= f.hidden_field :total_payment, :value => @order.total_payment %>
+<%= f.hidden_field :shipping_cost, :value => @order.shipping_cost %>
 <%= f.submit "注文を確定する", class:"btn btn-success" %>
 <% end %>
