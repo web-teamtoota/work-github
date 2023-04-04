@@ -64,6 +64,7 @@ gem 'kaminari','~> 1.2.1'
 
 gem 'counter_culture'
 
-gem 'enum_help'
+  gem "enum_help"
 
-gem 'rails-i18n'
+
+# gem 'rails-i18n'

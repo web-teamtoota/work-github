@@ -1,9 +1,13 @@
 class OrderDetail < ApplicationRecord
   
-  belongs_to :order
+   # devise :database_authenticatable, :registerable,
+   #       :recoverable, :rememberable, :validatable
+
+belongs_to :customer
+has_many :order_items
   
-
-  enum make_status: {着手不可:0, 製作待ち:1, 製作中:2, 製作完了:3}
-
+  enum payment_method: { credit_card: 0, transfer: 1 }
+  enum status: {入金待ち:0, 入金確認:1, 製作中:2, 発送準備中:3, 発送済み:4}
+  
   
 end
