@@ -1,7 +1,4 @@
 <div>注文情報入力</div>
-
-
-
 <p>支払方法<br>
 		<input type="radio" name="num_of_inq" value="クレジットカード">クレジットカード</br>
 		<input type="radio" name="num_of_inq" value="銀行振込">銀行振込
@@ -19,6 +16,12 @@
 
 
 <%= form_with model: @order, url: orders_confirm_url , local: true do |f| %>
+<%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+<%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
+
+<%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+<%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
+
   <%#= f.radio_button :address_number, 1 %> 
   <%#= f.label :address_number_1, "ご自身の住所" %>
   <%#= current_customer.customer_address %>

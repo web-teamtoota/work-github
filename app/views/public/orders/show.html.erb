@@ -12,7 +12,8 @@
           <tbody>
             <tr>
                 <td class="active">注文日</td>
-                <td><%= @orders. create.to_s(:datetime_jp) %></td>
+                <td><%= @order.created_at.to_s(:datetime_jp) %></td>
+                <td><%= @orders.created_at.to_s(:datetime_jp) %></td>
             </tr>
             <tr>
                 <td class="active">配送先</td>

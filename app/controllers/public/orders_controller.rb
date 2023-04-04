@@ -9,8 +9,8 @@ class Public::OrdersController < ApplicationController
 
 
    def show
-    @order = Order.find(params[:id])
-    @order_details = @order.order_details.all
+    # @order = Order.find(params[:id])
+    # @order_details = @order.order_details.all
       # @order = Order.new
     @orders = Order.all
     @order = Order.find_by(id: params[:id])
@@ -31,7 +31,7 @@ class Public::OrdersController < ApplicationController
 
 
 def new
-  @order = Order.
+  @order = Order.new
 end
 
 def create 
@@ -39,8 +39,6 @@ def create
     @order = @item.order.new(order_params)
     @order.save
     redirect_to items_path
-  
-  
   
   cart_items = current_customer.cart_items.all
   @order = current_customer.orders.new(order_params)
@@ -61,30 +59,30 @@ def create
   end
 end
 
-def check
-  @order = Order.new(order_params)
-  if params[:order][:address_number] == "1"
-    @order.name = current_customer.name 
-    @order.address = current_customer.customer_address
-  elsif params[:order][:address_number] == "2"
-    if Address.exists?(name: params[:order][:registered])
-      @order.name = Address.find(params[:order][:registered]).name
-      @order.address = Address.find(params[:order][:registered]).address
-    else
-      render :new
-    end
-  elsif params[:order][:address_number] == "3"
-    address_new = current_customer.addresses.new(address_params)
-    if address_new.save 
-    else
-      render :new
-    end
-  else
-    redirect_to cart_items_path
-  end
-  @cart_items = current_customer.cart_items.all
-  @total = @cart_items.inject(0) { |sum, item| sum + item.sum_price }
-end
+# def check
+#   @order = Order.new(order_params)
+#   if params[:order][:address_number] == "1"
+#     @order.name = current_customer.name 
+#     @order.address = current_customer.customer_address
+#   elsif params[:order][:address_number] == "2"
+#     if Address.exists?(name: params[:order][:registered])
+#       @order.name = Address.find(params[:order][:registered]).name
+#       @order.address = Address.find(params[:order][:registered]).address
+#     else
+#       render :new
+#     end
+#   elsif params[:order][:address_number] == "3"
+#     address_new = current_customer.addresses.new(address_params)
+#     if address_new.save 
+#     else
+#       render :new
+#     end
+#   else
+#     redirect_to cart_items_path
+#   end
+#   @cart_items = current_customer.cart_items.all
+#   @total = @cart_items.inject(0) { |sum, item| sum + item.sum_price }
+# end
 
 private
 
@@ -98,26 +96,63 @@ end
 
 
 
-  def confirm
-    @item = Item.find(params[:item_id])
-    @order = @item.order.new(order_params)
-    @order = Order.new
-    @cart_items = current_customer.cart_items
-    @order.shipping_cost = 800
-    @total_price = 0
-    @cart_items.each do |cart_item|
-     @total_price += cart_item.item.with_tax_price*cart_item.amount
-    end
-    @order.total_payment = @total_price + @order.shipping_cost
-    @order.payment_method = params[:order][:payment_method]
+  # def confirm
+  #   @item = Item.find(params[:item_id])
+  #   @order = @item.order.new(order_params)
+  #   @order = Order.new
+  #   @cart_items = current_customer.cart_items
+  #   @order.shipping_cost = 800
+  #   @total_price = 0
+  #   @cart_items.each do |cart_item|
+  #   @total_price += cart_item.item.with_tax_price*cart_item.amount
+  #   end
+  #   @order.total_payment = @total_price + @order.shipping_cost
+  #   @order.payment_method = params[:order][:payment_method]
 
     
     
-    # @order = Order.new(event_params)
-    # if @order.invalid? #入力項目に空のものがあれば入力画面に遷移
-    #   render :new
-    # end
+  #   # @order = Order.new(event_params)
+  #   # if @order.invalid? #入力項目に空のものがあれば入力画面に遷移
+  #   #   render :new
+  #   # end
+  # end
+  def confirm
+    @cart_items = current_customer.cart_items
+    @order = Order.new(order_params)
+    @order.customer_id = current_customer.id
+    @order.payment = params[:order][:payment]
+    @total_price = current_customer.cart_products.cart_items_total_price(@cart_items)
+    @order.shipping = 800
+
+    if params[:order][:city_option] == "0"
+      @order.postcode = current_customer.postcode
+      @order.city = current_customer.city
+      @order.name = current_customer.last_name + " " + current_customer.first_name
+      render 'confirm'
+    elsif params[:order][:city_option] == "1"
+      @ship_city = ShipCity.find(params[:order][:id])
+      @order.postcode = @ship_city.postcode
+      @order.city = @ship_city.city
+      @order.name = @ship_city.name
+      render 'confirm'
+    elsif params[:order][:city_option] == "2"
+      @ship_city = current_customer.ship_cities.new
+      @ship_city.city = params[:order][:city]
+      @ship_city.name = params[:order][:name]
+      @ship_city.postcode = params[:order][:postcode]
+      @ship_city.customer_id = current_customer.id
+      if @ship_city.save
+      @order.postcode = @ship_city.postcode
+      @order.name = @ship_city.name
+      @order.city = @ship_city.city
+      else
+       render 'new'
+      end
+    end
   end
+  
+  
+  
 
 # def confirm
 #   @order = Order.find(params[:confirm])
@@ -129,10 +164,14 @@ end
 
   private
    def order_params
-    params.require(:order).permit(:id, :customer_id, :postal_code, :address, :name, :total_payment,:postage, :payment_method, :status)
+    params.require(:order).permit(:id, :customer_id, :created_at, :postal_code, :address, :name, :total_payment,:postage, :payment_method, :status)
    end
-
 end
 
+  def order_params
+    params.require(:order).permit(:payment, :postcode, :city, :name, :shipping, :total_fee)
+  end
 
-end
+  def ship_city_params
+    params.require(:ship_city).permit(:customer_id, :postcode, :city, :name)
+  end
