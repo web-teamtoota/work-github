@@ -1,5 +1,7 @@
 class Public::OrdersController < ApplicationController
 
+  before_action :authenticate_customer!
+
   def index
     @order = Order.new
     @orders = Order.all.page(params[:page]).per(10)
@@ -7,36 +9,29 @@ class Public::OrdersController < ApplicationController
 
 
    def show
-    # @order = Order.find(params[:id])
-    # @ordering_details= @order.ordering_details
-    # @order.shipping_cost = 800
-    # @total_price = 0
-     
-      @order = Order.find_by(id: params[:id])
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details.all
+      # @order = Order.new
+    @orders = Order.all
+    @order = Order.find_by(id: params[:id])
       # @order = Order.find(params[:id])
-      #@order = Order.find(params[:order_id])
+      # @order = Order.find(params[:order_id])
       
     # @order_details = @order.order_details.all
-
-
-
-  # @order = Order.find(params[:id])
-  #   @ordering_details= @order.ordering_details
-  #   @order.shipping_cost = 800
-  #   @total_price = 0
-  #   @ordering_details.each do |ordering_detail|
-  #   @total_price += ordering_detail.item.add_tax_price*ordering_detail.amount
-  #   end
-  #   @order.total_payment = @total_price + @order.shipping_cost
-
-
+    # @ordering_details= @order.ordering_details
+    # @order.shipping_cost = 800
+    @total_price = 0
+    # @ordering_details.each do |ordering_detail|
+    # @total_price += ordering_detail.item.add_tax_price*ordering_detail.amount
+    # end
+    # @order.total_payment = @total_price + @order.shipping_cost
    end
 
 
 
 
 def new
-  @order = Order.new
+  @order = Order.
 end
 
 def create 
@@ -129,9 +124,15 @@ end
 # end
 
 
+  def thanks
+  end
+
   private
    def order_params
-    params.require(:order).permit(:id, :customer_id, :postal_code, :address, :name, :total_payment,:postage, :payment_method, :status, :confirm)
+    params.require(:order).permit(:id, :customer_id, :postal_code, :address, :name, :total_payment,:postage, :payment_method, :status)
    end
+
+end
+
 
 end

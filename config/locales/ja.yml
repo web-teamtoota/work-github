@@ -1,16 +1,6 @@
- 
- 
- ja:
+   ja:
     enums:
       order:
         payment_method:
-          credit_card: 'クレジットカード'
-          transfer: '銀行振込'
-          
-          
-          # cart_item:
-          # item_id: "29"
-          # amount: "5"
-          
-          
-          
+          credit_card: "クレジットカード"
+          transfer: "銀行振込"
