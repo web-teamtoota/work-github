@@ -41,22 +41,24 @@ def new
 
 end
 
+#下正しいはず
 def create
-      @item = Item.find(params[:item_id])
-    @order = @item.order.new(order_params)
+      @order = Order.new(order_params)
+      #@item = Item.find(params[:item_id])
+    #@order = @item.order.new(order_params)
     @order.save
     redirect_to items_path
 
   cart_items = current_customer.cart_items.all
   @order = current_customer.orders.new(order_params)
   if @order.save
-    cart_items.each do |cart|
-      order_item = OrderItem.new
-      order_item.item_id = cart.item_id
-      order_item.order_id = @order.id
-      order_item.order_quantity = cart.quantity
-      order_item.order_price = cart.item.price
-      order_item.save
+    cart_items.each do |cart_item|
+      cart_item = CartItem.new
+      order_item.item_id = order.item_id
+      @order_item.order_id = @order.id
+      @order_item.order_quantity = cart.quantity
+      @order_item.order_price = cart.item.price
+      @order_item.save
     end
     redirect_to cart_items_path
     cart_items.destroy_all
@@ -66,30 +68,6 @@ def create
   end
 end
 
-# def check
-#   @order = Order.new(order_params)
-#   if params[:order][:address_number] == "1"
-#     @order.name = current_customer.name
-#     @order.address = current_customer.customer_address
-#   elsif params[:order][:address_number] == "2"
-#     if Address.exists?(name: params[:order][:registered])
-#       @order.name = Address.find(params[:order][:registered]).name
-#       @order.address = Address.find(params[:order][:registered]).address
-#     else
-#       render :new
-#     end
-#   elsif params[:order][:address_number] == "3"
-#     address_new = current_customer.addresses.new(address_params)
-#     if address_new.save
-#     else
-#       render :new
-#     end
-#   else
-#     redirect_to cart_items_path
-#   end
-#   @cart_items = current_customer.cart_items.all
-#   @total = @cart_items.inject(0) { |sum, item| sum + item.sum_price }
-# end
 
 # private
 
@@ -125,37 +103,37 @@ end
   # end
 
 
-  def create
-		@order = Order.new(order_params)
-		@order.current_customer = current_customer
-		@order.total = params[:order][:total]
-		@order.order_status = params[:order][:order_status]
-		@order.payment = params[:order][:payment]
-		@order.order_status = params[:order][:order_status]
-		if params[:order][:address_option] == "0"
-			@order.postal_code = current_end_user.postal_code
-			@order.order_address = current_end_user.address
-			@order.dear_name = current_end_user.first_name + current_end_user.last_name
-		elsif params[:order][:address_option] == "1"
-			@order.postal_code = params[:order][:postal_code]
-			@order.order_address = params[:order][:order_address]
-			@order.dear_name = params[:order][:dear_name]
+  # def create
+		# @order = Order.new(order_params)
+		# # @order.current_customer = current_customer
+		# @order.total = params[:order][:total]
+		# @order.order_status = params[:order][:order_status]
+		# @order.payment = params[:order][:payment]
+		# @order.order_status = params[:order][:order_status]
+		# if params[:order][:address_option] == "0"
+		# 	@order.postal_code = current_end_user.postal_code
+		# 	@order.order_address = current_end_user.address
+		# 	@order.dear_name = current_end_user.first_name + current_end_user.last_name
+		# elsif params[:order][:address_option] == "1"
+		# 	@order.postal_code = params[:order][:postal_code]
+		# 	@order.order_address = params[:order][:order_address]
+		# 	@order.dear_name = params[:order][:dear_name]
 
-		elsif params[:order][:address_option] == "2"
-			@order.postal_code = params[:order][:postal_code]
-			@order.order_address = params[:order][:address]
-			@order.dear_name = params[:order][:dear_name]
-		end
-		# binding.pry
+		# elsif params[:order][:address_option] == "2"
+		# 	@order.postal_code = params[:order][:postal_code]
+		# 	@order.order_address = params[:order][:address]
+		# 	@order.dear_name = params[:order][:dear_name]
+		# end
+		# # binding.pry
 
-		if	@order.save
-			render :complete
-		else
-			flash[:danger] = "カートが空です。"
-			redirect_to root_path
-		end
+		# if	@order.save
+		# 	redirect_to orders_thanks_path
+		# else
+		# 	flash[:danger] = "カートが空です。"
+		# 	redirect_to root_path
+		# end
 
-  end
+  # end
 
 
 
