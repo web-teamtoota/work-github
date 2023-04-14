@@ -54,7 +54,7 @@ def create
   if @order.save
     cart_items.each do |cart_item|
       cart_item = CartItem.new
-      order_item.item_id = order.item_id
+      orders_path.item_id = @order.item_id
       @order_item.order_id = @order.id
       @order_item.order_quantity = cart.quantity
       @order_item.order_price = cart.item.price

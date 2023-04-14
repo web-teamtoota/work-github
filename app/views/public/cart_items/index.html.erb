@@ -105,7 +105,7 @@
           </thead>
           <% @cart_items.each do |cart_item| %>
           <tbody>
-                <td class="text-left"><%= image_tag cart_item.item.image, size: "50x50" %></td>
+                <!--<td class="text-left"><%#= image_tag cart_item.item.image, size: "50x50" %></td>-->
                 <%#= image_tag cart_item.item.image, size: "50x50" %>
             <td><%= cart_item.item.name %></td>
             <td class="text-center"><%= cart_item.item.with_tax_price.to_s(:delimited, delimiter: ',') %></td>
