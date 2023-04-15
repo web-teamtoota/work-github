@@ -17,7 +17,6 @@
           <td>
             <tr><%= image_tag cart_item.item.image, size: "70x50" %><%= cart_item.item.name %></tr>
               <%#= attachment_image_tag cart_item.item, :image, fallback: "no_image.jpg", size:"80x50" %>
-              <%= cart_item.item.name %>
           </td>
           <td><%= (cart_item.item.price * 1.1).floor.to_s(:delimited) %></td>
           <td><%= cart_item.amount %></td>
@@ -61,12 +60,12 @@
       <h4><%= @order.payment_method %></h4>
       <%= f.hidden_field :payment_method, :value => @order.payment_method %></br>
     <h3>お届け先</h3>
-    <h4><%#= @order. postage %></h4>
-    <%#= f.hidden_field :postage, :value => @order.postage %>
+    <h4><%= @order. postal_code %></h4>
+    <%= f.hidden_field :postal_code, :value => @order.postal_code %>
       <%= @order.postage.to_s.insert(3, "-") %></br>
       <%= f.hidden_field :name, :value => @order.name %>
-      <%#= f.hidden_field :address, :value => @order.address %>
-      <%#= @order.address %></br>
+      <%= f.hidden_field :address, :value => @order.address %>
+      <%= @order.address %></br>
       <%= @order.name %></br>
       <%= f.hidden_field :name, :value => @order.name %>
 
@@ -158,7 +157,7 @@
 <%= form_with model: @order, url: orders_path do |f| %>
 <%= f.hidden_field :payment_method, :value => @order.payment_method %>
 <%= f.hidden_field :postage, :value => @order.postage %>
-<%#= f.hidden_field :address, :value => @order.address %>
+<%= f.hidden_field :address, :value => @order.address %>
 <%= f.hidden_field :name, :value => @order.name %>
 <%= f.hidden_field :customer_id, :value => @order.customer_id %>
 <%= f.hidden_field :total_payment, :value => @order.total_payment %>
