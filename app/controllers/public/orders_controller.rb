@@ -41,32 +41,100 @@ def new
 
 end
 
-#下正しいはず
+
 def create
       @order = Order.new(order_params)
       #@item = Item.find(params[:item_id])
     #@order = @item.order.new(order_params)
-    @order.save
-    redirect_to items_path
-
   cart_items = current_customer.cart_items.all
   @order = current_customer.orders.new(order_params)
   if @order.save
     cart_items.each do |cart_item|
-      cart_item = CartItem.new
-      orders_path.item_id = @order.item_id
+      @order_item = OrderDetail.new
+      @order_item.item_id = cart_item.item_id
       @order_item.order_id = @order.id
-      @order_item.order_quantity = cart.quantity
-      @order_item.order_price = cart.item.price
+      @order_item.quantity = cart_item.amount
+      @order_item.price = cart_item.item.price
+      @order_item.making_status = 0
       @order_item.save
     end
-    redirect_to cart_items_path
+    redirect_to orders_path
     cart_items.destroy_all
   else
     @order = Order.new(order_params)
     render :new
   end
 end
+
+
+
+
+  # def create
+  #   @order = Order.new(order_params)
+  #   @order.customer_id = current_customer.
+  #   　　@order = current_customer.new(order_params)
+  #   if @order.save
+
+  #     @cart_items = current_user.cart_items.all
+  #   @cart_items.each do |cart_item|
+  #       @order_items = @order.order_items.new
+  #       @order_items.item_id = cart_item.item.id
+  #       @order_items.name = cart_item.item.name
+  #       @order_items.price = cart_item.item.price
+  #       @order_items.quantity = cart_item.quantity
+  #       @order_items.save
+  #       　　　　 current_user.cart_items.destroy_all
+
+  #   end
+
+
+
+  #     @cart_items = current_customer.cart_items
+  #     @cart_items.each do |cart_item|
+  #       order_detail = OrderDetail.new(order_id: @order.id)
+  #       order_detail.price = cart_item.item.price
+  #       order_detail.amount = cart_item.amount
+  #       order_detail.item_id = cart_item.item_id
+  #       order_detail.save!
+  #     end
+  #     @cart_products.destroy_all
+  #     redirect_to cart_items_path
+  #   else
+  #     render "new"
+  #   end
+  # end
+
+
+
+
+# #下正しいはず
+# def create
+#     @order = Order.new(order_params)
+#     @order = Order.find(params[:id])
+#     #@item = Item.find(params[:item_id])
+#     @order = @item.order.new(order_params)
+#     @order.save
+#     redirect_to items_path
+
+#   cart_items = current_customer.cart_items.all
+#   @order = current_customer.orders.new(order_params)
+#   if @order.save
+#     cart_items.each do |cart|
+#       @cart_item = Cartitem.new
+#       @order_item = OrderItem.new
+#       @order_item.item_id = cart.item_id
+#       @order_item.order_id = @order.id
+#       @order_item.order_quantity = cart.quantity
+#       @order_item.order_price = cart.item.price
+#       @order_item.save
+#     end
+#     redirect_to cart_items_path
+#     cart_items.destroy_all
+#   else
+#     @order = Order.new(order_params)
+#     render :new
+#   end
+# end
 
 
 # private
@@ -251,7 +319,7 @@ end
 
   private
    def order_params
-     params.require(:order).permit(:customer_id, :name, :postal_code, :address, :name, :total_payment, :postage, :payment_method, :status)
+     params.require(:order).permit(:customer_id, :postal_code, :address, :name, :total_payment, :postage, :payment_method, :status)
    end
 
 end
