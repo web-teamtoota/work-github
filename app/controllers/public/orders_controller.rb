@@ -4,13 +4,12 @@ class Public::OrdersController < ApplicationController
 
 
   def index
+    @order = Order.new
     @orders = Order.all.page(params[:page]).per(10)
-    #@orders = current_customer.orders.all
-
-    # @orders = current_customer.cart_items
-    # @customer = Customer.find(current_customer.id)
-    # @address = @customer.address
-
+     params[:order][:address_option]
+     @order.postal_code = customer.postal_code
+     @order.address = customer.address
+     @order.name = customer.last_name + customer.first_name
   end
 
 
@@ -35,18 +34,18 @@ class Public::OrdersController < ApplicationController
     # @total_price += ordering_detail.item.add_tax_price*ordering_detail.amount
     # end
     # @order.total_payment = @total_price + @order.shipping_cost
-    @order_items = @order.order_items.all
    end
 
 
 
 
 def new
-    @order = Order.new
-    @orders = current_customer.cart_items
-    @customer = Customer.find(current_customer.id)
-   # @addresses = @customer.addresses
-    @customer = current_customer
+  @order = Order.new
+  @customer = current_customer
+  @orders = current_customer.cart_items
+  @customer = Customer.find(current_customer.id)
+  #@addresses = current_customer.addresses
+
 end
 
 
@@ -80,7 +79,7 @@ end
   # def create
   #   @order = Order.new(order_params)
   #   @order.customer_id = current_customer.
-  #   　　@order = current_customer.new(order_params)
+  #   @order = current_customer.new(order_params)
   #   if @order.save
 
   #     @cart_items = current_user.cart_items.all
@@ -91,7 +90,7 @@ end
   #       @order_items.price = cart_item.item.price
   #       @order_items.quantity = cart_item.quantity
   #       @order_items.save
-  #       　　　　 current_user.cart_items.destroy_all
+  #       current_user.cart_items.destroy_all
 
   #   end
 
@@ -115,7 +114,7 @@ end
 
 
 
-# #下正しい?
+# #下正しいはず
 # def create
 #     @order = Order.new(order_params)
 #     @order = Order.find(params[:id])
@@ -216,7 +215,17 @@ end
    def confirm
      #byebug
     @cart_items = current_customer.cart_items
+    #@order = Order.new(
+      #customer_id: @current_user,
+      #customer_id: @posted_id
+      #)
 
+    #@order = Order.new(order_params)
+    # @order = Order.new(orders_path)
+    #@order.customer_id = current_customer.id
+    #@order.payment_method = params[:order][:payment_method]
+    @total_price = 0
+    @cart_items = current_customer.cart_items
 
     @order = Order.new(order_params)
     if params[:order][:city_option] == "0"
@@ -225,24 +234,8 @@ end
       @order.postal_code = current_customer.postal_code
     end
 
-    if params[:order][:city_option] == "1"
-      @order.address = current_customer.address
-      @order.name = current_customer.last_name + current_customer.first_name
-      @order.postal_code = current_customer.postal_code
-    end
-    
-    if params[:order][:city_option] == "2"
-      @order.address = current_customer.address
-      @order.name = current_customer.last_name + current_customer.first_name
-      @order.postal_code = current_customer.postal_code
-    end
-    
-    
-    #@order = Order.new(orders_path)
-    @order.customer_id = current_customer.id
-    @total_price = 0
     @cart_items.each do |cart_item|
-    @total_price += cart_item.subtotal
+    @total_price += cart_item.item.with_tax_price
     end
 
     @order.postage = 800
@@ -250,9 +243,7 @@ end
 
     if params[:order][:address_option] == "0"
       @order.postage=  current_customer.postal_code
-       #byebug
       @order.address = current_customer.address
-
       @order.name = current_customer.last_name + " " + current_customer.first_name
       render 'confirm'
     elsif params[:order][:address_option] == "1"
@@ -343,7 +334,7 @@ end
 
   private
    def order_params
-     params.require(:order).permit(:postal_code, :address, :name, :total_payment, :postage, :payment_method, :status)
+     params.require(:order).permit(:customer_id, :postal_code, :address, :name, :total_payment, :postage, :payment_method, :status)
    end
 
 end
