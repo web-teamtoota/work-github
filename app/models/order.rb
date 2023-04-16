@@ -2,21 +2,25 @@ class Order < ApplicationRecord
    # devise :database_authenticatable, :registerable,
    #       :recoverable, :rememberable, :validatable
 
-# belongs_to :customer
 has_many :order_items
+belongs_to :customer
+has_many :addresses
+    
+    # Order.all.sum(:price)
+    # enum sales_order_status:{入金待ち: 0, 入金確認: 1, 製作中: 2, 発送準備中: 3, 発送済み: 4}
 
-  # enum payment_method: { credit_card: 0, transfer: 1 }
-  # enum status: {入金待ち:0, 入金確認:1, 製作中:2, 発送準備中:3, 発送済み:4}
+   enum payment_method: { クレジットカード: 0, 銀行振込: 1 }
+  enum status: {入金待ち:0, 入金確認:1, 製作中:2, 発送準備中:3, 発送済み:4}
 
 
-  belongs_to :customer
-  enum status: {
-    入金待ち: 0,
-    入金確認: 1,
-    製作中: 2,
-   発送準備中: 3,
-    発送済み: 4
-  }
+#   belongs_to :customer
+#   enum status: {
+#     入金待ち: 0,
+#     入金確認: 1,
+#     製作中: 2,
+#   発送準備中: 3,
+#     発送済み: 4
+#   }
   has_many :order_details, dependent: :destroy
 
 #  scope :waiting_payment, -> { where(status: 'waiting_payment') }

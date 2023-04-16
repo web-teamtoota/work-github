@@ -14,13 +14,13 @@
       <tbody>
       <% @cart_items.each do |cart_item| %>
         <tr>
-          <td>
-            <tr><%= image_tag cart_item.item.image, size: "70x50" %><%= cart_item.item.name %></tr>
+            <td><%= image_tag cart_item.item.image, size: "70x50" %><%= cart_item.item.name %></td>
               <%#= attachment_image_tag cart_item.item, :image, fallback: "no_image.jpg", size:"80x50" %>
-          </td>
           <td><%= (cart_item.item.price * 1.1).floor.to_s(:delimited) %></td>
           <td><%= cart_item.amount %></td>
           <td><%= (cart_item.item.price * cart_item.amount * 1.1).floor.to_s(:delimited) %></td>
+          <td><%#= cart_item.subtotal%></td>
+
         </tr>
       <% end %>
       </tbody>
@@ -55,24 +55,20 @@
   </div>
   <div class="row">
     <h3>支払方法</h3></br>
-    <h4><%= (@order.payment_method == 0) ? "クレジットカード" : "銀行振込" %></h4>
-
+    <h4><%#= (@order.payment_method == 0) ? "クレジットカード" : "銀行振込" %></h4>
       <h4><%= @order.payment_method %></h4>
       <%= f.hidden_field :payment_method, :value => @order.payment_method %></br>
     <h3>お届け先</h3>
-    <h4><%= @order. postal_code %></h4>
+    <h4>〒<%= @order. postal_code %></h4>
     <%= f.hidden_field :postal_code, :value => @order.postal_code %>
-      <%= @order.postage.to_s.insert(3, "-") %></br>
-      <%= f.hidden_field :name, :value => @order.name %>
-      <%= f.hidden_field :address, :value => @order.address %>
+      <%#= @order.name.to_s.insert(3, "-") %></br>
+
       <%= @order.address %></br>
+      <%= f.hidden_field :address, :value => @order.address %>
+
       <%= @order.name %></br>
       <%= f.hidden_field :name, :value => @order.name %>
-
   </div>
-    <!--div class="text-center">
-      <%#= f.submit "購入を確定する", class: "btn btn-success btn-lg text-center" %>
-    </div-->
     <% end %>
     </div>
 </div>
@@ -82,27 +78,6 @@
 <!--  <%#= f.hidden_field :address %>-->
 <!--  <%#= f.hidden_field :total_price, value: @total %>-->
 <!--  <%#= f.submit "注文を確定する" %>-->
-<!--<#% end %>-->
-
-<!--<h1>予約フォーム</h1>-->
-
-<!--<ol class="nav">-->
-<!-- <li class="current">1.入力</li>-->
-<!-- <li>2.確認</li>-->
-<!-- <li>3.完了</li>-->
-<!--</ol>-->
-
-<!--<#%= form_for @reserve, method: :post, url: reserve_confirm_path do |form| %>-->
-<!-- <dl>-->
-<!--  <dt>希望日</dt>-->
-<!--  <dd><#%= form.text_field :reserve_date %></dd>-->
-<!--  <dt>名前</dt>-->
-<!--  <dd><#%= form.text_field :name %></dd>-->
-<!--  <dt>備考</dt>-->
-<!--  <dd><#%= form.text_field :note %></dd>-->
-<!-- </dl>-->
-
-<!-- <%#= form.submit '確認画面へ' %>-->
 <!--<#% end %>-->
 
 
@@ -151,7 +126,7 @@
     <!--  </table>-->
     <!--</div>-->
       <%# end %>
-      
+
 <%#= @order.payment_method_i18n %>
 
 <%= form_with model: @order, url: orders_path do |f| %>
@@ -190,7 +165,7 @@
 <!--            <th scope="col">小計</th>-->
 <!--          </tr>-->
 <!--        </thead>-->
-        
+
 <!--        <tbody>-->
 <!--          <#% @cart_items.each do |cart_item| %>-->
 <!--          <tr>-->
