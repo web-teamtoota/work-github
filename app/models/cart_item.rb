@@ -21,13 +21,26 @@ validates :amount, numericality:{ only_integer: true }
 
 #   belongs_to :product
 
-  ## 消費税を求めるメソッド
-def with_tax_price
-    (price * 1.1).floor
-end
+
+
+
+
+
+
+#   ## 消費税を求めるメソッド
+# def with_tax_price
+#     (total_payment * 1.1).floor
+# end
+
+
+# def subtotal
+#     item.with_tax_price * amount
+# end
+
 
 ## 小計を求めるメソッド
-def subtotal
-    with_tax_price * amount
+def subtotal    
+  item.with_tax_price * amount
+    #with_tax_price * amount
 end
 end
