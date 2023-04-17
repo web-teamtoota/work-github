@@ -6,10 +6,11 @@ class Public::OrdersController < ApplicationController
   def index
     @order = Order.new
     @orders = Order.all.page(params[:page]).per(10)
-     params[:order][:address_option]
-     @order.postal_code = customer.postal_code
-     @order.address = customer.address
-     @order.name = customer.last_name + customer.first_name
+    # # params[:order][:address_option]
+    # @order.postal_code = customer.postal_code
+    # @order.address = customer.address
+    # @order.name = customer.last_name + customer.first_name
+    # @item.name = current_customer.name
   end
 
 
@@ -50,7 +51,7 @@ end
 
 
 def create
-      @order = Order.new(order_params)
+      # @order = Order.new(order_params)
       #@item = Item.find(params[:item_id])
     #@order = @item.order.new(order_params)
   cart_items = current_customer.cart_items.all
@@ -65,7 +66,7 @@ def create
       @order_item.making_status = 0
       @order_item.save
     end
-    redirect_to orders_path
+    redirect_to orders_thanks_path
     cart_items.destroy_all
   else
     @order = Order.new(order_params)
@@ -90,7 +91,7 @@ end
   #       @order_items.price = cart_item.item.price
   #       @order_items.quantity = cart_item.quantity
   #       @order_items.save
-  #       current_user.cart_items.destroy_all
+  # current_user.cart_items.destroy_all
 
   #   end
 
