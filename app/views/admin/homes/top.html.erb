@@ -17,10 +17,9 @@
               <tr>
                   <td><%= order.created_at %></td>
                   <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
-                  <td><%#= order.amount %></td>
+                  <td><%= order.quantity %></td>
+                   <%= item.quantity %> 
                   <td><%= order.status %></td>
-                   <td></td>
-
              </tr>
                            </div>
               <% end %>
@@ -33,3 +32,5 @@
   <div class="mx-auto" style="width: 400px">
  <%= paginate @orders %>
  </div>
+
+

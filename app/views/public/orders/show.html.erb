@@ -37,16 +37,16 @@
           <tbody>
             <tr>
                 <td class="active">商品合計</td>
-                <td>¥<%= (@order.total_payment - @order.postage).to_s(:delimited) %></td>
+                <td><%= (@order.total_payment - @order.postage).to_s(:delimited) %></td>
             </tr>
             <tr>
               <td class="active">配送料</td>
-              <td>¥<%= @order.postage %></td>
+              <td><%= @order.postage %></td>
             </tr>
             <tr>
               <td class="active"><b>ご請求額</b></td>
-              <td>¥<%= "#{@order.total_payment.to_s(:delimited)}"%></td>
-                  <td><%= (@order.total_payment + @order.total_payment).to_s(:delimited, delimiter: ',') %></td>
+              <td><%= "#{@order.total_payment.to_s(:delimited)}"%></td>
+                  <!--td><%#= (@order.total_payment + @order.total_payment).to_s(:delimited, delimiter: ',') %></td-->
 
             </tr>
           </tbody>
@@ -68,12 +68,12 @@
       <tbody>
         <% @order_details.each do |order_detail| %>
           <tr>
-            <td><%= order_detail.product.name %></td>
-            <td>¥<%= (order_detail.price * 1.1).floor.to_s(:delimited) %></td>
-            <td><%= order_detail.amount %></td>
-            <td>¥<%= (order_detail.price * order_detail.amount * 1.1).floor.to_s(:delimited) %></td>
-                <td><%= (@order.total_payment + @order.total_payment).to_s(:delimited, delimiter: ',') %></td>
-                            <td>¥<%= "{@order.total_payment.to_s(:delimited)}"%></td>
+            <td><%= order_detail.item.name %></td>
+            <td><%= (order_detail.price * 1.1).floor.to_s(:delimited) %></td>
+            <td><%= order_detail.quantity %></td>
+            <td><%= (order_detail.price * order_detail.quantity * 1.1).floor.to_s(:delimited) %></td>
+                <!--td><%#= (@order.total_payment + @order.total_payment).to_s(:delimited, delimiter: ',') %></td-->
+                            <!--td>¥<%#= "{@order.total_payment.to_s(:delimited)}"%></td-->
           </tr>
         <% end %>
       </tbody>
