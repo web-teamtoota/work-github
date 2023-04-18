@@ -4,7 +4,10 @@ class Admin::OrdersController < ApplicationController
  before_action :authenticate_admin!
   before_action :set_order
 
-  def show; end
+  def show
+  
+   
+  end
 
   def update
     @order.update(order_params)
@@ -70,6 +73,7 @@ class Admin::OrdersController < ApplicationController
 
   def show
       @order = Order.find(params[:id])
+      @order_details = Order.order_details.all
   end
 
   def update
@@ -78,7 +82,7 @@ class Admin::OrdersController < ApplicationController
   
     private
    def order_params
-    params.require(:order).permit(:item_id, :order_id, :quantity, :price, :making_status)
+    params.require(:order).permit(:item_id, :order_id, :quantity, :price, :making_status, :postal_code, :address, :name, :total_payment, :postage,:payment_method, :status)
    end
 
   
