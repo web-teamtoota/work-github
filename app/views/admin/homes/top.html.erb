@@ -15,10 +15,15 @@
                           <% @orders.each do |order| %>
                            <div class="col-md-6">
               <tr>
-                  <td><%= order.created_at %></td>
+                <td><%= link_to order.created_at, orders_path %></td>
                   <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
-                  <td><%= order.quantity %></td>
-                   <%= item.quantity %> 
+                  <td>
+                    <% sum =0 %>
+                    <% order.order_details.each do |order_detail|%>
+                     <% sum += order_detail.quantity %>
+                     <% end %>
+                     <%= sum %>
+                  </td>
                   <td><%= order.status %></td>
              </tr>
                            </div>
