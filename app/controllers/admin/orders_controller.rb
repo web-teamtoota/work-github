@@ -4,10 +4,8 @@ class Admin::OrdersController < ApplicationController
  before_action :authenticate_admin!
   before_action :set_order
 
-  def show
-  
-   
-  end
+  # def show
+  # end
 
   def update
     @order.update(order_params)
@@ -73,7 +71,12 @@ class Admin::OrdersController < ApplicationController
 
   def show
       @order = Order.find(params[:id])
-      @order_details = Order.order_details.all
+      @order_details = Order_detail.all
+      
+     @order_details = @order.order_details.all
+
+    @orders = Order.all
+
   end
 
   def update

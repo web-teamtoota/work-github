@@ -61,6 +61,11 @@ devise_for :customers,skip: [:passwords], controllers: {
   get "orders" => "orders#index"
   get "orders/:id" => "orders#show"
   
+  
+get "admin/orders/:id" => "admin/orders#show"
+patch "admin/orders/:id" => "admin/orders#update"
+patch "admin/order_details/:id" => "admin/orders#update"
+  
 
 
   #get "customer/sign_up" => "customers#new"
@@ -75,6 +80,7 @@ devise_for :customers,skip: [:passwords], controllers: {
 
   resources :addresses
   end
+
 
 
 
@@ -96,10 +102,7 @@ devise_for :customers,skip: [:passwords], controllers: {
     get "admin/orders" => "admin#index"
     get "public/items" => "public#index"
 
-    get "admin/orders/:id" => "admin/orders#show"
-    patch "admin/orders/:id" => "admin/orders#update"
-    patch "admin/order_details/:id" => "admin/orders#update"
-
+   
     #get 'admin/index', to: 'admins/items#index'
     #get 'admin/items/new', to: 'admins/items#new'
     #post 'admin/items' , to: 'admins/items#create'
