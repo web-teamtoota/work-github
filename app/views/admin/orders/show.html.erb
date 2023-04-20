@@ -54,52 +54,27 @@
           <th class="active">製作ステータス</th>
         <tr>
       </thead>
-      <%# @order_details.each do |order_detail| %>
-      <%# @order.order_details.each do |order_detail|%>
-
       <tbody>
-        
         
         <%# @order_details.each do |order_detail| %>
           <tr>
-            <td><%#= @order.cart_item.name %></td>
+            <td><%#= @order.item.name %></td>
             <td><%#= (order_detail.price * 1.1).floor.to_s(:delimited) %></td>
             <td><%#= order_detail.quantity %></td>
             <td><%#= (order_detail.price * order_detail.quantity * 1.1).floor.to_s(:delimited) %></td>
-                <!--td><%#= (@order.total_payment + @order.total_payment).to_s(:delimited, delimiter: ',') %></td-->
-                            <!--td>¥<%#= "{@order.total_payment.to_s(:delimited)}"%></td-->
+                <!--<td><%#= (@order.total_payment + @order.total_payment).to_s(:delimited, delimiter: ',') %></td>-->
+                            <!--<td>¥<%#= "{@order.total_payment.to_s(:delimited)}"%></td>-->
           </tr>
         <%# end %>
         
-        
-        
-        
-        <%#= @item.price %>円<br><%#= @item.spostage.name %>
-        　<%#= @cart_item.name %>
-            <div><%#= @order.quantity.to_s(:dalimited) %>円</div>
-
-
-         <td><%= link_to @order.name, admin_order_path(@order.id)%></td>
-                  <td><%#= @order.price.to_s(:delimited)  %></td>
-
-
-         <td><%= link_to @order.name, admin_order_path(@order.id)%></td>
-           <td><%= link_to @order.created_at, orders_path %></td>
-                 <td>
-                    <% sum =0 %>
-                    <% @order.order_details.each do |order_detail|%>
-                     <% sum += order_detail.quantity %>
-                     <% end %>
-                     <%= sum %>
-                  </td>
         <% @order.order_details.each do |order_detail| %>
           <tr>
             <td><%= order_detail.item.name %></td>
             <td><%= (order_detail.price * 1.1).floor.to_s(:delimited) %></td>
             <td><%= order_detail.quantity %></td>
             <td><%= (order_detail.price * order_detail.quantity * 1.1).floor.to_s(:delimited) %></td>
-                <td><%= (@order.total_payment + @order.total_payment).to_s(:delimited, delimiter: ',') %></td-->
-                            <td>¥<%= "{@order.total_payment.to_s(:delimited)}"%></td-->
+
+
           </tr>
         <% end %>
       </tbody>
@@ -130,8 +105,14 @@
     <div>
       <p>
         <strong class="col-xs-3">商品合計</strong>
-         <%= (@order.total_payment - @order.postage).to_s(:delimited)%>円
-      </p>
+        <td><%= (@order.total_payment - @order.postage).to_s(:delimited) %>円</td>
+        <td><%= (@order.total_payment + @order.postage).to_s(:delimited) %>円</td>
+        <td><%= (@order.total_payment).to_i %>円</td>
+        
+        
+        
+
+        </p>
     </div>
     <br>
 
@@ -146,11 +127,31 @@
     <div>
       <p>
         <strong class="col-xs-4">請求金額合計</strong>
-        <%= @order.total_payment.to_s(:delimited) %>円
+        <%#= @order.total_payment.to_s(:delimited) %>
+        <!--td>¥<%#= "#{(@order.total_payment + 800).to_s(:delimited)}"%>円</td-->
+                <td><%= (@order.total_payment).to_s(:delimited) %>円</td>
 
+
+
+                <%#= (total_payment + 800).to_s(:delimited) %>
+
+           <!--td>¥<%#= (@order.total_payment + @order.postage).to_s(:delimited, delimiter: ',') %></td-->
+
+                 <!--<td>-->
+                 <!--   <#% sum =0 %>-->
+                 <!--   <%# @order.order_details.each do |order_detail|%>-->
+                 <!--    <%# sum += order_detail.quantity %>-->
+                 <!--    <%# end %>-->
+                 <!--    <%#= sum %>-->
+                 <!-- </td>-->
       </p>
     </div>
     <br>
   </div>
 </div>
 </div>
+
+
+
+
+
