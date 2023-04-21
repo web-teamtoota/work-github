@@ -7,7 +7,7 @@
              </div>
   <div class="container">
   <div class="row align-items-center" style="height:50px">
-
+ 
     <div class="col">
    <div><% if @item.image.attached? %>
    <%= image_tag @item.image, size: "200x200" %>
@@ -21,13 +21,12 @@
 <div class="mx-auto" style="width: 400px">
   <div>商品名　　<%= @item.name %></div>
   <div>商品説明　　<%= @item.introduction %></div>
-    <div>税込価格（税抜価格）　<%= @item.with_tax_price.to_s(:dalimited) %>円　(<%= @item.price.to_s(:delimited) %>円)</div>
-
-  <div>販売ステータス
+   <div>税込価格（税抜価格）　<%= @item.with_tax_price.to_s(:delimited) %>　(<%= @item.price.to_s(:delimited) %>)円</div>
+  <div>販売ステータス　
   <% if @item.is_active==true %>
-  　　販売中
+  　<td><div class="text-success">販売中</div></td>
   <% else %>
-  　　販売停止中
+     <td><p class="text-secondary">販売停止中</p></td>
   <% end %>
   </div>
   </br>
