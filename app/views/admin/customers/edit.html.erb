@@ -3,125 +3,65 @@
    
       
   <%= form_with model: @customer, url:admin_customer_path(@customer.id) do |f| %>
-  <table>
-<tr>
-  <th>
-      <div class="field">
-       <td>  <%= f.label :会員ID %>
-  
-     </td>
-     </div>
-   </th>
-   <th><%= @customer.id %>
- <td>
-     </div>
-     
-    </td>
-   </th>
-</tr>
- 
- <tr>
-  <th>
-      <div class="field">
-       <td>  <%= f.label :氏名 %>
-     </td>
-   </th>
-   <th>
-     <td><%= f.text_field :last_name, autofocus: true, id:"inputName", placeholder:"山田"%>
-    </th>
-      </td>
-    
-       <td>
-          <th>
-         <%= f.text_field :first_name, autofocus: true, id:"inputName", placeholder:"花子"%>
-     </th>
-     </td>
-  </tr>
+  <div class="container">
+  <div class="col-lg-10 offset-lg-1">
+    <div class="row">
+      <div class="col-lg-5 text-center mb-3">
+        <h2 class="head-line title_h2 text-center">登録情報編集</h2>
+      </div>
     </div>
+
+    <%#= form_with(model:@customer, url:customer_path, local: true ,method: :put) do |f| %>
     
-    
-     <tr>
-  <th>
-      <div class="field">
-       <td>  <%= f.label :フリガナ %>
-  
-     </td>
-   </th>
-   <th><td><%= f.text_field :last_name_kana, autofocus: true, id:"inputName", placeholder:"ヤマダ"%>
-      </th></td>
-     <th><td><%= f.text_field :first_name_kana, autofocus: true, id:"inputName", placeholder:"ハナコ"%>
-     </th></td></tr>
-    </div>
-    
-    
-    <tr>
-  <th>
-      <div class="field">
-       <td>  <%= f.label :郵便番号 %>
-  
-     </td>
-   </th>
-   <th> <%= f.text_field :postal_code, autofocus: true, id:"inputName", placeholder:"1500041"%>
- <td>
-     </div>
-     
-    </td>
-   </th>
-</tr>
- 
- 
-    <tr>
-  <th>
-      <div class="field">
-       <td>  <%= f.label :住所 %>
-  
-     </td>
-   </th>
-   <th> <%= f.text_field :address, autofocus: true, id:"inputName", placeholder:"東京都渋谷区神南１丁目１９-１１ パークウェースクエア２４階"%>
- <td>
-     </div>
-     
-    </td>
-   </th>
-</tr>
+  <div class="field">
+   <td>  <%= f.label :会員ID %> &emsp;
+     <th><%= @customer.id %>
+   </td>
+  </div>
 
-<tr>
-  <th>
-      <div class="field">
-       <td>  <%= f.label :電話番号 %>
-  
-     </td>
-   </th>
-   <th><%= f.text_field :telephone_number, autofocus: true, id:"inputName", placeholder:"0368694700"%> 
- <td>
-     </div>
-     
-    </td>
-   </th>
-</tr>
+      <div class="row field">
+        <%= f.label :"氏名", class: "col-lg-2" %>&emsp; 
+        <%= f.text_field :last_name, autofocus: true, id:"inputName", placeholder:"山田"%>
+        <%= f.label :　, class: "col-lg-1 text-right" %>
+        <%#= f.text_field :last_name, class:"col-xs-2" %>
+        <%= f.text_field :first_name, autofocus: true, id:"inputName", placeholder:"花子"%>
+        <%= f.label :　, class: "col-lg-1 text-right" %>
+        <%#= f.text_field :first_name, class:"col-xs-2" %>
+      </div>
+
+      <div class="row field">
+        <%= f.label :"フリガナ", class: "col-lg-2" %>
+        <%= f.text_field :last_name_kana, autofocus: true, id:"inputName", placeholder:"ヤマダ"%>
+        <%= f.label :　, class: "col-lg-1 text-right" %>
+        <%#= f.text_field :last_name_kana, class:"col-xs-2"%>
+         <%= f.text_field :first_name_kana, autofocus: true, id:"inputName", placeholder:"ハナコ"%>
+        <%= f.label :　, class: "col-lg-1 text-right" %>
+        <%#= f.text_field :first_name_kana, class:"col-xs-2" %>
+      </div>
 
 
+      <div class="row field">
+        <%= f.label :"郵便番号", class: "col-lg-3" %>
+           <th> <%= f.text_field :postal_code, autofocus: true, id:"inputName", placeholder:"1500041"%>
+      </div>
 
-<tr>
-  <th>
-      <div class="field">
-       <td>  <%= f.label :メールアドレス %>
-  
-     </td>
-   </th>
-   <th><%= f.text_field :email, autofocus: true, id:"inputName", placeholder:"hoge@example.com"%> 
- <td>
-     </div>
-     
-    </td>
-   </th>
-</tr>
+      <div class="row field">
+        <%= f.label :"住所", class: "col-lg-10" %> &emsp;
+           <th> <%= f.text_field :address, autofocus: true, id:"inputName", placeholder:"東京都渋谷区神南１丁目１９-１１ パークウェースクエア２４階"%>
+        <div class="col-lg-1"></div>
+      </div>
 
-
+      <div class="row field">
+        <%= f.label :"電話番号", class: "col-lg-3" %>
+           <th><%= f.text_field :telephone_number, autofocus: true, id:"inputName", placeholder:"0368694700"%> 
+      </div>
 
 
-
-  <tr>
+ <div class="row field">
+          <%= f.label :"メールアドレス", class: "col-lg-2" %>
+     <th><%= f.text_field :email, autofocus: true, id:"inputName", placeholder:"hoge@example.com"%> 
+      </div>
+      <tr>
   <th>
       <div class="field">
        <td>  <%= f.label :会員ステータス %>
@@ -135,15 +75,5 @@
      <th><td>
         </div>
      </tr>
-   
-
+       </div>
 </div>
-</table>
-
- 
- 
- 
- 
- 
- 
- 
