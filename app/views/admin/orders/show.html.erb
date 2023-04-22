@@ -69,7 +69,8 @@
           <td>
 
             <%= form_with model:order_detail, url: admin_order_detail_path(order_detail.id), local: true do |f| %>
-              <%= f.select :make_status, ["製作不可", "製作待ち", "製作中", "製作完了"] %>
+              <%#= f.select :making_status, ["製作不可", "製作待ち", "製作中", "製作完了"] %>
+              <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %>
               <%= f.submit "更新", class: 'btn btn-primary' %>
             <% end %>
           </td>

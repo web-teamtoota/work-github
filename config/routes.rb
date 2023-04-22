@@ -28,8 +28,8 @@ devise_for :customers,skip: [:passwords], controllers: {
 
 
 patch "order_details/:id" => "order_details#update",as:"order_detail"
+patch "orders/:id" => "orders#update",as:"order"
 get "orders/:id" => "orders#show"
-patch "orders/:id" => "orders#update"
 
 # get "order_details/:id" => "orders#update"
 #  get "admin/order_details/:id" => "admin/orders#update"
