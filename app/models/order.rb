@@ -24,7 +24,7 @@ has_many :order_details, dependent: :destroy
 #   発送準備中: 3,
 #     発送済み: 4
 #   }
-  
+
 
 #  scope :waiting_payment, -> { where(status: 'waiting_payment') }
 #  scope :confirm_payment, -> { where(status: 'confirm_payment') }
