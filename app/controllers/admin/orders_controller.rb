@@ -19,7 +19,7 @@ class Admin::OrdersController < ApplicationController
 
     if @order.status == "入金確認"
       @order_details.each do |order_detail|
-        order_detail.make_status = "製作待ち"
+        order_detail.making_status = "awaiting_manufacture"
         order_detail.save
       end
     end
