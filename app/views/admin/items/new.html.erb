@@ -1,31 +1,38 @@
+<div class="mx-auto" style="width: 800px">
+  <div class="container">
+    <span class="text-light bg-secondary px-3">商品新規登録
+    </span>
+  </div>
+</div>
+
 <div class="mx-auto" style="width: 400px">
-  <h3>商品新規登録</h3>
+  <h3></h3>
    <%= form_with model: @item, url:admin_items_path ,local: false do |f| %>
   <div class="inputImage">
-    <%= f.label :商品画像 %> &emsp;
+    <%= f.label :商品画像 %>　　　　　　　　　　
   <%= f.file_field :image, placeholder: "商品画像", accept: "image/*" %>
   </div>
   <div class="field">
-      <%= f.label :商品名 %> &emsp; 
+      <%= f.label :商品名 %>　　
       <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"商品名"%>
     </div>
     <div class="field">
-      <%= f.label :商品説明 %> &emsp;
+      <%= f.label :商品説明 %>　 　　　　　　　　　
        <%#= f.text_area :introduction, autofocus: true, id:"inputName", placeholder:"ここに説明文を記述します"  cols="30" rows="5" %>
-    </div>     
-    <textarea placeholder="ここに説明文を記述します。" cols="30" rows="5" ></textarea>
+    　　　　　<textarea placeholder="ここに説明文を記述します。" cols="30" rows="5" ></textarea>
+   　</div>
     <div class="field">
-      <%= f.label :税抜価格 %> &emsp;
+      <%= f.label :税抜価格 %>　
       <%= f.text_field :price, autofocus: true, id:"inputPrice", placeholder: "1,000" %>円
     </div>
     <label>
-      <%= f.label :販売ステータス %> &emsp;
+      <%= f.label :販売ステータス %> 
       <%= f.radio_button :is_active, true %> 販売中
     </label>
     <label><%= f.radio_button :is_active, false %> 販売停止中
     </label>
     <div class="actions">
-      <%= f.submit "新規登録",class: "btn btn-success" %>
+      　　　　　　　<%= f.submit "新規登録",class: "btn btn-success" %>
     </div>
      <% end %>
 
