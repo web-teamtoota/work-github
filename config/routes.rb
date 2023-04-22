@@ -24,7 +24,15 @@ devise_for :customers,skip: [:passwords], controllers: {
   root to: 'homes#top'
   resources :items
   resources :customers
-  resources :orders
+#   resources :orders
+
+
+patch "order_details/:id" => "order_details#update",as:"order_detail"
+get "orders/:id" => "orders#show"
+patch "orders/:id" => "orders#update"
+
+# get "order_details/:id" => "orders#update"
+#  get "admin/order_details/:id" => "admin/orders#update"
 
   #resources :sessions
   #get "admin/sign_in" => "admins#new"
@@ -32,9 +40,14 @@ devise_for :customers,skip: [:passwords], controllers: {
   #delete "admin/sign_out" => "admins#destroy"
   end
 
+
+
+
+
   #get "admin/order" => "admin/orders#show"
   #patch "admin/order" => "admin/orders#update"
   #patch "admin/order_details" => "admin/order_details/:id#update"
+
 
 
   scope module: :public do
@@ -60,12 +73,9 @@ devise_for :customers,skip: [:passwords], controllers: {
   post "orders" => "orders#create"
   get "orders" => "orders#index"
   get "orders/:id" => "orders#show"
-  
-  
-get "admin/orders/:id" => "admin/orders#show"
-patch "admin/orders/:id" => "admin/orders#update"
-patch "admin/order_details/:id" => "admin/orders#update"
-  
+
+
+
 
 
   #get "customer/sign_up" => "customers#new"
@@ -102,7 +112,7 @@ patch "admin/order_details/:id" => "admin/orders#update"
     get "admin/orders" => "admin#index"
     get "public/items" => "public#index"
 
-   
+
     #get 'admin/index', to: 'admins/items#index'
     #get 'admin/items/new', to: 'admins/items#new'
     #post 'admin/items' , to: 'admins/items#create'

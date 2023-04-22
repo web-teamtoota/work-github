@@ -8,10 +8,13 @@ class Public::CartItemsController < ApplicationController
     @total_price = 0
     @item = Item.new
 
-
     @cart_items=current_customer.cart_items.all
     @cart_items.each do |cart_item|
     @total_price += cart_item.item.with_tax_price*cart_item.amount
+    
+         @cart_item = current_customer.orders
+     @total = 0
+    
     end
 
   end
