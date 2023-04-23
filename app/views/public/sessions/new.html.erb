@@ -6,16 +6,16 @@
 <%= render "public/shared/links" %>
 
 <div class="field">
-  <%= f.label :メールアドレス %>
+  　　　　<%= f.label :メールアドレス %>　　
   <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"sample@example.com"%>
 </div>
 <div class="field">
-  <%= f.label :パスワード %>
+  　　　　<%= f.label :パスワード %>　　　　
   <%= f.password_field :password, autocomplete: "current-password" %>
 </div>
-<div class="actions">
-  <%= f.submit "ログイン" ,class: "btn btn-primary"%>
+<div class="actions"></br>　　　　　
+  　　　　　　　　　<%= f.submit "ログイン" ,class: "btn btn-primary"%>
 </div>
-<% end %>
+<% end %></br>
 <h5>会員登録がお済みでない方</h5>
-<%= link_to "こちら", new_customer_registration_path %>から新規登録を行ってください。
+　　　　<%= link_to "こちら", new_customer_registration_path %>から新規登録を行ってください。
