@@ -8,7 +8,7 @@ Bundler.require(*Rails.groups)
 
 module WorkGithub
   class Application < Rails::Application
-    config.time_zone = 'Tokyo'
+
     
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
@@ -21,6 +21,7 @@ module WorkGithub
      
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
-    
+     config.time_zone = 'Tokyo'
+
   end
 end
