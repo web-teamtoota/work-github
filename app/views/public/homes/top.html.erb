@@ -1,24 +1,40 @@
-<div class="mx-auto" style="width: 600px">
-<div class='p-top'>
-      <p class='p-top__item'>
-        <h6>ようこそ、ながのCAKEへ！</br>
-        このサイトは、ケーキ販売のECサイトになります。</br>
-        会員でない方も商品の閲覧はできますが、</br>
-        購入には会員登録が必要になります。
-        </h6>
-      </p>
+<div class="mx-auto" style="width: 400px">
+  <div class='p-top'>
+    <p class='p-top__item'>
+      <h6>ようこそ、ながのCAKEへ！</br>
+      このサイトは、ケーキ販売のECサイトになります。</br>
+      会員でない方も商品の閲覧はできますが、</br>
+      購入には会員登録が必要になります。
+      </h6>
+    </p>
+  </div>
 </div>
-
 <h1>新着商品</h1>
-<% @items.each do |item| %>
-   <div><% if item.image.attached? %>
-  <%= image_tag item.image, size: "90x90" %>
-<% else %>
-  <%= image_tag 'no_image', size: "90x90" %>
-<% end %>
+<div class="container"> 
+  <div class="row">
+        <p id="notice"><%= notice %>
+        </p>
+        <div class="col-lg-8 mx-auto">
+          <div class="row">
+            <% @items.each do |item| %>
+            <div class="col-3">
+              <% if item.image.attached? %>
+              <%= image_tag item.image, size: "90x90" %>
+              <% else %>
+              <%= image_tag 'no_image', size: "90x90" %>
+              <% end %>
+              <p>
+                <%= item.name %>
+              </p>
+              <p>
+                ¥<%= item.price.to_s(:delimited) %>
+              </p>
+            </div>
+              <% end %>
+          </div>
+        </div>
+  </div>
 </div>
-<div><%= item.name %></div>
-<!--div><!%= item.price %>円</div-->
-<% end %>
-<%= link_to "全ての商品を見る>", items_path %>
-</div>
+    <p class="text-right">
+    <%= link_to "全ての商品を見る>", items_path %>
+  　</p>

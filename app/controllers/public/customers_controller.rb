@@ -13,25 +13,49 @@ class Public::CustomersController < ApplicationController
     @customers = Customer.all
   end
 
+
+# def create
+#     if
+#     Customer.create(customer_params)
+#       redirect_to root_path
+#     else
+#       render :new
+#     end
+#   end
+
  def create
   #@customer = Customer.new(customer_params)
   @customer = current_customer.id
   @customers = Customer.all
+  # @user.save
+  
   @customer.save
   redirect_to customer_path(current_customer.id)
  end
   
   
   def edit
-       @customer == current_customer
+       @customer = current_customer
   end
 
-  def update
-     @customer = Customer.find(params[:id])
-      @customer.update(customer_params)
-       redirect_to customer_path(@customer.id)
+
+def update
+        @customer = current_customer
+        if @customer.update(customer_params)
+        # flash[:update] = "You have updated user info successfully."
+        redirect_to customer_path(@customer.id)
+        else
+        render 'edit'
+        end
+end
+
+
+  # def update
+  #    @customer = Customer.update(params[:id])
+  #     @customer.update(customer_params)
+  #      redirect_to customer_path(@customer.id)
     
-  end
+  # end
   
   
   before_action :authenticate_customer!
