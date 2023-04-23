@@ -19,3 +19,10 @@ ja: #　日本語の設定
         under_manufacture: "製作中"
         completed_production: "製作完了"
         
+
+        
+# ja:
+#   time: "%H:%M:%S"
+#     formats:
+#       default: "%Y/%m/%d %H:%M:%S"
+#       short: "%m/%d %H:%M"

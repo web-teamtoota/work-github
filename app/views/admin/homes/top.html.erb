@@ -15,7 +15,7 @@
                           <% @orders.each do |order| %>
                            <div class="col-md-6">
               <tr>
-                <td><%= link_to order.created_at, orders_path %></td>
+                <td><%= link_to order.updated_at.strftime("%Y/%m/%d %H:%M:%S"), orders_path %></td>
                   <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
                   <td>
                     <% sum =0 %>
