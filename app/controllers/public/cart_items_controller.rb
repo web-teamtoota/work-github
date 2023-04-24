@@ -11,17 +11,17 @@ class Public::CartItemsController < ApplicationController
     @cart_items=current_customer.cart_items.all
     @cart_items.each do |cart_item|
     @total_price += cart_item.item.with_tax_price*cart_item.amount
-
+    
          @cart_item = current_customer.orders
      @total = 0
-
+    
     end
 
   end
 
 
     def show
-        # @cart_item = CartItem.find(params[:id])
+        @cart_item = CartItem.find(params[:id])
     end
 
 

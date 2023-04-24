@@ -1,13 +1,9 @@
-
-
-
-
 <!--<%#= form_with model: @item, url: 'admin_items', method: :get do |f| %>-->
 <!--<#% end %>-->
   <!--<div class="mx-auto" style="width: 800px">-->
               <!-- <div class="container">-->
               <!--   <span class="text-light bg-secondary px-3">商品詳細</span>-->
-            　 <!--</div>-->
+             <!--</div>-->
   <!--           </div>-->
 <div class="container">
   <div class="row align-items-center" style="height:50px">
@@ -21,30 +17,30 @@
       </div>
     </div>
   </div>
-</div
-<div class="mx-auto" style="width: 400px">
-  <div><%= @item.name %></div>
-  <div><%= @item.introduction %></div>
-  <H3>¥<%= @item.with_tax_price.to_s(:delimited)%></H3>
-  <h6>(税込)</H6>
-
-  </br>
-  <div class="mx-auto" style="width: 200px">
-    <div class="action">
-      <%= form_with model: @cart_item do |f| %>
-      <div class="form-group">
+</div>
+<div class="mx-auto" style="width: 500px">
+  <h3><strong><div><%= @item.name %></div></strong></h3>
+  <h4><%= @item.introduction %></h4></br>
+   <h3><p><strong class="col-xs-4">¥<%= @item.with_tax_price.to_s(:delimited)%>(税込)</strong></p></h3>
+ 
+      <%= form_with model: @cart_items do |f| %>
+      <!--<div class="form-group">-->
       <%= f.hidden_field :item_id, value: @item.id %>
-      <%= f.select :amount, *[1..10] %>
+      <%#= f.select :amount, *[1..10] %>
       <%#= f.select :amount, [['いち',1], ['に',2], ['さん',3]] %>
       <%#= f.hidden_field :item_id, :value => @item.id %>
-      <%= f.submit "カートに入れる",class: "btn btn-success" %>
-      <!--<%#= f.select :select, {'1': 1, '2': 2}, { include_blank: '個数選択'}, { class: 'form-control' , required: true } %>-->
-      </div>
-      <% end %>
-    </div>
-  </div>
+           <!--</div>-->
+     </div>
+
+ <div class="mx-auto" style="width: 150px">
+   <%= f.select :select, {'1': 1, '2': 2,'3': 3 ,'4': 4,'5': 5, '6': 6,'7': 7, '8': 8,'9': 9, '10': 10}, { include_blank: '個数選択'}, { class: 'form-control' , required: true } %>
+   　　　　　　　　　　　　
+   　　　　　　　　　　　　
+   　　　　　　<%= f.submit "カートに入れる",class: "btn btn-success" %>
+   <% end %>
+ </div>
+
 
   <!--  <div style="text-align:center">-->
     <!--<%#= link_to "カートに入れる",  cart_items_path(@item.id) ,class: "btn btn-success" %>-->
   <!--</div>-->
-
