@@ -1,6 +1,13 @@
+  <div class="mx-auto" style="width: 1000px">
+     <div class="container">
+       <span class="text-light bg-secondary px-3">注文情報確認
+       </span>
+     </div>
+  </div>
+
+
+
 <div class="container">
-<h1>注文情報確認</h1>
-  <div class="row">
     <div class="col-xs-8">
       <table class="table">
       <thead>
@@ -53,25 +60,12 @@
         </table>
       </div>
   </div>
-  <div class="row">
-    <h3>支払方法</h3></br>
-    <h4><%#= (@order.payment_method == 0) ? "クレジットカード" : "銀行振込" %></h4>
-      <h4><%= @order.payment_method %></h4>
-      <%= f.hidden_field :payment_method, :value => @order.payment_method %></br>
-    <h3>お届け先</h3>
-    <h4>〒<%= @order. postal_code %></h4>
-    <%= f.hidden_field :postal_code, :value => @order.postal_code %>
-      <%#= @order.name.to_s.insert(3, "-") %></br>
-
-      <%= @order.address %></br>
-      <%= f.hidden_field :address, :value => @order.address %>
-
-      <%= @order.name %></br>
-      <%= f.hidden_field :name, :value => @order.name %>
-  </div>
-    <% end %>
-    </div>
 </div>
+　　　<strong>支払方法</strong>　<%= @order.payment_method %><%= f.hidden_field :payment_method, :value => @order.payment_method %></br>
+　　　<strong>お届け先</strong>　〒<%= @order. postal_code %><%= f.hidden_field :postal_code, :value => @order.postal_code %>
+      <%#= @order.name.to_s.insert(3, "-") %>　<%= @order.address %>　<%= f.hidden_field :address, :value => @order.address %></br>
+      　　　　　　　　<%= @order.name %>　<%= f.hidden_field :name, :value => @order.name %>
+    <% end %>
 <!-- ユーザーには注文確定ボタンだけ表示します -->
 <!--<%#= form_with model: @order, url:orders_thanks_path, local: true do |f| %>-->
 <!--  <%#= f.hidden_field :name %>-->
@@ -137,20 +131,8 @@
 <%= f.hidden_field :customer_id, :value => @order.customer_id %>
 <%= f.hidden_field :total_payment, :value => @order.total_payment %>
 <%= f.hidden_field :postage, :value => @order.postage %>
-<%= f.submit "注文を確定する", class:"btn btn-success" %>
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　<%= f.submit "注文を確定する", class:"btn btn-success" %>
 <% end %>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <!--<h2>注文情報確認</h2>-->

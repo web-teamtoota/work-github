@@ -65,6 +65,7 @@ get "orders/:id" => "orders#show"
   #get "customer/withdraw" => "customers#withdraw"
 
   resources :items
+#   get "items/:id" => "item#show"
   #resources :orders
   get "orders/new" => "orders#new"
   post "orders/confirm" => "orders#confirm"

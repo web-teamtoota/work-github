@@ -1,7 +1,7 @@
+v
 
 
 <div class="container">
-  <h3>注文履歴一覧</h3>
   <table class="order-table table">
     <thead>
       <tr>
@@ -16,9 +16,9 @@
     <% @orders.each do |order| %>
       <tbody>
         <tr>
-          <td><%= order.created_at.to_s(:datetime_jp) %></td>
+          <td><%= order.created_at.to_s(:datetime) %></td>
           <td>
-            <%= order.postal_code %><br/>
+            〒<%= order.postal_code %><br/>
             <%= order.address %><br/>
             <%= order.name %></br>
             <%#= item.order.name %></br>
@@ -32,11 +32,19 @@
           </td>
           <td><%= "#{order.total_payment.to_s(:delimited)}" %>円</td>
           <td><%= order.status %></td>
-          <td><%= link_to '表示する', orders_path(order.id) %></td>
+          <%= form_with model: @order, url: orders_path, method: :post do |f| %>
+
+         
+                     
+          <td><%= link_to '表示する︎?', orders_path(order.id),class:"btn btn-primary" %></td>
+
+          <td><%= f.submit "表示する", class:"btn btn-primary" %></td>
+              <% end %>
+            <td><%= link_to '表示する✖︎', orders_path(order.id) %></td>
+           
         </tr>
       </tbody>
     <% end %>
   </table>
     <%= paginate @orders %>
 </div>
-

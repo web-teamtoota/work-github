@@ -1,6 +1,15 @@
+  <div class="mx-auto" style="width: 1000px">
+     <div class="container">
+       <span class="text-light bg-secondary px-3">注文履歴詳細
+       </span>
+     </div>
+  </div>
+
+
+
+
 <div class="container">
   <div class="row">
-    <div>注文履歴詳細</div>
     <div class="col-xs-8">
       <b>注文情報</b>
         <table class="table order-show-table">
@@ -11,8 +20,8 @@
             <tr>
                 <td class="active">配送先</td>
                 <td>
-                    <%= @order.postal_code %>
-                    <%= @order.address %>
+                    〒<%= @order.postal_code %></br>
+                    <%= @order.address %></br>
                     <%= @order.name %>
                 </td>
                             </tr>
