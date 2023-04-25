@@ -7,14 +7,10 @@ class Public::CartItemsController < ApplicationController
     @cart_item = CartItem.new(params[:id])
     @total_price = 0
     @item = Item.new
-
     @cart_items=current_customer.cart_items.all
     @cart_items.each do |cart_item|
     @total_price += cart_item.item.with_tax_price*cart_item.amount
-    
-         @cart_item = current_customer.orders
-     @total = 0
-    
+    @cart_item = current_customer.orders
     end
 
   end
@@ -57,7 +53,7 @@ class Public::CartItemsController < ApplicationController
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.customer_id = current_customer.id
     # byebug
-    @cart_item.save!
+    @cart_item.save
      #save cart_item
       redirect_to cart_items_path
     end

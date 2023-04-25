@@ -1,4 +1,9 @@
-v
+  <div class="mx-auto" style="width: 1000px">
+     <div class="container">
+       <span class="text-light bg-secondary px-3">注文履歴一覧
+       </span>
+     </div>
+  </div>
 
 
 <div class="container">
@@ -34,14 +39,12 @@ v
           <td><%= order.status %></td>
           <%= form_with model: @order, url: orders_path, method: :post do |f| %>
 
-         
-                     
-          <td><%= link_to '表示する︎?', orders_path(order.id),class:"btn btn-primary" %></td>
+
+
+          <td><%= link_to '表示する︎?', orders_path(order),class:"btn btn-primary" %></td>
 
           <td><%= f.submit "表示する", class:"btn btn-primary" %></td>
               <% end %>
-            <td><%= link_to '表示する✖︎', orders_path(order.id) %></td>
-           
         </tr>
       </tbody>
     <% end %>

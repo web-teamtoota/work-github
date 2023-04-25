@@ -1,9 +1,82 @@
-  <div class="mx-auto" style="width: 1000px">
+  <div class="mx-auto" style="width: 1300px">
      <div class="container">
        <span class="text-light bg-secondary px-3">注文情報確認
        </span>
      </div>
   </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-10">
+      <div class="row my-4">
+        <div class="col-6">
+        </div>
+      
+      </div>
+      <div class="row">
+        <table class="table col-12 table-bordered">
+          <thead class="bg-light">
+            <tr>
+              <th class="text--light">商品名</th>
+              <th class="text--light">単価（税込）</th>
+              <th class="text--light">数量</th>
+              <th class="text--light">小計</th>
+              <th></th>
+            </tr>
+          </thead>
+          <% @cart_items.each do |cart_item| %>
+          <tbody>
+                <th class="text-left"><%= image_tag cart_item.item.image, size: "60x50" %>
+                <%#= image_tag cart_item.item.image, size: "50x50" %>　<%= cart_item.item.name %></th>
+            <td class="text-left"><%= cart_item.item.with_tax_price.to_s(:delimited, delimiter: ',') %></td>
+            <%= form_with model: cart_item, url: cart_item_path(cart_item) do |f| %>
+            <td class="text-left"><%= f.select:amount,[[cart_item.amount],['0',0],['1',1],['2',2],['3',3],['4',4],['5',5],['6',6],['7',7],['8',8],['9',9],['10',10]],class:"mr-1" %>
+            <%= f.submit "変更", class:"btn btn-success ml-1" %>
+            <% end %></td>
+            <td class="text-left"><%= (cart_item.item.with_tax_price*cart_item.amount).to_s(:delimited, delimiter: ',') %></td>
+            <td class="text-center"><%= link_to "削除する", cart_item_path(cart_item.id),method: :delete, class:"btn btn-danger" %></td>
+          </tbody>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-6 text-left">
+      <%= link_to "買い物を続ける", root_path, class:"btn btn-primary ml-4" %>
+    </div>
+    <table class="table table-bordered col-4 text-left">
+      <tr>
+        <th class="text-left">合計金額</th>
+        <td class="text-left"><%= @total_price.to_s(:delimited, delimiter: ',') %></td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-10 ">
+      <div class="text-center">
+       <%= link_to "情報入力に進む", orders_new_path, class:"btn btn-success ml-4" %>
+      </div>
+    </div>
+  </div>
+</div>
+          
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
