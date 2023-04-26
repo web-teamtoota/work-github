@@ -7,138 +7,118 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-10">
-      <div class="row my-4">
-        <div class="col-6">
-        </div>
-      
-      </div>
-      <div class="row">
-        <table class="table col-12 table-bordered">
+        <table class="table col-5 table-bordered">
           <thead class="bg-light">
             <tr>
               <th class="text--light">商品名</th>
               <th class="text--light">単価（税込）</th>
               <th class="text--light">数量</th>
               <th class="text--light">小計</th>
-              <th></th>
             </tr>
-          </thead>
-          <% @cart_items.each do |cart_item| %>
+          
           <tbody>
+          <% @cart_items.each do |cart_item| %>
+          
                 <th class="text-left"><%= image_tag cart_item.item.image, size: "60x50" %>
                 <%#= image_tag cart_item.item.image, size: "50x50" %>　<%= cart_item.item.name %></th>
             <td class="text-left"><%= cart_item.item.with_tax_price.to_s(:delimited, delimiter: ',') %></td>
             <%= form_with model: cart_item, url: cart_item_path(cart_item) do |f| %>
-            <td class="text-left"><%= f.select:amount,[[cart_item.amount],['0',0],['1',1],['2',2],['3',3],['4',4],['5',5],['6',6],['7',7],['8',8],['9',9],['10',10]],class:"mr-1" %>
-            <%= f.submit "変更", class:"btn btn-success ml-1" %>
-            <% end %></td>
+            <td class="text-left"><%= cart_item.amount %></td>
+                        <% end %></td>
             <td class="text-left"><%= (cart_item.item.with_tax_price*cart_item.amount).to_s(:delimited, delimiter: ',') %></td>
-            <td class="text-center"><%= link_to "削除する", cart_item_path(cart_item.id),method: :delete, class:"btn btn-danger" %></td>
           </tbody>
           <% end %>
-        </table>
-      </div>
-    </div>
-  </div>
+          </thead>
+           </table>　　　　　　　
+    <p class="text-light">
+
+  <!--<div class="row">-->
+        <table class="table col-5 table-bordered">
+
+
+                    <!--<thead class="text-light">-->
+            <tr>
+              <tbody>
+       <span class="text-light bg-secondary px-3">
+           <!--<thead class="thead-light">-->
+
+      <th class="text--light">送料</th></span>
+              <th class="text--light"><%= @order.postage.to_s(:delimited) %></th>
+                          <tr>
+
+                <th class="text-left">商品合計</th>
+               <th class="text-left"><%= @total_price.to_s(:delimited) %>　</th>
+                           </tr>
+            <tr>
+            <th class="text-left">請求金額</th>
+            <th class="text-left"><%= (@total_price + 800).to_s(:delimited) %></th>
+                        </tr>
+                        
+                         <!--</thead> -->
+                         
+            </tbody>
+             </tr>
+             <!--</thead>-->
+             </table>
+             <!--</div>-->
+       </p>
+                    </div>
+
 </div>
-<div class="container">
-  <div class="row">
-    <div class="col-6 text-left">
-      <%= link_to "買い物を続ける", root_path, class:"btn btn-primary ml-4" %>
-    </div>
-    <table class="table table-bordered col-4 text-left">
-      <tr>
-        <th class="text-left">合計金額</th>
-        <td class="text-left"><%= @total_price.to_s(:delimited, delimiter: ',') %></td>
-      </tr>
-    </table>
-  </div>
+
+
+
+
+
+<!--<div class="container">-->
+<!--  <div class="row">-->
+<!--    <table class="table table-bordered col-4 text-light">-->
+<!--      <tr>-->
+<!--        <th class="text-light">合計金額</th>-->
+<!--        <td class="text-light"><%#= @total_price.to_s(:delimited, delimiter: ',') %></td>-->
+<!--      </tr>-->
+<!--    </table>-->
+<!--  </div>-->
+<!--</div>-->
+
+
 </div>
-<div class="container mt-4">
-  <div class="row justify-content-center">
-    <div class="col-10 ">
-      <div class="text-center">
-       <%= link_to "情報入力に進む", orders_new_path, class:"btn btn-success ml-4" %>
-      </div>
-    </div>
-  </div>
-</div>
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="container">
-    <div class="col-xs-8">
-      <table class="table">
-      <thead>
-        <tr>
-          <th>商品名</th>
-          <th>単価（税込）</th>
-          <th>数量</th>
-          <th>小計</th>
-        </tr>
-      </thead>
-      <tbody>
-      <% @cart_items.each do |cart_item| %>
-        <tr>
-            <td><%= image_tag cart_item.item.image, size: "70x50" %><%= cart_item.item.name %></td>
-              <%#= attachment_image_tag cart_item.item, :image, fallback: "no_image.jpg", size:"80x50" %>
-          <td><%= (cart_item.item.price * 1.1).floor.to_s(:delimited) %></td>
-          <td><%= cart_item.amount %></td>
-          <td><%= (cart_item.item.price * cart_item.amount * 1.1).floor.to_s(:delimited) %></td>
-          <td><%#= cart_item.subtotal%></td>
-
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
       <%= form_with model: @order, url: orders_path, local: true do |f| %>
-    <div class="col-xs-3">
-        <table class="table">
-          <tbody>
-            <tr>
-              <td class="confirm-td">送料</td>
-              <td>
-                <%= @order.postage.to_s(:delimited) %>
-                  <%= f.hidden_field :postage, :value => @order.postage %>
-              </td>
-            </tr>
-            <tr>
-              <td class="confirm-td">商品合計</td>
-              <td>
-                <%= @total_price.to_s(:delimited) %>
-              </td>
-            </tr>
-            <tr>
-              <td class="confirm-td">請求金額</td>
-              <td>
-                <%= (@total_price + 800).to_s(:delimited) %>
-                <%= f.hidden_field :total_fee, :value => (@total_price + 800) %>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-  </div>
-</div>
+
 　　　<strong>支払方法</strong>　<%= @order.payment_method %><%= f.hidden_field :payment_method, :value => @order.payment_method %></br>
 　　　<strong>お届け先</strong>　〒<%= @order. postal_code %><%= f.hidden_field :postal_code, :value => @order.postal_code %>
       <%#= @order.name.to_s.insert(3, "-") %>　<%= @order.address %>　<%= f.hidden_field :address, :value => @order.address %></br>
       　　　　　　　　<%= @order.name %>　<%= f.hidden_field :name, :value => @order.name %>
-    <% end %>
+<% end %>
+
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-10 ">
+      <div class="text-center">
+        
+        
+<%= form_with model: @order, url: orders_path, method: :post do |f| %>
+<%= f.hidden_field :payment_method, :value => @order.payment_method %>
+<%= f.hidden_field :postal_code, :value => @order.postal_code %>
+<%= f.hidden_field :address, :value => @order.address %>
+<%= f.hidden_field :name, :value => @order.name %>
+<%= f.hidden_field :customer_id, :value => @order.customer_id %>
+<%= f.hidden_field :total_payment, :value => @order.total_payment %>
+<%= f.hidden_field :postage, :value => @order.postage %>
+<%= f.submit "注文を確定する", class:"btn btn-success" %>
+<% end %>
+　　 </div>
+    </div>
+  </div>
+</div>
+
+    
+    
+    
+    
+    
+    
+    
 <!-- ユーザーには注文確定ボタンだけ表示します -->
 <!--<%#= form_with model: @order, url:orders_thanks_path, local: true do |f| %>-->
 <!--  <%#= f.hidden_field :name %>-->
@@ -196,16 +176,6 @@
 
 <%#= @order.payment_method_i18n %>
 
-<%= form_with model: @order, url: orders_path, method: :post do |f| %>
-<%= f.hidden_field :payment_method, :value => @order.payment_method %>
-<%= f.hidden_field :postal_code, :value => @order.postal_code %>
-<%= f.hidden_field :address, :value => @order.address %>
-<%= f.hidden_field :name, :value => @order.name %>
-<%= f.hidden_field :customer_id, :value => @order.customer_id %>
-<%= f.hidden_field :total_payment, :value => @order.total_payment %>
-<%= f.hidden_field :postage, :value => @order.postage %>
-　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　<%= f.submit "注文を確定する", class:"btn btn-success" %>
-<% end %>
 
 
 <!--<h2>注文情報確認</h2>-->
@@ -249,7 +219,7 @@
 <!--            <tr>-->
 <!--              <td>請求合計</td>                              -->
 <!--              <%#= (@total_price + 800).to_s(:delimited) %>-->
-              <td><%#= @sum + 800 %></td>
+              <!--td><%#= @sum + 800 %></td-->
 <!--            </tr>-->
 <!--          </tbody>-->
 <!--        </table>-->
