@@ -1,6 +1,3 @@
-class Application < Rails::Application
-
-
 require_relative "boot"
 
 require "rails/all"
@@ -9,8 +6,8 @@ require "rails/all"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-# module WorkGithub
-  # class Application < Rails::Application
+module WorkGithub
+  class Application < Rails::Application
 
     
     # Initialize configuration defaults for originally generated Rails version.
@@ -28,5 +25,7 @@ Bundler.require(*Rails.groups)
 
 
 
-    # config.i18n.default_locale = :ja 
+    config.i18n.default_locale = :ja 
+# end
   end
+end

@@ -11,6 +11,8 @@ class Public::OrdersController < ApplicationController
     # @order.address = customer.address
     # @order.name = customer.last_name + customer.first_name
     # @item.name = current_customer.name
+        # @orders = current_customer.orders.all.page(params[:page]).per(10).order('created_at DESC')
+
   end
 
 

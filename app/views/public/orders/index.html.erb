@@ -4,21 +4,22 @@
        </span>
      </div>
   </div>
-
-
 <div class="container">
-  <table class="order-table table">
-    <thead>
-      <tr>
-        <th>注文日</th>
-        <th>配送先</th>
-        <th>注文商品</th>
-        <th>支払金額</th>
-        <th>ステータス</th>
-        <th>注文詳細</th>
-      </tr>
-    </thead>
-    <% @orders.each do |order| %>
+  <div class="row">
+        <table class="table col-12 table-bordered">
+          <thead class="bg-light">
+            <tr>
+              <th class="text-left">注文日</th>
+              <th class="text-left">配送先</th>
+              <th class="text-left">注文商品</th>
+              <th class="text-left">支払金額</th>
+              <th class="text-left">ステータス</th>
+              <th class="text-left">注文詳細</th>
+            </tr>
+          
+          </thead>
+          
+              <% @orders.each do |order| %>
       <tbody>
         <tr>
           <td><%= order.created_at.to_s(:datetime) %></td>
@@ -26,10 +27,8 @@
             〒<%= order.postal_code %><br/>
             <%= order.address %><br/>
             <%= order.name %></br>
-            <%#= item.order.name %></br>
-
+            <%#= item.order.name %>
           </td>
-
           <td>
             <% order.order_details.each do |order_detail| %>
               <%= order_detail.item.name %>
@@ -38,16 +37,12 @@
           <td><%= "#{order.total_payment.to_s(:delimited)}" %>円</td>
           <td><%= order.status %></td>
           <%= form_with model: @order, url: orders_path, method: :post do |f| %>
-
-
-
-          <td><%= link_to '表示する︎?', orders_path(order),class:"btn btn-primary" %></td>
-
-          <td><%= f.submit "表示する", class:"btn btn-primary" %></td>
+          <td><%= link_to '表示する', orders_path(order.id),class:"btn btn-primary" %></td>
               <% end %>
         </tr>
       </tbody>
     <% end %>
-  </table>
-    <%= paginate @orders %>
+           </table>　　　　　　　
+      </div>
 </div>
+    <%= paginate @orders %>
