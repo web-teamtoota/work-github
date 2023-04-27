@@ -4,25 +4,32 @@
        </span>
      </div>
   </div>
-<div class="container">
-  <div class="row">
-        <table class="table col-12 table-bordered">
-          <thead class="bg-light">
+  
+  
+  <div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-13 ">
+      <div class="text-left">
+            <!--<div class=".container-md">-->
+              <!--<div class="row-md">-->
+              <table class="col-lg table-bordered">
+            <thead class="bg-light">
             <tr>
-              <th class="text-left">注文日</th>
-              <th class="text-left">配送先</th>
-              <th class="text-left">注文商品</th>
-              <th class="text-left">支払金額</th>
-              <th class="text-left">ステータス</th>
-              <th class="text-left">注文詳細</th>
+              <td class="text-left">注文日</td>
+              <td class="text-left">配送先</td>
+              <td class="text-left">注文商品</td>
+              <td class="text-left">支払金額</td>
+              <td class="text-left">ステータス</td>
+              <td class="text-left">注文詳細</td>
             </tr>
-          
           </thead>
-          
-              <% @orders.each do |order| %>
-      <tbody>
+
+            <% @orders.each do |order| %>
+                  <tbody>
         <tr>
-          <td><%= order.created_at.to_s(:datetime) %></td>
+          <td>
+            <%= order.created_at.strftime('%Y/%m/%d') %>
+          </td>
           <td>
             〒<%= order.postal_code %><br/>
             <%= order.address %><br/>
@@ -31,18 +38,27 @@
           </td>
           <td>
             <% order.order_details.each do |order_detail| %>
-              <%= order_detail.item.name %>
+            <%= order_detail.item.name %></br>
             <% end %>
           </td>
           <td><%= "#{order.total_payment.to_s(:delimited)}" %>円</td>
           <td><%= order.status %></td>
-          <%= form_with model: @order, url: orders_path, method: :post do |f| %>
-          <td><%= link_to '表示する', orders_path(order.id),class:"btn btn-primary" %></td>
-              <% end %>
+         <%= form_with model: @order, url: orders_url, method: :post do |f| %>
+         <td><%= link_to '表示する', order_path(order),class:"btn btn-primary" %></td>
+          <% end %>
         </tr>
-      </tbody>
-    <% end %>
-           </table>　　　　　　　
-      </div>
-</div>
+              </tbody>
+
+          <!--</thead>-->
+              <% end %>
+
+          </table>　
+          </div>
+                </div>
+                   </div>
+                </div>
+
     <%= paginate @orders %>
+    
+    
+  

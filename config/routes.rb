@@ -72,8 +72,10 @@ get "orders/:id" => "orders#show"
   get "orders/thanks" => "orders#thanks"
 #   post "orders/thanks" => "orders#thanks"
   post "orders" => "orders#create"
-  get "orders" => "orders#index"
-  get "orders/:id" => "orders#show"
+#   get "orders" => "orders#index"
+#   get "orders/:id" => "orders#show"
+  resources :orders, only: [:index, :show]
+
 
 
 
