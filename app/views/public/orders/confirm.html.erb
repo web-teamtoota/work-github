@@ -10,10 +10,10 @@
         <table class="table col-5 table-bordered">
           <thead class="bg-light">
             <tr>
-              <th class="text--light">商品名</th>
-              <th class="text--light">単価（税込）</th>
-              <th class="text--light">数量</th>
-              <th class="text--light">小計</th>
+              <th class="text-left">商品名</th>
+              <th class="text-left">単価（税込）</th>
+              <th class="text-left">数量</th>
+              <th class="text-left">小計</th>
             </tr>
           
           <tbody>
@@ -34,16 +34,13 @@
 
   <!--<div class="row">-->
         <table class="table col-5 table-bordered">
-
+                      <thead class="light">
 
                     <!--<thead class="text-light">-->
             <tr>
               <tbody>
-       <span class="text-light bg-secondary px-3">
-           <!--<thead class="thead-light">-->
-
-      <th class="text--light">送料</th></span>
-              <th class="text--light"><%= @order.postage.to_s(:delimited) %></th>
+              <th class="text-left">送料</th>
+              <th class="text-left"><%= @order.postage.to_s(:delimited) %></th>
                           <tr>
 
                 <th class="text-left">商品合計</th>
@@ -53,14 +50,14 @@
             <th class="text-left">請求金額</th>
             <th class="text-left"><%= (@total_price + 800).to_s(:delimited) %></th>
                         </tr>
-                        
-                         <!--</thead> -->
-                         
+                          <!--</div>-->
+
             </tbody>
              </tr>
              <!--</thead>-->
+                       </thead>
+
              </table>
-             <!--</div>-->
        </p>
                     </div>
 

@@ -5,6 +5,7 @@ class Order < ApplicationRecord
 
 belongs_to :customer
 has_many :order_details, dependent: :destroy
+has_many :items, through: :order_details
 
 
 
@@ -36,6 +37,21 @@ has_many :order_details, dependent: :destroy
 #  scope :created_today, -> { where('orders.created_at >= ?', Time.zone.now.beginning_of_day) }
 
 
+
+  # validates :postal_code, presence: true
+  # validates :address, presence: true
+  # validates :name, presence: true
+
+  # def self.cart_items_total_price(cart_items)
+  #   array = []
+  #   cart_items.each do |cart_item|
+  #     array << cart_item.item.price * cart_item.amount
+  #   end
+  #   return (array.sum * 1.1).floor
+  # end
+  
+  # def subtotal
+  #   item.with_tax_price * amount
+  # end
+
 end
-
-
