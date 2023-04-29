@@ -17,6 +17,7 @@ class Public::OrdersController < ApplicationController
 
 
    def show
+     
      #@order = Order.new(params[:id])
      @order = Order.find(params[:id])
      @order_details = @order.order_details.all
@@ -32,7 +33,11 @@ class Public::OrdersController < ApplicationController
     # @order_details = @order.order_details.all
     # @ordering_details= @order.ordering_details
     # @order.shipping_cost = 800
-    @total_price = 0
+    
+    # @orders = current_customer.orders
+    # @total_price = 0
+    
+    # @sum =0
     # @ordering_details.each do |ordering_detail|
     # @total_price += ordering_detail.item.add_tax_price*ordering_detail.amount
     # end
