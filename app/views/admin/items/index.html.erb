@@ -1,13 +1,20 @@
+</br>
 <div class="container">
-    <h3>商品一覧</h3>
+<div class="mx-auto" style="width: 1000px">
+ <!--<div class="container">-->
+   <h3><span class="p-3 mb-2 bg-light text-dark">商品一覧
+   </span></h3></br>
+ <!--</div>-->
+  </div>
        <div class="row">
     <table class='table table-hover table-inverse'>
             <thead>
                     <tr>
-                        <th>商品ID</th>
-                        <th>商品名</th>
-                        <th>税抜価格</th>
-                        <th>ステータス</th>
+                      
+                        <th  class="bg-light">商品ID</th>
+                        <th class="bg-light">商品名</th>
+                        <th class="bg-light">税抜価格</th>
+                        <th class="bg-light">ステータス</th>
                         <th colspan="3"></th>
                     </tr>
              </thead>
@@ -17,9 +24,9 @@
                   <td><%= link_to item.name, admin_item_path(item.id)%></td>
                   <td><%= item.price.to_s(:delimited)  %></td>
                   <% if item.is_active ==true %>
-                  <td><p class="text-success">販売中</p></td>
+                  <th><p class="text-success">販売中</p></th>
               <% else %>
-              <td><p class="text-secondary">販売停止中</p></td>
+              <th><p class="text-secondary">販売停止中</p></th>
               <% end %>
               </tr>
               <% end %>
@@ -28,6 +35,8 @@
         </div>
     </div>
 
-<div class="mx-auto" style="width: 400px">
+<div class="mx-auto" style="width: 250px">
+      <!--<p class="text-center">-->
 <%= paginate @items %>
+      <!--</p>-->
 </div>

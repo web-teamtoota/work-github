@@ -1,6 +1,6 @@
 <div class="mx-auto" style="width: 1000px">
 	<div class="container">
-	  <span class="p-3 mb-2 bg-light text-dark">注文履歴一覧！
+	  <span class="p-3 mb-2 bg-light text-dark">注文履歴一覧
 	  </span>
 	</div>
 </div>
@@ -38,7 +38,10 @@
 								<%= order_detail.item.name %></br>
 								<% end %>
 							</td>
-							<td><%= "#{order.total_payment.to_s(:delimited)}" %>円</td>
+							 <!--<td><%#= "#{order.total_payment.to_s(:delimited)}" %>円</td>-->
+							
+							<!--<td><%#= "#{order.total_payment.to_s(:delimited)}" %>円</td>-->
+							
 							<td><%= order.status %></td>
 							<%= form_with model: @order, url: orders_url, method: :post do |f| %>
 							<td><%= link_to '表示する', order_path(order),class:"btn btn-primary" %></td>

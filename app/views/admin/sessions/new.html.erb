@@ -1,8 +1,8 @@
-<div class="mx-auto" style="width: 800px">
-  <div class="container">
-    <span class="text-light bg-secondary px-3">管理者ログイン
-    </span>
-  </div>
+<div class="mx-auto" style="width: 1000px">
+ <div class="container">
+   <span class="p-3 mb-2 bg-light text-dark">管理者ログイン
+   </span>
+ </div>
 </div>
     <div class="container">
       <%# resource = Admin.new unless resource %>
@@ -11,12 +11,12 @@
         <div class="form-group row my-100">
 
             <div class="field">
-              <%= f.label :email,"メールアドレス" %>  &emsp;
-              <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "sampla@example.com" %>
+          <%= f.label :email,"メールアドレス" %>  &emsp;
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "sampla@example.com" %>
             </div>
             <div class="field"></br>
-              <%= f.label :password,"パスワード" %>　　　
-              <%= f.password_field :password, autocomplete: "current-password" %>
+          <%= f.label :password,"パスワード" %>　　　
+          <%= f.password_field :password, autocomplete: "current-password" %>
             </div>
 
            <div class="actions">

@@ -1,28 +1,29 @@
-<div class="container">
-    <h3>会員一覧</h3>
+<div class="mx-auto" style="width: 1000px">
+ <div class="container">
+   <span class="p-3 mb-2 bg-light text-dark">会員一覧
+   </span>
+ </div>
        <div class="row">
     <table class='table table-hover table-inverse'>
-      <thead>
+      <!--<thead>-->
         <tr>
-                        <th>会員ID</th>
-                        <th>氏名</th>
-                        <th>メールアドレス</th>
-                        <th>ステータス</th>
-                        <th colspan="3"></th>
-        </tr>
-      </thead>
-                          <% @customers.each do |customer| %>
+                        <th class="bg-light">会員ID</th>
+                        <th class="bg-light">氏名</th>
+                        <th class="bg-light">メールアドレス</th>
+                        <th class="bg-light">ステータス</th>
+                        </tr>
+      <!--</thead>-->
+                          <td><% @customers.each do |customer| %></td>
               <tr>
                   <td><%= customer.id %></td>
                   <td><%= link_to customer.full_name, admin_customer_path(customer.id)%></td>
                   <td><%= customer.email %></td>
-                  <td><% if @customer.is_deleted==false %>
-                   <div class="text-success">有効
+                  <th><% if @customer.is_deleted==false %>
+                   <th class="text-success">有効</th>
                   <% else %>
-                    <p class="text-secondary">退会</p> 
+                    <th class="text-secondary">退会</th> 
                   <% end %>
-                  </div>
-                  </td>
+                  </th>
               </tr>
               <% end %>
     </table>
@@ -31,3 +32,7 @@
 <div class="mx-auto" style="width: 400px">
    <%= paginate @customers %>
 </div>
+
+
+
+

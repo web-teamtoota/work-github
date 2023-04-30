@@ -65,7 +65,7 @@ end
   def withdraw
     current_customer.update(is_deleted:true)
     reset_session
-    redirect_to root_path, notice: 'Successfully withdraw from Ecommerce'
+    redirect_to root_path, notice:
   end
 end
 

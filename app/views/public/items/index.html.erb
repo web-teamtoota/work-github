@@ -1,7 +1,9 @@
-<h1>商品一覧
-</h1>
+
+		<!--<div class="col-lg-13 mx-auto">-->
 <div class="container"> 
- <div class="row">
+ <!--<div class="row">-->
+  			   <h1>商品一覧</h1>
+
    <p id="notice"><%= notice %>
    </p>
    <div class="col-lg-8 mx-auto">
@@ -26,8 +28,12 @@
              <% end %>
      </div>
     </div>
- </div>
+ <!--</div>-->
 </div>
-             <div class="mx-auto" style="width: 400px">
-               <%= paginate @items %>
+ <!--</div>-->
+
+             <div class="mx-auto" style="width: 100px">
+                  <!--<p class="text-center">-->
+                   <%= paginate @items %>
+                   <!--</p>-->
               </div>
