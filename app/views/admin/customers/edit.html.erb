@@ -1,10 +1,15 @@
+<div class="mx-auto" style="width: 1200px">
+ <div class="container">
+   <strong class="p-3 mb-2 bg-light text-dark">
+     <%= @customer.full_name %>さんの会員情報編集
+   </strong>
+ </div>  
+ </div>  
   <!--<div class="mx-auto" style="width: 800px">-->
   <div class="container">
     <%#= form_with model: @customer, url:admin_customer_path(@customer.id) do |f| %>
     <%# end %>
-    <h4>
-      <%= @customer.full_name %>さんの会員情報編集
-    </h4>
+ 
   </div>
   <!--</div>-->
     <%= form_with(model:@customer, url:customer_path, local: true ,method: :put) do |f| %>
@@ -43,14 +48,14 @@
       </div>
       <tr>
        <div class="field">
-          <td>  <%= f.label :会員ステータス %>
+      <td><%= f.label :会員ステータス %>
      </td>
-   <th><td>
+   <td>
      　<%= f.radio_button :is_deleted, true %>有効
-     　<%= f.radio_button :is_deleted, false %>退会</label></br>
+     　<%= f.radio_button :is_deleted, false %>退会</td></br>
   　　　　　　　　<%= f.submit '変更を保存',class: "btn btn-success"%>
   <% end %>
-      </th></td>
+      </th>
      </tr>
      </div>
 

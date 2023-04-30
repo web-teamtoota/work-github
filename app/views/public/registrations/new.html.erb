@@ -1,5 +1,8 @@
 <div class="mx-auto" style="width: 1000px">
-<h4>新規会員登録</h4>
+	<div class="container">
+	  <span class="p-3 mb-2 bg-light text-dark">新規会員登録
+	  </span>
+	</div>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
    <%= render "public/shared/links" %>
   <%= render "public/shared/error_messages", resource: resource %>
@@ -43,7 +46,9 @@
     <%= f.submit "新規登録" , class: "btn btn-success"%>　　　　
   </div>
 <% end %></br>
-<h2>既に登録済みの方</h2>
-　　　　<%= link_to "こちら", new_customer_session_path %>からログインしてください。
-</div>
+	<div class="container">
+	  <span class="p-3 mb-2 bg-light text-dark">既に登録済みの方
+	  </span>
+	</div>
+	<%= link_to "こちら", new_customer_session_path %>からログインしてください。
 </div>

@@ -232,7 +232,7 @@ end
     # @order = Order.new(orders_path)
     #@order.customer_id = current_customer.id
     #@order.payment_method = params[:order][:payment_method]
-    @total_price = 0
+    #@total_price = 0
     @cart_items = current_customer.cart_items
 
     @order = Order.new(order_params)
@@ -242,12 +242,12 @@ end
       @order.postal_code = current_customer.postal_code
     end
 
-    @cart_items.each do |cart_item|
-    @total_price += cart_item.item.with_tax_price
-    end
+    #@cart_items.each do |cart_item|
+    #@total_price += cart_item.item.with_tax_price
+    #end
 
     @order.postage = 800
-    @order.total_payment = @total_price + @order.postage
+    #@order.total_payment = @total_price + @order.postage
 
     if params[:order][:address_option] == "0"
       @order.postage=  current_customer.postal_code

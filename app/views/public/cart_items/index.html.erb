@@ -78,13 +78,13 @@
 <!--                   <th>合計金額</th>-->
 <!--                   <#%= @total_price %>-->
 
-
-  <div class="mx-auto" style="width: 1300px">
-     <div class="container">
-       <span class="text-light bg-secondary px-3">ショッピングカート
-       </span>
-     </div>
-  </div>
+  
+  <div class="mx-auto" style="width: 1000px">
+ <div class="container">
+   <span class="p-3 mb-2 bg-light text-dark">ショッピングカート
+   </span>
+ </div>
+  
 
 <div class="container">
   <div class="row">
@@ -132,7 +132,7 @@
     </div>
     <table class="table table-bordered col-4 text-left">
       <tr>
-        <th class="text-left">合計金額</th>
+          <td class="bg-light"> 合計金額</td>
         <td class="text-left"><%= @total_price.to_s(:delimited, delimiter: ',') %></td>
       </tr>
     </table>
@@ -147,6 +147,8 @@
     </div>
   </div>
 </div>
+</div>
+
 <!--div class="mx-auto" style="width: 1000px">
   <%#= paginate @cart_items %>
 </div>
