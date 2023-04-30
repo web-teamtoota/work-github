@@ -1,37 +1,92 @@
 <div class="mx-auto" style="width: 1000px">
 	<div class="container">
-		<span class="text-light bg-secondary px-3">注文履歴詳細
-		</span>
+	  <span class="p-3 mb-2 bg-light text-dark">注文履歴詳細
+	  </span>
+	</div>
+<div class="container">
+	<div class="row-left">
+		<p class="font-weight-bold">注文情報</p>
+		<table class="table col-8 table-bordered">
+								<td class="bg-light">注文日！</td>
+					
+				<!--<tr>-->
+					<td class="text-left"><%= @order.created_at.strftime('%Y/%m/%d') %>
+　　　　    </td>
+　　　　<!--</tr>-->
+　　　　<!--</tr>-->
+							
+			
+						
+						<tr>
+						  <td class="bg-light">配送先</td>
+							<td>〒<%= @order.postal_code %></br>
+					<%= @order.address %></br>
+					<%= @order.name %></td>
+						</tr>
+						
+						<tr>
+																				  <td class="bg-light">支払方法</td>
+							<td><%= @order.payment_method %></td>
+						</tr>
+					
+					<tr>
+												  <td class="bg-light">ステータス</td>
+							<td><%= @order.status %></td>
+						</tr>
+						
+						
+			<!--<thead class="bg-light">-->
+			<!--<tr>-->
+
+			<!--	<td>注文日</td>-->
+			<!--				</tr>-->
+			<!--				</thead>-->
+
+			<!--</tr>-->
+			<!--</tr>-->
+			<!--<tr>-->
+			<!--	<td><%= @order.created_at.strftime('%Y/%m/%d') %></td>-->
+	
+			<!--		<thead class="bg-light">-->
+			<!--			<tr>-->
+			<!--							<td class="text-left">配送先</td>-->
+   <!--         </tr>-->
+			<!--			</thead>-->
+			
+				<!--<td class="text-left">配送先</td>-->
+			
+			<!--</tr>-->
+			<!--<tr>-->
+			<!--	<td>〒<%= @order.postal_code %></br>-->
+			<!--		<%= @order.address %></br>-->
+			<!--		<%= @order.name %>-->
+			<!--		</td>-->
+   <!--   </tr>-->
+      
+      
+   <!--   	<thead class="bg-light">-->
+			<!--<tr>-->
+			<!--	<td class="text-left">支払方法</td>-->
+			<!--</thead>-->
+			<!--</tr>-->
+			<!--<tr>-->
+			<!--	<td><%= @order.payment_method %>-->
+			<!--	</td>-->
+			<!--</tr>-->
+      
+      
+   <!--   	<thead class="bg-light">-->
+			<!--<tr>-->
+			<!--	<td class="text-left">ステータス</td>-->
+			<!--</thead>-->
+			<!--</tr>-->
+			<!--<tr>-->
+			<!--	<td><%= @order.status %></td>-->
+			<!--</tr>-->
+      
+		</table>
 	</div>
 </div>
-<div class="container">
-	<div class="row-right">
-		<b>注文情報</b>
-		<table class="table col-8 table-bordered">
-			<tr>
-				<td class="text-left">注文日</td>
-				<td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
-			</tr>
-			<tr>
-				<td class="text-left">配送先
-				</td>
-				<td class="text-left">
-					〒<%= @order.postal_code %></br>
-					<%= @order.address %></br>
-					<%= @order.name %>
-				</td>
-			</tr>
-			<tr>
-				<td class="text-left">支払方法
-				</td>
-				<td><%= @order.payment_method %>
-				</td>
-			</tr>
-			<tr>
-				<td class="text-left">ステータス</td>
-				<td><%= @order.status %></td>
-			</tr>
-		</table>
 		<!--<table class="table col-8 table-bordered">
 			<div class="container">
 				<p class="text-right">
@@ -46,14 +101,16 @@
 				</p>
 			</div>-->
 		<% sum = 0 %>
-		<b>注文内容</b>
-		<table class="table col-7 table-bordered">
+		<div class="container">
+	<div class="row-right">
+		<p class="font-weight-bold">注文内容</p>
+		<table class="table col-10 table-bordered">
 			<thead>
 				<tr>
-					<td class="text-left">商品</td>
-					<td class="text-left">単価（税込）</td>
-					<td class="text-left">個数</td>
-					<td class="text-left">小計</td>
+					<td class="bg-light">商品</td>
+					<td class="bg-light">単価（税込）</td>
+					<td class="bg-light">個数</td>
+					<td class="bg-light">小計</td>
 				</tr>
 			</thead>
 			<tbody>
@@ -68,35 +125,64 @@
 				<% end %>
 			</tbody>
 		</table>
-		<table class="table col-4 table-bordered">
-			<tr>
-				<td class="text-left">
-				    商品合計
-				</td>
-				<!--td><%#= sum.floor.to_s(:delimited) %>円</td-->
-				<!--td><#%= (@order.total_payment - @order.postage).to_s(:delimited) %>
-					</td-->
-				<!--td><%#= sum.floor.to_s(:delimited) %></td-->
-				<td><%= sum.floor.to_s(:delimited) %></td>
-			</tr>
-			<tr>
-				<td class="text-left">
-				    配送料
-				</td>
-				<td><%= @order.postage %>
-				</td>
-			</tr>
-			<tr>
-				<td class="text-left">
-				    ご請求額
-				</td>
-				<!--td><%#= "#{@order.total_payment.to_s(:delimited)}"%>
-					</td-->
-				<td><%= (sum +@order.postage).floor.to_s(:delimited) %></td>
-				<%#= (sum +@order.postage).floor.to_s(:delimited) %>
-				<%#= @order.sum_of_order_price %>
-				<!--td><%#= (@order.total_payment + @order.total_payment).to_s(:delimited, delimiter: ',') %></td-->
-			</tr>
-		</table>
 	</div>
 </div>
+		<!--		<p class="font-weight-bold">請求情報</p>-->
+		<!--<table class="table col-5 table-bordered">-->
+		<!--	<tr>-->
+		<!--		<td class="text-left">-->
+		<!--		    商品合計-->
+		<!--		</td>-->
+		<!--td><%#= sum.floor.to_s(:delimited) %>円</td-->
+		<!--td><#%= (@order.total_payment - @order.postage).to_s(:delimited) %>
+			<!--			</td-->
+		<!--td><%#= sum.floor.to_s(:delimited) %></td-->
+		<!--		<td><%= sum.floor.to_s(:delimited) %></td>-->
+		<!--	</tr>-->
+		<!--	<tr>-->
+		<!--		<td class="text-left">-->
+		<!--		    配送料-->
+		<!--		</td>-->
+		<!--		<td><%= @order.postage %>-->
+		<!--		</td>-->
+		<!--	</tr>-->
+		<!--	<tr>-->
+		<!--		<td class="text-left">-->
+		<!--		    ご請求額-->
+		<!--		</td>-->
+		<!--td><%#= "#{@order.total_payment.to_s(:delimited)}"%>
+			<!--			</td-->
+		<%#= (sum +@order.postage).floor.to_s(:delimited) %>
+		<%#= @order.sum_of_order_price %>
+		<!--td><%#= (@order.total_payment + @order.total_payment).to_s(:delimited, delimiter: ',') %></td-->
+		<!--	<td><%= (sum +@order.postage).floor.to_s(:delimited) %></td>-->
+		<!--	</tr>-->
+		<!--</table>-->
+		<div class='container px-5 px-sm-0'>
+			<div class='row'>
+				<div class='col-md-3'>
+				</div>
+				<div class='col-md-8 offset-md-1'>
+					<p class="font-weight-bold">請求情報</p>
+					<table class="table col-5 table-bordered">
+						<!--<table class='table table-hover table-inverse'>-->
+						<!--<thead>-->
+						<tr>
+							
+							<td class="bg-light">商品合計</td>
+							<td><%= sum.floor.to_s(:delimited) %></td>
+						</tr>
+						<tr>
+							<td class="bg-light">配送料</td>
+							<td><%= @order.postage %></td>
+						</tr>
+						<tr>
+							<td class="bg-light">ご請求楽</td>
+							<td><%= (sum +@order.postage).floor.to_s(:delimited) %></td>
+						</tr>
+						<!--<th colspan="3"></th>-->
+						<!--</thead>-->
+					</table>
+				</div>
+			</div>
+		</div>
