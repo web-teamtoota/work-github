@@ -1,47 +1,41 @@
 <div class="mx-auto" style="width: 1200px">
- <div class="container">
-   <th class="p-3 mb-2 bg-light text-dark">注文履歴一覧
-   </th>
- </div>
-  </div>
-  </br>
-
+	<div class="container">
+		<td class="p-3 mb-2 bg-light text-dark">注文履歴一覧</td>
+	</div>
+</div>
+</br>
 <div class="container">
-    <!--<h3>注文履歴一覧</h3>-->
-       <div class="row">
-    <table class='table table-hover table-inverse'>
-      <thead>
-        <tr>
-                                  <th class="bg-light">購入日時</th>
-                        <th class="bg-light">購入者</th>
-                        <th class="bg-light">注文個数</th>
-                        <th class="bg-light">注文ステータス</th>
-                    </tr>
-      </thead>
-                          <% @orders.each do |order| %>
-                           <div class="col-md-6">
-              <tr>
-                <td><%= link_to order.updated_at.strftime("%Y/%m/%d %H:%M:%S"), orders_path %></td>
-                  <td><%= order.customer.last_name %><%= order.customer.first_name %></td>
-                  <td>
-                    <% sum =0 %>
-                    <% order.order_details.each do |order_detail|%>
-                     <% sum += order_detail.quantity %>
-                     <% end %>
-                     <%= sum %>
-                  </td>
-                  <td><%= order.status %></td>
-             </tr>
-                           </div>
-              <% end %>
-
-    </table>
-        </div>
+	<!--<h3>注文履歴一覧</h3>-->
+	<div class="row">
+		<table class='table table-hover table-inverse'>
+			<thead>
+				<tr>
+					<th class="bg-light">購入日時</th>
+					<th class="bg-light">購入者</th>
+					<th class="bg-light">注文個数</th>
+					<th class="bg-light">注文ステータス</th>
+				</tr>
+			</thead>
+			<% @orders.each do |order| %>
+			<div class="col-md-6">
+				<tr>
+					<td><%= link_to order.updated_at.strftime("%Y/%m/%d %H:%M:%S"), orders_path %></td>
+					<td><%= order.customer.last_name %><%= order.customer.first_name %></td>
+					<td>
+						<% sum =0 %>
+						<% order.order_details.each do |order_detail|%>
+						<% sum += order_detail.quantity %>
+						<% end %>
+						<%= sum %>
+					</td>
+					<td><%= order.status %></td>
+				</tr>
+			</div>
+			<% end %>
+		</table>
+	</div>
 </div>
-
+<!--</div>-->
+<div class="mx-auto" style="width: 95px">
+	<%= paginate @orders %>
 </div>
-  <div class="mx-auto" style="width: 95px">
- <%= paginate @orders %>
- </div>
-
-
