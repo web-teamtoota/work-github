@@ -6,10 +6,13 @@ class Public::OrdersController < ApplicationController
   def index
     @order = Order.new
     @orders = Order.all.page(params[:page]).per(10)
+    #@order.postage = 800
+    @total_payment = 0
+
     # # params[:order][:address_option]
     # @order.postal_code = customer.postal_code
     # @order.address = customer.address
-    # @order.name = customer.last_name + customer.first_name
+    total_payment = @order.total_payment
     # @item.name = current_customer.name
         # @orders = current_customer.orders.all.page(params[:page]).per(10).order('created_at DESC')
 
@@ -17,7 +20,6 @@ class Public::OrdersController < ApplicationController
 
 
    def show
-     
      #@order = Order.new(params[:id])
      @order = Order.find(params[:id])
      @order_details = @order.order_details.all
@@ -39,9 +41,7 @@ class Public::OrdersController < ApplicationController
     
     # @sum =0
     # @ordering_details.each do |ordering_detail|
-    # @total_price += ordering_detail.item.add_tax_price*ordering_detail.amount
     # end
-    # @order.total_payment = @total_price + @order.shipping_cost
    end
 
 
