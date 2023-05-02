@@ -10,6 +10,10 @@ class Public::ItemsController < ApplicationController
     @item = Item.new
     @items = Item.page(params[:page]).per(8)
     
+    @customer = current_customer.id
+    @customer = Customer.new
+    @customers = Customer.all
+    
   end
   
   

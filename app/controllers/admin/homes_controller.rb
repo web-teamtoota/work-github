@@ -9,6 +9,9 @@ def top
   @order = Order.new
   @orders = Order.page(params[:page]).per(10)
   
+   #@customer = current_customer.id
+    @customer = Customer.new
+    @customers = Customer.all
 end
 
 private
