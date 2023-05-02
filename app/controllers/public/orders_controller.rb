@@ -12,10 +12,13 @@ class Public::OrdersController < ApplicationController
     # # params[:order][:address_option]
     # @order.postal_code = customer.postal_code
     # @order.address = customer.address
-    total_payment = @order.total_payment
+    @total_payment = @order.total_payment
     # @item.name = current_customer.name
         # @orders = current_customer.orders.all.page(params[:page]).per(10).order('created_at DESC')
 
+   @customer = current_customer.id
+    @customer = Customer.new
+    @customers = Customer.all
   end
 
 
@@ -29,6 +32,13 @@ class Public::OrdersController < ApplicationController
       # @order = Order.new
     @orders = Order.all
     @order = Order.find_by(id: params[:id])
+    
+    @customer = current_customer.id
+    @customer = Customer.new
+    @customers = Customer.all
+    #@customer = Customer.find(params[:id])
+    
+    
       # @order = Order.find(params[:id])
       # @order = Order.find(params[:order_id])
 

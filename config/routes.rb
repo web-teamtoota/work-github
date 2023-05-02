@@ -24,12 +24,16 @@ devise_for :customers,skip: [:passwords], controllers: {
   root to: 'homes#top'
   resources :items
   resources :customers
+  
+
+  
 #   resources :orders
 
 
 patch "order_details/:id" => "order_details#update",as:"order_detail"
 patch "orders/:id" => "orders#update",as:"order"
 get "orders/:id" => "orders#show"
+# put "customers/:id" => "customer#show"
 
 # get "order_details/:id" => "orders#update"
 #  get "admin/order_details/:id" => "admin/orders#update"
@@ -40,7 +44,10 @@ get "orders/:id" => "orders#show"
   #delete "admin/sign_out" => "admins#destroy"
   end
 
-
+  # get "admin/customers" => "admin/customers#index"
+  # get "admin/customers/:id" => "admin/customers/:id#show"
+  # get "/admin/customers/:id/edit" => "/admin/customers/:id/edit#edit"
+  # patch "/admin/customers/:id/" => "/admin/customers/:id#update"
 
 
 

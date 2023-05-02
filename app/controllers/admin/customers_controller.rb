@@ -1,14 +1,14 @@
-class Admin::CustomersController < ActionController::Base
+class Admin::CustomersController < ApplicationController
 
   def index
-    @customer = Customer.new
+    # @customer = Customer.new
     @customers = Customer.all.page(params[:page]).per(10)
-    @users = User.all
+    # @users = User.all
   end
 
   def show
-       @customer = Customer.new
-    @customers = Customer.all
+    #   @customer = Customer.new
+    # @customers = Customer.all
     @customer = Customer.find(params[:id])
   end
 
@@ -19,7 +19,7 @@ class Admin::CustomersController < ActionController::Base
   def update
      @customer = Customer.find(params[:id])
      @customer.update(customer_params)
-       redirect_to admin_customer_path(@customer.id)
+     redirect_to admin_customer_path(@customer)
   end
 
 
