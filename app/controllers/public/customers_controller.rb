@@ -40,22 +40,15 @@ class Public::CustomersController < ApplicationController
 
 
 def update
+        # @customer = Customer.update(params[:id])
         @customer = current_customer
         if @customer.update(customer_params)
         # flash[:update] = "You have updated user info successfully."
-        redirect_to customer_path(@customer.id)
-        else
-        render 'edit'
+        redirect_to customer_path
+        # else
+        # render 'edit'
         end
 end
-
-
-  # def update
-  #    @customer = Customer.update(params[:id])
-  #     @customer.update(customer_params)
-  #      redirect_to customer_path(@customer.id)
-    
-  # end
   
   
   before_action :authenticate_customer!

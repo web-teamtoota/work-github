@@ -24,9 +24,9 @@ devise_for :customers,skip: [:passwords], controllers: {
   root to: 'homes#top'
   resources :items
   resources :customers
-  
 
-  
+
+
 #   resources :orders
 
 
@@ -48,6 +48,7 @@ get "orders/:id" => "orders#show"
   # get "admin/customers/:id" => "admin/customers/:id#show"
   # get "/admin/customers/:id/edit" => "/admin/customers/:id/edit#edit"
   # patch "/admin/customers/:id/" => "/admin/customers/:id#update"
+  # patch "/admin/customers/:id/" => "/admin/customers/:id#update"
 
 
 
@@ -65,6 +66,7 @@ get "orders/:id" => "orders#show"
 
   get "customer" => "customers#show"
   get "customer/edit" => "customers#edit"
+  #patch  "customer/edit" => "customers#edit"
   patch "customer" => "customers#update"
   get "customer/unsubscribe" => "customers#unsubscribe",as: "unsubscribe"
   patch "customer/withdraw" => "customers#withdraw"
@@ -82,9 +84,7 @@ get "orders/:id" => "orders#show"
 #   get "orders" => "orders#index"
 #   get "orders/:id" => "orders#show"
   resources :orders, only: [:index, :show]
-
-
-
+  # resources :customers, only: [:show, :edit, :update]
 
 
 

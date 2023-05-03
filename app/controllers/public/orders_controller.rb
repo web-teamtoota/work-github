@@ -32,23 +32,23 @@ class Public::OrdersController < ApplicationController
       # @order = Order.new
     @orders = Order.all
     @order = Order.find_by(id: params[:id])
-    
+
     @customer = current_customer.id
     @customer = Customer.new
     @customers = Customer.all
     #@customer = Customer.find(params[:id])
-    
-    
+
+
       # @order = Order.find(params[:id])
       # @order = Order.find(params[:order_id])
 
     # @order_details = @order.order_details.all
     # @ordering_details= @order.ordering_details
     # @order.shipping_cost = 800
-    
+
     # @orders = current_customer.orders
     # @total_price = 0
-    
+
     # @sum =0
     # @ordering_details.each do |ordering_detail|
     # end
@@ -62,7 +62,15 @@ def new
   @customer = current_customer
   @orders = current_customer.cart_items
   @customer = Customer.find(current_customer.id)
-  #@addresses = current_customer.addresses
+  # @addresses = current_customer.addresses
+  @cart_items = current_customer.cart_items
+   if @cart_item == nil
+     redirect_to cart_items_path
+  # else 
+  #     render :new  
+   end
+   
+   
 
 end
 

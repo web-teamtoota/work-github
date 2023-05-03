@@ -2,41 +2,42 @@
  <div class="container">
    <span class="p-3 mb-2 bg-light text-dark">会員情報編集
    </span>
- </div>  
-   </div>  
+ </div>
+   </div>
    </br>
 
   <!--<div class="container">-->
   <!--  <span class="text-light bg-secondary px-3">会員情報編集-->
   <!--  </span>-->
   <!--</div>　　　-->
-<%= form_with model: @customer, url:customer_path(current_customer) do |f| %>
+<%= form_with model: @customer, url: customer_path do |f| %>
 <table>
     <div class="field">
-      　　　　　 <%= f.label :氏名 %>　　　
-      　　　　　　 <%= f.text_field :last_name, autofocus: true, id:"inputName", placeholder:"山田"%>　 <%= f.text_field :first_name, autofocus: true, id:"inputName", placeholder:"花子"%>　　　　
+      　　　　　 <%= f.label :氏名 %>
+      　　　　　   　　　　　 <%= f.text_field :last_name, autofocus: true, id:"inputName", placeholder:"山田"%>　  　 <%= f.text_field :first_name, autofocus: true, id:"inputName", placeholder:"花子"%>
   　</div>
        <div class="field">
-    　　　　　<%= f.label :フリガナ %>　　　　　　
-   　   <%= f.text_field :last_name_kana, autofocus: true, id:"inputName", placeholder:"ヤマダ"%>　　<%= f.text_field :first_name_kana, autofocus: true, id:"inputName", placeholder:"ハナコ"%>　　　
+    　　　　　<%= f.label :フリガナ %>
+　　　　　　　　　<%= f.text_field :last_name_kana, autofocus: true, id:"inputName", placeholder:"ヤマダ"%>　　   <%= f.text_field :first_name_kana, autofocus: true, id:"inputName", placeholder:"ハナコ"%>
     </div>
        <div class="field">
-      　　　　　<%= f.label :郵便番号 %>　　　
-      　　   　 　<%= f.text_field :postal_code, autofocus: true, id:"inputName", placeholder:"1500041"%>　　
+      　　　　　<%= f.label :郵便番号 %>
+      　　   　  　　　 　 　<%= f.text_field :postal_code, autofocus: true, id:"inputName", placeholder:"1500041"%>
     </div>
       <div class="field">
-    　　　　　  <%= f.label :住所 %>　　　
-    　　　 　 　　<%= f.text_field :address, autofocus: true, id:"inputName", placeholder:"東京都渋谷区神南１丁目１９-１１ パークウェースクエア２４階"%>　
+    　　　　　  <%= f.label :住所 %>
+    　　　 　　   　　　 　　<%= f.text_field :address, autofocus: true, id:"inputName", placeholder:"東京都渋谷区神南１丁目１９-１１ パークウェースクエア２４階"%>
     </div>
       <div class="field">
-    　　　　　<%= f.label :電話番号 %>　　　　　　
-      　　<%= f.text_field :telephone_number, autofocus: true, id:"inputName", placeholder:"0368694700"%>　　　
+    　　　　　<%= f.label :電話番号 %>
+      　　　　　　　　　<%= f.text_field :telephone_number, autofocus: true, id:"inputName", placeholder:"0368694700"%>
     </div>
      <div class="field">
-         　　 <%= f.label :メールアドレス %>　　　　　　　　
- <%= f.text_field :email, autofocus: true, id:"inputName", placeholder:"hoge@example.com"%>　　　　　
+         　　 　 <%= f.label :メールアドレス %>
+ 　　　　　　　　<%= f.text_field :email, autofocus: true, id:"inputName", placeholder:"hoge@example.com"%>
     </div>
-    　　　　　　　　　　　　　　　　<%= f.submit '編集内容を保存',class: "btn btn-success"%>　　　　　　　　
+    </br>
+    　　　　　　　　　　　　　　　　<%= f.submit '編集内容を保存',class: "btn btn-success"%>
     　　　　　　　　　　　　<% end %>
-  　　<%= link_to "退会する",unsubscribe_path,class: "btn btn-danger" %>　　　　　
+  　　<%= link_to "退会する",unsubscribe_path,class: "btn btn-danger" %>
   　　</table>
