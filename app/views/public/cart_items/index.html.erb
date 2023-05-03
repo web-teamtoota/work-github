@@ -78,13 +78,13 @@
 <!--                   <th>合計金額</th>-->
 <!--                   <#%= @total_price %>-->
 
-  
+
   <div class="mx-auto" style="width: 1000px">
  <div class="container">
    <span class="p-3 mb-2 bg-light text-dark">ショッピングカート
    </span>
  </div>
-  
+
 
 <div class="container">
   <div class="row">
@@ -107,11 +107,12 @@
               <th></th>
             </tr>
           </thead>
-          <% @cart_items.each do |cart_item| %>
+
+             <% @cart_items.each do |cart_item| %>
           <tbody>
-                <th class="text-left"><%= image_tag cart_item.item.image, size: "60x50" %>
-                <%#= image_tag cart_item.item.image, size: "50x50" %>　<%= cart_item.item.name %></th>
-            <td class="text-left"><%= cart_item.item.with_tax_price.to_s(:delimited, delimiter: ',') %></td>
+                <th class="text-left"><%#= image_tag cart_item.item.image, size: "60x50" %>
+                <%= image_tag cart_item.item.image, size: "50x50" %>　<%= cart_item.item.name %></th>
+                <td class="text-left"><%= cart_item.item.with_tax_price.to_s(:delimited, delimiter: ',') %></td>
             <%= form_with model: cart_item, url: cart_item_path(cart_item) do |f| %>
             <td class="text-left"><%= f.select:amount,[[cart_item.amount],['0',0],['1',1],['2',2],['3',3],['4',4],['5',5],['6',6],['7',7],['8',8],['9',9],['10',10]],class:"mr-1" %>
             <%= f.submit "変更", class:"btn btn-success ml-1" %>
@@ -170,3 +171,4 @@
           <!--<td><%#= cart_item.subtotal%></td>-->
           <!--% @合計金額 +=  (cart_item.item.price * 1.1).floor * cart_item.amount %-->
           <!--<%# @合計金額 +=  cart_item.subtotal %>-->
+

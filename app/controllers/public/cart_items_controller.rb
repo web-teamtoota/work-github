@@ -1,19 +1,20 @@
 class Public::CartItemsController < ApplicationController
   before_action :authenticate_customer!
 
-  def index
+ def index
     @cart_item = CartItem.new
     @cart_items = CartItem.all.page(params[:page]).per(10)
     @cart_item = CartItem.new(params[:id])
     @total_price = 0
     @item = Item.new
+    @cart_items = current_customer.cart_items
     @cart_items=current_customer.cart_items.all
     @cart_items.each do |cart_item|
     @total_price += cart_item.item.with_tax_price*cart_item.amount
     @cart_item = current_customer.orders
-    end
-
   end
+ end
+
 
 
     def show
@@ -26,8 +27,7 @@ class Public::CartItemsController < ApplicationController
     end
 
 
-
-    def create
+ def create
         #binding.pry
         @cart_items = CartItem.all
         # if @cart_item.save
@@ -43,6 +43,19 @@ class Public::CartItemsController < ApplicationController
     #@cart_item.customer_id = current_customer
     # cart_item.end_user_id = current_end_user.id
     # @cart_item.item_id = cart_item_params[:item_id]
+    
+    
+      # @cart_itemt = current_customer.cart_items.new(params_cart_item)
+    # if current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id]).present?
+    #   cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
+    #   cart_item.amount += params[:cart_item][:amount].to_i
+    #   cart_item.save
+    #   redirect_to cart_items_path
+    # elsif @cart_itemt.save!
+    #   redirect_to cart_items_path
+    # end
+
+
     if CartItem.find_by(item_id: params[:cart_item][:item_id]).present?
       cart_item = CartItem.find_by(item_id: params[:cart_item][:item_id])
       cart_item.amount += params[:cart_item][:amount].to_i
@@ -55,9 +68,9 @@ class Public::CartItemsController < ApplicationController
     # byebug
     @cart_item.save
      #save cart_item
-      redirect_to cart_items_path
+      redirect_to cart_items_path(cart_item.id)
     end
-    end
+ end
 
 
 # def create
@@ -112,5 +125,5 @@ end
   def cart_item_params
     params.require(:cart_item).permit(:item_id, :amount, :customer_id)
   end
-
 end
+

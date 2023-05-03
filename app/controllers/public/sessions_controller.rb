@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class Public::SessionsController < Devise::SessionsController
-  
+  before_action :reject_invalid_customer, only: [:create]
+
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -31,17 +32,11 @@ def reject_invalid_customer
    return unless customer
 
    return if customer.valid_password?(params[:customer][:password]) && customer.active_for_authentication?
-
-   alert_message = if customer.status == 'withdrawn'
-                     'You have already resigned'
-                   else
-                     'Your account is suspended'
-                   end
-   redirect_to request.referer, alert: alert_message
+  reset_session
 end
 
 
-#???↓  
+#???↓
 #   protected
 # # 退会しているかを判断するメソッド
 # def customer_state
@@ -54,22 +49,22 @@ end
 #     ## 【処理内容3】
 #   end
 # end
-  
-  
-  
+
+
+
   protected
 
   # 会員の論理削除のための記述。退会後は、同じアカウントでは利用できない。
   def reject_user
     @user = User.find_by(name: params[:user][:name])
-    if @user 
+    if @user
       if @user.valid_password?(params[:user][:password]) && (@user.is_deleted == false)
-        flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
-        redirect_to new_user_registration
-      else
-        flash[:notice] = "項目を入力してください"
+        # flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
+        redirect_to destroy_customer_session_path
+      # else
+      #   flash[:notice] = "項目を入力してください"
       end
     end
   end
-  
+
 end
