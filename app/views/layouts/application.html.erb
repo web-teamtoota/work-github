@@ -39,6 +39,7 @@
 							<% elsif customer_signed_in? %>
 					<!--%// customerログイン状態の際に、表示したいheaderのメニューを記載-->
 					<div class="text-center">ようこそ、<%= current_customer.last_name %>さん！</div>
+					　　　　　　　　　　　　　　　　　　　　　　　
 					<li class="nav-item active">
 						<%= link_to 'マイページ', customer_path, class: 'nav-link text-dark' %>
 					</li>
