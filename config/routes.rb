@@ -91,8 +91,9 @@ get "orders/:id" => "orders#show"
   #get "customer/sign_up" => "customers#new"
   #post "customer" => "customers#create"
 
-  resources :cart_items, only: [:index, :update, :destroy, :create]
-  # get "cart_items" => "cart_items#index"
+  resources :cart_items
+  # # get "cart_items" => "cart_items#index"
+  # get  "cart_items/:id" => "cart_items#update"
   # patch "cart_items/:id" => "cart_items#update"
   # delete "cart_items/:id" => "cart_items#destroy"
   delete  "cart_items" => "cart_items#destroy_all"

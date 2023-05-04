@@ -1,24 +1,21 @@
-<div class="mx-auto" style="width:600px">
+<div class="mx-auto" style="width:500px">
  <div class="container">
    <span class="p-3 mb-2 bg-light text-dark">マイページ
    </span>
  </div>
  </br>
  
- <div class="mx-auto" style="width:600px">
+ <div class="mx-auto" style="width:750px">
  <div class="container">
-  
- 
  <p class="text-left">
 <th>登録情報</th>
-　　<%= link_to "編集する", customer_edit_path ,class: "btn btn-success" %>
-
+　　<%= link_to "編集する", customer_edit_path(current_customer) ,class: "btn btn-success" %>
 <div class="container-left">
        <div class="row">
     <!--<table class='table table-hover table-inverse'>-->
-    		<table class="table col-12 table-bordered">
-
+    		<table class="table col table-bordered">
     <!--<table class="table table-bordered">-->
+      
       <div class="table-secondary">
             <tr><td class="bg-light">氏名</td>
             <td><%= current_customer.full_name %></td></tr>

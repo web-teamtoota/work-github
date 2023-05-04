@@ -5,6 +5,8 @@ class CartItem < ApplicationRecord
     #belongs_to :item, :counter_cache => true
 #   belongs_to :article, counter_cache: :admin_comments_count
 
+  has_many_attached :image
+
   belongs_to :item#, optional: true
   belongs_to :customer
 
@@ -41,6 +43,5 @@ validates :amount, numericality:{ only_integer: true }
 ## 小計を求めるメソッド
 def subtotal    
   item.with_tax_price * amount
-    #with_tax_price * amount
 end
 end
