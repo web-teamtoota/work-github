@@ -34,7 +34,7 @@ class Public::CartItemsController < ApplicationController
         @cart_item = CartItem.new
     end
 
-
+      
  def create
         #binding.pry
         @cart_items = CartItem.all
@@ -71,16 +71,27 @@ class Public::CartItemsController < ApplicationController
     if current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id]).present?
       cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
       cart_item.amount += params[:cart_item][:amount].to_i
-      cart_item.save
+      # cart_item.save!
       # redirect_to cart_items_path
-    elsif @cart_item
-      redirect_to cart_items_path
+      #elsif @cart_item.save!
+      #redirect_to cart_items_path
     end
     
+    # @cart_item.save!
+    #redirect_to cart_items_path(current_customer)
+    
  end
-
-
-
+   
+   
+    # @cart_item = current_customer.cart_items.new(params_cart_item)
+    # if current_customer.cart_items.find_by(product_id: params[:cart_item][:item_id]).present?
+    #   cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
+    #   cart_item.amount += params[:cart_item][:amount].to_i
+    #   cart_item.save
+    #   redirect_to cart_items_path
+    # elsif @cart_item.save!
+    #   redirect_to cart_items_path
+    # end
 
 
 # def create
@@ -91,9 +102,6 @@ class Public::CartItemsController < ApplicationController
 #       カートモデルにレコードを新規作成する
 # end
 
-  
-  
-  
   
   def update
     
@@ -108,7 +116,7 @@ class Public::CartItemsController < ApplicationController
       @total_price = current_customer.cart_items.cart_items_total_price(@cart_items)
       render "cart_items/index"
     end
-    
+
               #@cart_item.update(cart_item_path)
         # redirect_to cart_item_path
   
@@ -140,8 +148,6 @@ class Public::CartItemsController < ApplicationController
 
 
 
-
-
 def destroy
     # cart_item=CartItem.find(params[:id])
     # cart_item.destroy
@@ -163,4 +169,3 @@ end
     params.require(:cart_item).permit(:item_id, :amount, :customer_id)
   end
 end
-
