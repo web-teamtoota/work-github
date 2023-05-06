@@ -20,7 +20,9 @@
 				<tbody>
 				    	<% sum = 0 %>
 					<% @cart_items.each do |cart_item| %>
-					<th class="text-left"><%= image_tag cart_item.item.image, size: "60x50" %>
+					<th class="text-left">
+						<%= image_tag cart_item.item.image,size: "60x50" if cart_item.item.image.present? %>
+						<%#= image_tag cart_item.item.image, size: "60x50" %>
 						<%#= image_tag cart_item.item.image, size: "50x50" %>　<%= cart_item.item.name %>
 					</th>
 					<td class="text-left"><%= cart_item.item.with_tax_price.to_s(:delimited, delimiter: ',') %></td>
