@@ -60,6 +60,7 @@ get "orders/:id" => "orders#show"
 
   scope module: :public do
   root to: 'homes#top'
+
   get "about" => "homes#about"
   get "customer/sign_up" => "customers#new"
   post "customer" => "customers#create"

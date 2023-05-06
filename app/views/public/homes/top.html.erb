@@ -9,25 +9,21 @@
 		</p>
 	</div>
 </div>
-
 <div class="container">
-	<!--<div class="row">-->
-				   <h3>新着商品</h3>
-	    <!--<p class="text-center">-->
-    <!--</p>-->
-		<!--<p id="notice"><%#= notice %>-->
-		<!--</p>-->
-		<div class="col-lg-8 mx-auto">
-			<div class="row">
+	<h3>新着商品</h3>
+	<div class="col-lg-8 mx-auto">
+		<div class="row">
+			<% @items.each do |item| %>
+			<div class="col-3">
+				<%= link_to item_path(item) do %>
+				<div>
 				<p>
-				  <% @items.each do |item| %>
-				</p>
-				<div class="col-2">
 					<% if item.image.attached? %>
 					<%= image_tag item.image, size: "90x90" %>
 					<% else %>
 					<%= image_tag 'no_image', size: "90x90" %>
 					<% end %>
+				</p>
 					<p>
 						<%= item.name %>
 					</p>
@@ -37,9 +33,11 @@
 				</div>
 				<% end %>
 			</div>
+			<% end %>
 		</div>
-	<!--</div>-->
+	</div>
 </div>
+
 <p class="text-right">
 	<%= link_to "全ての商品を見る>", items_path %>
 </p>
