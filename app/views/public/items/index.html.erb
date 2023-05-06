@@ -8,11 +8,13 @@
 			<div class="col-3">
 				<%= link_to item_path(item) do %>
 				<div>
+				<p>
 					<% if item.image.attached? %>
 					<%= image_tag item.image, size: "90x90" %>
 					<% else %>
 					<%= image_tag 'no_image', size: "90x90" %>
 					<% end %>
+				</p>
 					<p>
 						<%= item.name %>
 					</p>

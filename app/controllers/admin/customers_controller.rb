@@ -18,14 +18,26 @@ class Admin::CustomersController < ApplicationController
 
 
 
-  def update
-    @customer = Customer.find(params[:id])
-    if @customer.update(customer_params)
-      redirect_to admin_customer_path(@customer)
-    else
-      render "show"
-    end
-  end
+  # def update
+  #   @customer = Customer.find(params[:id])
+  #   if @customer.update(customer_params)
+  #     redirect_to admin_customer_path(@customer)
+  #   else
+  #     render "show"
+  #   end
+    
+    
+	def update
+		@customer = Customer.find(params[:id])
+			if @customer.update(customer_params)
+			   redirect_to admin_customer_path
+			else
+				render :admin_customer_path
+			end
+
+	end
+    
+  # end
 
 
 #   def update
