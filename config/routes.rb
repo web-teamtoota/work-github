@@ -90,18 +90,21 @@ get "orders/:id" => "orders#show"
 
   #get "customer/sign_up" => "customers#new"
   #post "customer" => "customers#create"
+  # get "cart_items" => "cart_items#index"
+  delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
 
-  resources :cart_items, only: [:index, :update, :destroy, :create]
-#   get "cart_items" => "cart_items#index"
-#   # get  "cart_items/:id" => "cart_items#update"
-#   patch "cart_items/:id" => "cart_items#update"
+  # get  "cart_items/:id" => "cart_items#update"
+  # patch "cart_items/:id" => "cart_items#update"
+  # patch "cart_items/:id" => "cart_items#update"
 #   delete "cart_items/:id" => "cart_items#destroy"
-  delete  "cart_items" => "cart_items#destroy_all"
-#   post "cart_items" => "cart_items#create"
-
-    resources :cart_items
+  # delete  "cart_items" => "cart_items#destroy_all"
+# post "cart_items" => "cart_items#create"
+# patch 'cart_items/:id', to: 'cart_items#update'
+  # resources :cart_items, only: [:destroy]
 
   resources :addresses
+  resources :cart_items
+
   end
 
 
@@ -112,7 +115,7 @@ get "orders/:id" => "orders#show"
     #post 'admin/items' , to: 'admins/items#create'
     #get 'admin/items/:id', to: 'admins/items#show'
     #get 'admin/items/:id/edit', to: 'admins/items#edit'
-    #patch 'admin/items/:id', to: 'admins/items#update'
+    patch 'admin/items/:id', to: 'admins/items#update'
 
 
 
@@ -144,4 +147,5 @@ get "orders/:id" => "orders#show"
 
 
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-    end
+    
+  end
