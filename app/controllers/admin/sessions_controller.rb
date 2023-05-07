@@ -19,9 +19,14 @@ class Admin::SessionsController < Devise::SessionsController
      #session[:keep_signed_out] = true
    #end
    def after_sign_in_path_for(resource)
+    #new_admin_session_path
+    admin_root_path
+   end
+
+  def after_sign_out_path_for(resource)
     new_admin_session_path
     #admin_root_path
-   end
+  end
 
   # protected
 
