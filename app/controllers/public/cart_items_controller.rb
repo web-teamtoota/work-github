@@ -108,9 +108,9 @@ class Public::CartItemsController < ApplicationController
 
 
   def update
-    
-  
-    
+
+
+
     @cart_item = CartItem.find(params[:id])
     if params[:cart_item][:amount] == "0"
       @cart_item.destroy
@@ -122,12 +122,12 @@ class Public::CartItemsController < ApplicationController
       @total_price = current_customer.cart_items.cart_items_total_price(@cart_items)
       render :index
     end
-    
-     if @cart_item.update(cart_item_params) 
+
+     if @cart_item.update(cart_item_params)
         cart_item_path(@cart_item)
      end
-    
-    
+
+
 
 #@cart_item.update(cart_item_path)
 # redirect_to cart_item_path
