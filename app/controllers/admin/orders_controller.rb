@@ -20,24 +20,36 @@ class Admin::OrdersController < ApplicationController
 
     if @order.status == "入金確認"
       @order_details.each do |order_detail|
-        order_detail.making_status = "awaiting_manufacture"
+        order_detail.making_status = "製作待ち"
         order_detail.save
-      end
+    end
     end
     redirect_to admin_order_path
-  end
-
-  # private
-
-  # def order_params
-  #   params.require(:order).permit(:status)
-  # end
   
+
+  @order = Order.find(params[:id])
+  @order_details = OrderDetail.where(order_id: params[:id])
+  if @order.update(order_params)
+    @order_details.update_all(making_status: 1) if @order.status == "payment_confirmation"
+    ## ①注文ステータスが「入金確認」とき、製作ステータスを全て「製作待ち」に更新する
+  end
+  # redirect_to admin_order_path
+end
+
+
+
+# private
+# def order_params
+#   params.require(:order).permit(:status)
+# end
+
   
   private
-   def order_params
+  def order_params
     params.require(:order).permit(:item_id, :order_id, :quantity, :price, :making_status, :postal_code, :address, :name, :total_payment, :postage,:payment_method, :status)
-   end
+  end
 
 
 end
+
+
