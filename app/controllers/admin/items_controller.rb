@@ -21,8 +21,6 @@ class Admin::ItemsController < ApplicationController
    redirect_to admin_item_path(@item.id)
   end
 
-
-
   def edit
     @item = Item.find(params[:id])
   end

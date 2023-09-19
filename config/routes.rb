@@ -29,8 +29,8 @@ devise_for :customers,skip: [:passwords], controllers: {
 
 #   resources :orders
 
-resources :order_details, only:[:update]
-# patch "order_details/:id" => "order_details#update",as:"order_detail"
+    resources :order_details, only:[:update]
+patch "order_details/:id" => "order_details#update",as:"order_detail"
 patch "orders/:id" => "orders#update",as:"order"
 get "orders/:id" => "orders#show"
 # put "customers/:id" => "customer#show"
