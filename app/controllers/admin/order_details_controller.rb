@@ -75,7 +75,7 @@ class Admin::OrderDetailsController < ApplicationController
       # ②製作ステータスが「製作中」のときに、注文ステータスを「製作中」に更新する。
       # ここから下の内容は③の内容になります。
       # 紐付いている注文商品の製作ステータスが "すべて" [製作完了]になった際に注文ステータスを「発送準備中」に更新させたいので、
-      @order_details.each do |order_detail| #　紐付いている注文商品の製作ステータスを一つ一つeach文で確認していきます。
+      @order_details.each do |order_detail| #紐付いている注文商品の製作ステータスを一つ一つeach文で確認していきます。
         if order_detail.making_status != "production_complete" # 製作ステータスが「製作完了」ではない場合 
           is_updated = false # 上記で定義してあるis_updatedを「false」に変更する。
         end
