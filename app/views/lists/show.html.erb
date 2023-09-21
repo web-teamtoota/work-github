@@ -1,7 +1,5 @@
 <h1>Lists#show</h1>
 <p>Find me in app/views/lists/show.html.erb</p>
-
-
 <div>
   <%= image_tag @list.get_image %>
   <p>ショップ名：<%= @list.shop_name %></p>
@@ -13,8 +11,6 @@
     <%= link_to "削除", list_path(@list), method: :delete %>
   <% end %>
 </div>
-
-
 <!-- ユーザーの詳細 -->
 <div class="profile-container">
   <h3 class="profile-name"><%= @user.name %></h3>
@@ -23,8 +19,5 @@
   <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
   <% end %>
 </div>
-
 <!-- ユーザーの投稿一覧 -->
 <%= render 'lists/list', lists: @lists %>
-
-

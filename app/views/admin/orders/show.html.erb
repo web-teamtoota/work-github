@@ -1,17 +1,14 @@
 <div class="mx-auto" style="width: 1000px">
- <div class="container">
-   <span class="p-3 mb-2 bg-light text-dark">注文履歴詳細
-   </span>
- </div>
- </br>
-
-    <div>
-      <!--<p>-->
-        <strong class="col-xs-2">購入者</strong>
+  <div class="container">
+    <span class="p-3 mb-2 bg-light text-dark">注文履歴詳細
+    </span>
+  </div>
+  </br>
+  <div>
+    <strong class="col-xs-2">購入者</strong>
         　　<%= link_to admin_customer_path(@order) do %>
     　　  <%= @order.customer.last_name %><%= @order.customer.first_name %>
       　    <% end %>
-       <!--</p>-->
      </div>
         <strong class="col-xs-2">注文日</strong>
          　　　　　<td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
@@ -60,26 +57,19 @@
                                     <% sum += (order_detail.price * order_detail.quantity*1.1) %>
                                     <td>
                                       <%= form_with model:order_detail, url: admin_order_detail_path(order_detail.id), local: true do |f| %>
-                                      <%#= f.select :making_status, ["製作不可", "製作待ち", "製作中", "製作完了"] %>
                                       　<%= f.select :making_status, OrderDetail.making_statuses_i18n.invert %>
                                       　<%= f.submit "更新", class: 'btn btn-success' %>
                                       <% end %>
                                      </td>
                                     </tr>
                                       <% end %>
-
-                                      
-                                      
-                                 </tbody>
-                          </table>
-                          </div>
+                                </tbody>
+                        </table>
+                      </div>
                                       <div class="col-3">
                                         <div>
                                           <p>
                                             <strong class="col-xs-3">商品合計</strong>
-                                            <!--td><%#= (@order.total_payment -= @order.postage).to_s(:delimited) %>円</td-->
-                                            <%#= (@order.total_payment += @order.postage).to_s(:delimited) %>
-                                            <%= sum.floor.to_s(:delimited) %>円
                                           </p>
                                           </div>
                                             <div>
@@ -96,6 +86,4 @@
                                                  </div>
                                         </div>
                             </div>
-
-  </div>
-
+</div>

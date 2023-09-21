@@ -7,8 +7,7 @@
 		<div class="row">
 			<div class="col-10">
 				<div class="row my-4">
-					<div class="col-6">
-					</div>
+					<div class="col-6"></div>
 					<div class="col-6 text-right">
 						<%= link_to "カートを空にする",  cart_items_destroy_all_path, method: :delete, class:"btn btn-danger" %>
 					</div>
@@ -30,20 +29,17 @@
 							<div class="js-remove">削除</div>
 						</div>
 						<% end %>
-					
 						<% @cart_items.each do |cart_item| %>
 						<tbody>
 							<th class="text-left">
 								<%= image_tag cart_item.item.image,size: "60x50" if cart_item.item.image.present? %>
-								<%#= image_tag cart_item.item.image, size: "60x50" %>
 								<%= cart_item.item.name %>
 							</th>
 							<td class="text-left"><%= cart_item.item.with_tax_price.to_s(:delimited, delimiter: ',') %></td>
-							<%#= form_with model: cart_item, url: cart_item_path(cart_item) do |f| %>
 							<%= form_with model: cart_item, url: cart_item_path(cart_item.id), local: true do |f| %>
 							<td class="text-left"><%= f.select:amount,[[cart_item.amount],['0',0],['1',1],['2',2],['3',3],['4',4],['5',5],['6',6],['7',7],['8',8],['9',9],['10',10]],class:"mr-1" %>
-								<%= f.submit "変更", class:"btn btn-success ml-1" %>
-								<% end %>
+							<%= f.submit "変更", class:"btn btn-success ml-1" %>
+							<% end %>
 							</td>
 							<td class="text-left"><%= (cart_item.item.with_tax_price*cart_item.amount).to_s(:delimited, delimiter: ',') %></td>
 							<td class="text-center"><%= link_to "削除する", cart_item_path(cart_item.id),method: :delete, class:"btn btn-danger" %></td>

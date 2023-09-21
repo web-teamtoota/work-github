@@ -1,22 +1,15 @@
 <h1>Lists#index</h1>
 <p>Find me in app/views/lists/index.html.erb</p>
-
-
-
 <% @lists.each do |list| %>
 <div>
   <%= link_to list_path(list.id) do %>
     <%= image_tag list.get_image %>
   <% end %>  
   <p>投稿ユーザー画像：<%= image_tag 'sample-author1.jpg' %></p>
-  
-  
-  
   <% @lists.each do |list| %>
 <div>
   <%= image_tag list.get_image %>
   <p>投稿ユーザー画像：<%= image_tag 'sample-author1.jpg' %></p>
-
   <p>ユーザーネーム：<%= list.user.name %></p>
 </div>
 <% end %>

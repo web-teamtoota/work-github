@@ -1,14 +1,9 @@
 <div class="mx-auto" style="width: 1200px">
- <!--<div class="container">-->
-   <strong class="p-3 mb-2 bg-light text-dark">
- 会員一覧
-   </strong>
- <!--</div>  -->
- </div>  
-
-
+	<strong class="p-3 mb-2 bg-light text-dark">
+		会員一覧
+		</strong>
+</div>
 <div class="container">
-<!--<p class="p-0 mb-0 bg-light text-dark">会員一覧</p>-->
 	<div class="row">
 		<table class='table table-hover table-inverse'>
 			<thead>
@@ -20,18 +15,18 @@
 				</tr>
 			</thead>
 			<tbody class="col-md-6">
-			<% @customers.each do |customer| %>
+				<% @customers.each do |customer| %>
 				<tr>
 					<td><%= customer.id %></td>
 					<td><%= link_to customer.full_name, admin_customer_path(customer.id)%></td>
 					<td><%= customer.email %></td>
-					　　<% if customer.is_deleted == false %>
+					<% if customer.is_deleted == false %>
 					<th class="text-success">有効</th>
-					<% else %>
-					<th class="text-secondary">退会</th>
-					<% end %>
-				</tr>
+				<% else %>
+				<th class="text-secondary">退会</th>
 				<% end %>
+				</tr>
+			<% end %>
 			</tbody>
 		</table>
 	</div>
@@ -39,4 +34,3 @@
 <div class="mx-auto" style="width: 95px">
 	<%= paginate @customers %>
 </div>
-
