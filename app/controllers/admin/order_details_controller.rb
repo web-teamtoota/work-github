@@ -1,50 +1,20 @@
 class Admin::OrderDetailsController < ApplicationController
+  before_action :authenticate_admin!
   
-  
-  
-  # def update
-  #   order_detail = OrderDetail.find(params[:id])
-  #   order_detail.update!(order_detail_params)
-  #   redirect_to admin_path(order_detail.order.id)
-   
-  # end
-
-
-  # private
-  # def order_detail_params
-  #     params.require(:order_detail).permit(:making_status)
-  # end
-
-
-
- before_action :authenticate_admin!
-
   def update
     @order_detail = OrderDetail.find(params[:id])
     @order = @order_detail.order
     @order_details = @order.order_details
     @order_detail.update(order_detail_params)
-
     if @order_details.where(making_status: "製作中").count >= 1
       @order.status = "製作中"
       @order.save
     end
-
-     if @order.order_details.count == @order_details.where(making_status: "製作完了").count
+    if @order.order_details.count == @order_details.where(making_status: "製作完了").count
        @order.status = "発送準備中"
        @order.save
-     end
+    end
     redirect_to admin_order_path(@order_detail.order.id)
-
-  #   if @order.update(order_detail_params)
-  # @ordered.order_product.update(status: 1) if @order.status == 1
-  # redirect_to request.referer
-  #   else
-  #   @ordered.order_products.update_all(status: 1)
-  #   end
-    
-    
-    
     @order_detail = OrderDetail.find(params[:id])
     @order = @order_detail.order
     @order_details = @order.order_details
@@ -53,22 +23,7 @@ class Admin::OrderDetailsController < ApplicationController
       @order.status = 2
       @order.save
     end
-    
-
-  #   if @order.order_details.count == @order_details.where(making_status: "製作完了").count 
-  #     @order.status = "発送準備中"
-  #     @order.save
-  #   end
-  #   redirect_to admin_order_path(@order_detail.order.id)
-  # end
-
-
-
-# end
-
-    # @order = Order.find(params[:order_id])
     @order_details = @order.order_details.all
-
     is_updated = true
     if @order_detail.update(order_detail_params)
       @order.update(status: 2) if @order_detail.making_status == "in_production"
@@ -83,19 +38,9 @@ class Admin::OrderDetailsController < ApplicationController
       @order.update(status: 3) if is_updated
       # is_updatedがtrueの場合に、注文ステータスが「発送準備中」に更新されます。上記のif文でis_updatedがfalseになっている場合、更新されません。
     end
-    # redirect_to admin_order_path
   end
-
-  # private
-
-  # def order_detail_params
-  #   params.require(:order_detail).permit(:making_status)
-  # end
-  
-  
   
   private
-
   def order_detail_params
     params.require(:order_detail).permit(:making_status, :item_id, :order_id, :quantity, :price)
   end
