@@ -1,4 +1,3 @@
-     
          商品新規登録画面
      <h2>New book</h2>
      <%= form_with model: @list do |f| %>
@@ -8,16 +7,8 @@
      <%= f.text_area :body %>
      <%= f.submit "新規登録" %>
      <% end %>
-     
-     
-     
-     
 <h1>New book</h1>
-
-
 <%= form_with model: @user, url: '/books', method: :user do |f| %>
-
-
   <h4>title</h4>
   <%= f.text_field:title %>
   <h4>body</h4>
