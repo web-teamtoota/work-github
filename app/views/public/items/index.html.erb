@@ -1,6 +1,4 @@
-<!--<div class="col-lg-13 mx-auto">-->
 <div class="container">
-	<!--<div class="row">-->
 	<h1>商品一覧</h1>
 	<div class="col-lg-8 mx-auto">
 		<div class="row">
@@ -8,13 +6,13 @@
 			<div class="col-3">
 				<%= link_to item_path(item) do %>
 				<div>
-				<p>
-					<% if item.image.attached? %>
+					<p>
+						<% if item.image.attached? %>
 					<%= image_tag item.image, size: "90x90" %>
-					<% else %>
-					<%= image_tag 'no_image', size: "90x90" %>
-					<% end %>
-				</p>
+				<% else %>
+			<%= image_tag 'no_image', size: "90x90" %>
+		 <% end %>
+					</p>
 					<p>
 						<%= item.name %>
 					</p>
@@ -27,11 +25,7 @@
 			<% end %>
 		</div>
 	</div>
-	<!--</div>-->
 </div>
-<!--</div>-->
 <div class="mx-auto" style="width: 100px">
-	<!--<p class="text-center">-->
 	<%= paginate @items %>
-	<!--</p>-->
 </div>
