@@ -24,7 +24,7 @@
   <div>商品説明　　　<%= @item.introduction %></div>
   <div>税込価格</br>
 （税抜価格）　　　<%= @item.with_tax_price.to_s(:delimited) %>　(<%= @item.price.to_s(:delimited) %>)円
- </div>
+  </div>
   <div>販売ステータス　
   <% if @item.is_active==true %>
   <strong class="text-success">　　販売中</strong>

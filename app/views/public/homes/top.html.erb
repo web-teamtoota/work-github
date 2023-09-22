@@ -1,11 +1,11 @@
 <div class="mx-auto" style="width: 400px">
 	<div class='p-top'>
 		<p class='p-top__item'>
-		<h6>ようこそ、ながのCAKEへ！</br>
+			<h6>ようこそ、ながのCAKEへ！</br>
 			このサイトは、ケーキ販売のECサイトになります。</br>
 			会員でない方も商品の閲覧はできますが、</br>
 			購入には会員登録が必要になります。
-		</h6>
+			</h6>
 		</p>
 	</div>
 </div>
@@ -17,15 +17,15 @@
 			<div class="col-3">
 				<%= link_to item_path(item) do %>
 				<div>
-				<p>
-					<% if item.image.attached? %>
-					<%= image_tag item.image, size: "90x90" %>
-					<% else %>
-					<%= image_tag 'no_image', size: "90x90" %>
-					<% end %>
-				</p>
 					<p>
-						<%= item.name %>
+						<% if item.image.attached? %>
+						<%= image_tag item.image, size: "90x90" %>
+					<% else %>
+						<%= image_tag 'no_image', size: "90x90" %>
+				<% end %>
+				  </p>
+				  <p>
+				  	<%= item.name %>
 					</p>
 					<p>
 						¥<%= item.price.to_s(:delimited) %>
@@ -33,11 +33,10 @@
 				</div>
 				<% end %>
 			</div>
-			<% end %>
+		<% end %>
 		</div>
 	</div>
 </div>
-
 <p class="text-right">
 	<%= link_to "全ての商品を見る>", items_path %>
 </p>

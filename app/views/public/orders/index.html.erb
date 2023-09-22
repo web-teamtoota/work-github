@@ -1,6 +1,6 @@
 <div class="mx-auto" style="width: 1000px">
 	<div class="container">
-	  <span class="p-3 mb-2 bg-light text-dark">注文履歴一覧
+		<span class="p-3 mb-2 bg-light text-dark">注文履歴一覧
 	  </span>
 	</div>
 </div>
@@ -8,8 +8,6 @@
 	<div class="row justify-content-center">
 		<div class="col-12">
 			<div class="text-left">
-				<!--<div class=".container-md">-->
-				<!--<div class="row-md">-->
 				<table class="col-lg table-bordered">
 					<thead class="bg-light">
 						<tr>
@@ -31,7 +29,6 @@
 								〒<%= order.postal_code %><br/>
 								<%= order.address %><br/>
 								<%= order.name %></br>
-								<%#= item.order.name %>
 							</td>
 							<td>
 								<% @total_payment = 0 %>
@@ -42,21 +39,15 @@
 									<% @total_payment += order.postage %>
 									<%  order.total_payment = @total_payment %>
 							</td>
-							<!--td><%#= sum.floor.to_s(:delimited) %></td-->
-							<!--d><%#= (sum+@order.postage).floor.to_s(:delimited) %></td-->
-							<!--td><%# sum += sum+@order.postage.floor %></td-->
 							<td><%= "#{order.total_payment.to_s(:delimited)}" %>円</td>
-									<%# total_payment += @order.total_payment %>
 							<td><%= order.status %></td>
 							<%= form_with model: @order, url: orders_url, method: :post do |f| %>
 							<td><%= link_to '表示する', order_path(order),class:"btn btn-primary" %></td>
 							<% end %>
 						</tr>
 					</tbody>
-					<!--</thead>-->
 					<% end %>
 				</table>
-
 			</div>
 		</div>
 	</div>
