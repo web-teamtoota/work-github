@@ -24,11 +24,9 @@ get "orders/:id" => "orders#show"
 
   scope module: :public do
   root to: 'homes#top'
-
   get "about" => "homes#about"
   get "customer/sign_up" => "customers#new"
   post "customer" => "customers#create"
-
   get "customer" => "customers#show"
   get "customer/edit" => "customers#edit"
   patch "customer" => "customers#update"
@@ -36,7 +34,6 @@ get "orders/:id" => "orders#show"
   patch "customer/withdraw" => "customers#withdraw"
   # 論理削除用のルーティング
   #get "customer/withdraw" => "customers#withdraw"
-
   resources :items
   get "orders/new" => "orders#new"
   post "orders/confirm" => "orders#confirm"
@@ -47,6 +44,7 @@ get "orders/:id" => "orders#show"
   resources :addresses
   resources :cart_items
   end
+  
   patch 'admin/items/:id', to: 'admins/items#update'
     post 'homes' => 'homes#create'
     get "admin/customers" => "admins#index"

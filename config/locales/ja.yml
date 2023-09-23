@@ -5,24 +5,6 @@ ja: #日本語の設定
         credit_card: "クレジットカード"
         transfer: "銀行振込"
 
-    #   status:
-    #     awaiting_payment: "入金待ち"
-    #     payment_confirmation: "入金確認"
-    #     under_manufacture: "製作中"
-    #     preparing_to_ship: "発送準備中"
-    #     already_shipped: "発送済み"
-
-    # order_detail:
-    #   making_status:
-    #     cannot_be_started: "着手不可"
-    #     awaiting_manufacture: "製作待ち"
-    #     under_manufacture: "製作中"
-    #     completed_production: "製作完了"
-        
-
-
-
-
 ja:
     enums:
       order:
@@ -38,16 +20,3 @@ ja:
           production_pending: "製作待ち"
           in_production: "製作中"
           production_complete: "製作完了"
-
-
-
-
-
-        
-# ja:
-#   time: "%H:%M:%S"
-#     formats:
-#       default: "%Y/%m/%d %H:%M:%S"
-#       short: "%m/%d %H:%M"
-
-
