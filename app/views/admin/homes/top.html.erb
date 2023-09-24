@@ -24,8 +24,8 @@
 					<td><%= order.customer.last_name %><%= order.customer.first_name %>
 					</td>
 					<td>
-						<% sum =0 %>
-						<% order.order_details.each do |order_detail|%>
+						<% sum = 0 %>
+						<% order.order_details.each do |order_detail| %>
 						<% sum += order_detail.quantity %>
 						<% end %>
 						<%= sum %>

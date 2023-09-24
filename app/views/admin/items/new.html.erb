@@ -5,22 +5,22 @@
   </div>
 </div>
 <div class="mx-auto" style="width: 400px">
-  <%= form_with model: @item, url:admin_items_path ,local: false do |f| %>
+  <%= form_with model: @item, url: admin_items_path, local: false do |f| %>
   　　　　　　<div class="inputImage">
     <%= f.label :商品画像 %>　　　　　　　　　　
   　<%= f.file_field :image, placeholder: "商品画像", accept: "image/*" %>
   </div>
   <div class="field">
       <%= f.label :商品名 %>　
-      　<%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"商品名"%>
+      　<%= f.text_field :name, autofocus: true, id: "inputName", placeholder: "商品名" %>
     </div>
     <div class="field">
        <%= f.label :商品説明 %>　 
-       <%= f.text_area :introduction, placeholder:"ここに説明文を記述します。", size:"30x5" %>
+       <%= f.text_area :introduction, placeholder: "ここに説明文を記述します。", size: "30x5" %>
     </div>
     <div class="field">
       <%= f.label :税抜価格 %>　
-      <%= f.text_field :price, autofocus: true, id:"inputPrice", placeholder: "1,000" %>円
+      <%= f.text_field :price, autofocus: true, id: "inputPrice", placeholder: "1,000" %>円
     </div>
     <label>
       <%= f.label :販売ステータス %> 
@@ -29,7 +29,7 @@
     <label><%= f.radio_button :is_active, false %> 販売停止中
     </label>
     <div class="actions">
-      　　　　　　　<%= f.submit "新規登録",class: "btn btn-success" %>
+      　　　　　　　<%= f.submit "新規登録", class: "btn btn-success" %>
     </div>
      <% end %>
 </div>
