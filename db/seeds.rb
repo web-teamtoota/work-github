@@ -1,4 +1,4 @@
-  # This file should contain all the record creation needed to seed the database with its default values.
+# This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
 # Examples:
@@ -7,9 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Admin.create!(
   email: "admin2@gmail.com",
-  password: "aaaaaa"
-  )
-  
+  password: "aaaaaa",
+)
+
 Customer.create!(
   last_name: "aa",
   first_name: "aa",
@@ -19,12 +19,5 @@ Customer.create!(
   address: "aa",
   telephone_number: "11",
   email: "bb@ab",
-  password: "aaaaaa"
-  )
-  
-  # Item.create!(
-  # name: "test0",
-  # introduction: "test0"
-  # price: 500
-  # is_active: true
-  # )
+  password: "aaaaaa",
+)

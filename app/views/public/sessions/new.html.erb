@@ -9,14 +9,14 @@
  <%= render "public/shared/links" %>
  <div class="field">
   　　　　<%= f.label :メールアドレス %>　　
-  <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"sample@example.com"%>
+  <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %>
 </div>
 <div class="field">
   　　　　<%= f.label :パスワード %>　　　　
   <%= f.password_field :password, autocomplete: "current-password" %>
 </div>
 <div class="actions"></br>　　　　　
-  　　　　　　　　　<%= f.submit "ログイン" ,class: "btn btn-primary"%>
+  　　　　　　　　　<%= f.submit "ログイン", class: "btn btn-primary" %>
 </div>
 <% end %></br>
 <div class="container">

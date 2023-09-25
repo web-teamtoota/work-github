@@ -7,29 +7,29 @@
   <%= render "public/shared/error_messages", resource: resource %>
   <div class="field">
     <%= f.label :名前 %>　　　　　　　　　　　　
-    （姓）<%= f.text_field :last_name, autofocus: true, id:"inputName", placeholder:"令和"%>　　
-    （名）<%= f.text_field :first_name, autofocus: true, id:"inputName", placeholder:"道子"%>
+    （姓）<%= f.text_field :last_name, autofocus: true, id: "inputName", placeholder: "令和" %>　　
+    （名）<%= f.text_field :first_name, autofocus: true, id: "inputName", placeholder: "道子" %>
   </div>
   <div class="field">
     <%= f.label :フリガナ %>　　　　　　　　　
-      （セイ）<%= f.text_field :last_name_kana, autofocus: true, id:"inputName", placeholder:"レイワ"%>　
-      （メイ）<%= f.text_field :first_name_kana, autofocus: true, id:"inputName", placeholder:"ミチコ"%>　　
+      （セイ）<%= f.text_field :last_name_kana, autofocus: true, id: "inputName", placeholder: "レイワ" %>　
+      （メイ）<%= f.text_field :first_name_kana, autofocus: true, id: "inputName", placeholder: "ミチコ" %>　　
   </div>
   <div class="field">
       <%= f.label :メールアドレス %>　　　　　　　　　　
-      <%= f.text_field :email, autofocus: true, id:"inputName", placeholder:"sample@example.com"%>
+      <%= f.text_field :email, autofocus: true, id: "inputName", placeholder: "sample@example.com" %>
   </div>
   <div class="field">
       <%= f.label :郵便番号（ハイフンなし） %>　　　　　
-      <%= f.text_field :postal_code, autofocus: true, id:"inputName", placeholder:"0000000"%>
+      <%= f.text_field :postal_code, autofocus: true, id: "inputName", placeholder: "0000000" %>
   </div>
   <div class="field">
       <%= f.label :住所 %>　　　　　　　　　　　　　　　
-      <%= f.text_field :address, autofocus: true, id:"inputName", placeholder:"東京都渋谷区代々木神園町0-0"%>
+      <%= f.text_field :address, autofocus: true, id: "inputName", placeholder: "東京都渋谷区代々木神園町0-0" %>
   </div>
   <div class="field">
     <%= f.label :電話番号（ハイフンなし） %>　　　　　
-      <%= f.text_field :telephone_number, autofocus: true, id:"inputName", placeholder:"0000000000"%>
+      <%= f.text_field :telephone_number, autofocus: true, id: "inputName", placeholder: "0000000000" %>
   </div>
   <div class="field">
     <%= f.label :パスワード %><% if @minimum_password_length %>(<%= @minimum_password_length %> 文字以上)　　  　　　　
@@ -41,7 +41,7 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
   <div class="actions">　　　　　　　　　　　　　　　　　
-    <%= f.submit "新規登録" , class: "btn btn-success"%>　　　　
+    <%= f.submit "新規登録", class: "btn btn-success" %>　　　　
   </div>
 <% end %></br>
 <div class="container">
