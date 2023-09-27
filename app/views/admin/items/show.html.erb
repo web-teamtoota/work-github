@@ -12,9 +12,9 @@
     <div class="col">
       <div><% if @item.image.attached? %>
       <%= image_tag @item.image, size: "200x200" %>
-    <% else %>
-    <%= image_tag "no_image", size: "200x200" %>
-  <% end %>
+            <% else %>
+            <%= image_tag "no_image", size: "200x200" %>
+          <% end %>
       </div>
     </div>
   </div>
@@ -28,9 +28,9 @@
   <div>販売ステータス　
   <% if @item.is_active == true %>
   <strong class="text-success">　　販売中</strong>
-  <% else %>
+    <% else %>
   <strong class="text-secondary">　販売停止中</strong> 
-  <% end %>
+      <% end %>
   </div>
   </br>
   <div class="mx-auto" style="width: 200px">

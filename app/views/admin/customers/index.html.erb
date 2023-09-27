@@ -1,7 +1,7 @@
 <div class="mx-auto" style="width: 1200px">
 	<strong class="p-3 mb-2 bg-light text-dark">
 		会員一覧
-		</strong>
+	</strong>
 </div>
 <div class="container">
 	<div class="row">
@@ -22,11 +22,11 @@
 					<td><%= customer.email %></td>
 					<% if customer.is_deleted == false %>
 					<th class="text-success">有効</th>
-				<% else %>
-				<th class="text-secondary">退会</th>
-				<% end %>
+						<% else %>
+						<th class="text-secondary">退会</th>
+							<% end %>
 				</tr>
-			<% end %>
+				<% end %>
 			</tbody>
 		</table>
 	</div>

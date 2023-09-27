@@ -27,11 +27,11 @@
       <td><%= item.price.to_s(:delimited) %></td>
       <% if item.is_active == true %>
       <th><p class="text-success">販売中</p></th>
-    <% else %>
-    <th><p class="text-secondary">販売停止中</p></th>
-  <% end %>
+        <% else %>
+        <th><p class="text-secondary">販売停止中</p></th>
+            <% end %>
     </tr>
-<% end %>
+      <% end %>
   </table>
 </div>
 </div>

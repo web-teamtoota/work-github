@@ -12,20 +12,11 @@ class Public::CartItemsController < ApplicationController
     @cart_items.each do |cart_item|
       @total_price += cart_item.item.with_tax_price * cart_item.amount
       @cart_item = current_customer.orders
-
-      # if @cart_item == nil
-      #   redirect_to cart_items_path
-      # else
-      #   # redirect_to orders_new_path
-      # # end
-      # end
-
     end
   end
 
   def show
     @cart_item = CartItem.find(params[:id])
-    # @cart_items.find(item_id:)
     @cart_item = CartItem.new
   end
 
@@ -34,24 +25,9 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-    #binding.pry
     @cart_items = CartItem.all
-    # @cart_item = CartItem.new
-
-    # if @cart_item.save
-    #   redirect_to cart_items_path(@cart_item.id)
-    # else
-    #   @cart_item = CartItem.new(params[:id])
-    # #@cart_item = CartItem.find(cart_item_params[:item_id])
     cart_item = CartItem.new(cart_item_params)
     cart_item.customer_id = current_customer.id
-    #@cart_item.save!
-
-    # cart_item = CartItem.new(cart_item_params)
-    #@cart_item.customer_id = current_customer
-    # cart_item.end_user_id = current_end_user.id
-    # @cart_item.item_id = cart_item_params[:item_id]
-
     if current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id]).present?
       cart_item = CartItem.find_by(item_id: params[:cart_item][:item_id])
       cart_item.amount += params[:cart_item][:amount].to_i
@@ -60,36 +36,14 @@ class Public::CartItemsController < ApplicationController
     else
       @cart_item = CartItem.new(cart_item_params)
       @cart_item.customer_id = current_customer.id
-      # byebug
       @cart_item.save
-      #save cart_item
     end
     redirect_to cart_items_path
-
-    #@cart_item = current_customer.cart_items.new(params_cart_item)
     if current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id]).present?
       cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
       cart_item.amount += params[:cart_item][:amount].to_i
-      # cart_item.save!
-      # redirect_to cart_items_path
-      #elsif @cart_item.save!
-      #redirect_to cart_items_path
     end
-
-    # @cart_item.save!
-    #redirect_to cart_items_path(current_customer)
-
   end
-
-  # @cart_item = current_customer.cart_items.new(params_cart_item)
-  # if current_customer.cart_items.find_by(product_id: params[:cart_item][:item_id]).present?
-  #   cart_item = current_customer.cart_items.find_by(item_id: params[:cart_item][:item_id])
-  #   cart_item.amount += params[:cart_item][:amount].to_i
-  #   cart_item.save
-  #   redirect_to cart_items_path
-  # elsif @cart_item.save!
-  #   redirect_to cart_items_path
-  # end
 
   # def create
   #   1. 追加した商品がカート内に存在するかの判別
@@ -111,49 +65,18 @@ class Public::CartItemsController < ApplicationController
       @total_price = current_customer.cart_items.cart_items_total_price(@cart_items)
       render :index
     end
-
     if @cart_item.update(cart_item_params)
       cart_item_path(@cart_item)
     end
-
-    #@cart_item.update(cart_item_path)
-    # redirect_to cart_item_path
-
     @cart_item = current_customer
-    # if @cart_item.update(@cart_item.id)
-    # redirect_to cart_item_path(@cart_item.id)
-    # else
-    #   render 'index'
-    # end
-    #@cart_item = CartItem.find(params[:id])
-    #   @cart_item.update(cart_item_params)
-    # # if params[:cart_item][:amount] == "0"
-    # #   @cart_item.destroy
-    # #   redirect_to cart_items_path
-    # # elsif @cart_item.update(amount: params[:cart_item][:amount].to_i)
-    # #   redirect_to cart_items_path
-    # # else
-    # #   @cart_items = current_customer.cart_items
-    # #   @total_price = current_customer.cart_item.cart_items_total_price(@cart_items)
-    # #   render "cart_items/index"
-    # # end
-
-    # # cart_item.update(cart_item_params)
-    # # redirect_back(fallback_location: root_path)
-
   end
 
   def destroy
-    # cart_item=CartItem.find(params[:id])
-    # cart_item.destroy
     current_customer.cart_items.find(params[:id]).destroy
     redirect_to cart_items_path
   end
 
   def destroy_all
-    # cart_items = current_customer.cart_items
-    # CartItem.destroy_all
-    # redirect_back(fallback_location: root_path)
     current_customer.cart_items.destroy_all
     redirect_to cart_items_path
   end
