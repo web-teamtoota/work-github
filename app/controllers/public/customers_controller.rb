@@ -1,4 +1,5 @@
 class Public::CustomersController < ApplicationController
+  
   def index
     @customer = Customer.new
     @customers = Customer.all.page(params[:page]).per(10)

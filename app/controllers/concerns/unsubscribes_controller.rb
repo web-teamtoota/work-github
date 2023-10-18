@@ -1,4 +1,5 @@
 class UnsubscribesController < ApplicationController
+  
   def top
   end
 

@@ -1,4 +1,5 @@
 class Customer::HomesController < ActionController
+  
   def top
   end
 

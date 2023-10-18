@@ -1,4 +1,5 @@
 class Public::UsersController < ApplicationController
+  
   def withdrawal
     @user = User.find(params[:id])
     @user.update(is_deleted: true)
