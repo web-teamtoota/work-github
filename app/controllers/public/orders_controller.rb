@@ -5,7 +5,6 @@ class Public::OrdersController < ApplicationController
     @order = Order.new
     @orders = Order.all.page(params[:page]).per(10)
     @total_payment = 0
-
     @total_payment = @order.total_payment
     @customer = current_customer.id
     @customer = Customer.new
@@ -17,7 +16,6 @@ class Public::OrdersController < ApplicationController
     @order_details = @order.order_details.all
     @orders = Order.all
     @order = Order.find_by(id: params[:id])
-
     @customer = current_customer.id
     @customer = Customer.new
     @customers = Customer.all
@@ -27,7 +25,6 @@ class Public::OrdersController < ApplicationController
     @order = Order.new
     @customer = current_customer
     @cart_items = current_customer.cart_items
-
     if @cart_items.empty?
       redirect_to cart_items_path
     end
@@ -63,9 +60,7 @@ class Public::OrdersController < ApplicationController
       @order.name = current_customer.last_name + current_customer.first_name
       @order.postal_code = current_customer.postal_code
     end
-
     @order.postage = 800
-
     if params[:order][:address_option] == "0"
       @order.postage = current_customer.postal_code
       @order.address = current_customer.address

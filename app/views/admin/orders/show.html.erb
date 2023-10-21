@@ -26,7 +26,7 @@
   </br>
   <div>
     <p>
-      <strong class="col-xs-4">注文ステータス</strong>　
+      <strong class="col-xs-4">注文ステータス</strong>
       <%= form_with model:@order, url: admin_path, local: true do |f| %>　<%= f.select :status, ["入金待ち", "入金確認","製作中","発送準備中","発送済み"] %>
       <%= f.submit "更新", class: 'btn btn-success' %>
       <% end %>

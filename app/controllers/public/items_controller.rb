@@ -8,7 +8,6 @@ class Public::ItemsController < ApplicationController
   def index
     @item = Item.new
     @items = Item.page(params[:page]).per(8)
-
     @customer = current_customer
     @customer = Customer.new
     @customers = Customer.all

@@ -1,4 +1,5 @@
 class Admin::ItemsController < ApplicationController
+  
   def index
     @item = Item.new
     @items = Item.page(params[:page]).per(10)
